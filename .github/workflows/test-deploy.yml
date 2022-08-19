@@ -27,3 +27,8 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build website
         run: yarn build
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./docs/website/build/
