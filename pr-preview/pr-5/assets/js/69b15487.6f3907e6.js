@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkodo_dev=self.webpackChunkodo_dev||[]).push([[1808],{6070:o=>{o.exports=JSON.parse('{"allTagsPath":"/odo-gh-actions/blog/tags","slug":"/odo-gh-actions/blog/tags/binding","name":"binding","count":2,"permalink":"/odo-gh-actions/blog/tags/binding"}')}}]);
