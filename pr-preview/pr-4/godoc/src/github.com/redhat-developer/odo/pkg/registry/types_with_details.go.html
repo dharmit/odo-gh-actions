@@ -1,0 +1,117 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>registry - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Source file
+    <a href="/src">src</a>/<a href="../../../../../../src/github.com.html">github.com</a>/<a href="../../../../../../src/github.com/redhat-developer">redhat-developer</a>/<a href="../../../../../../src/github.com/redhat-developer/odo">odo</a>/<a href="../../../../../../src/github.com/redhat-developer/odo/pkg">pkg</a>/<a href="../../../../../../src/github.com/redhat-developer/odo/pkg/registry">registry</a>/<span class="text-muted">types_with_details.go</span>
+  </h1>
+
+
+
+
+
+  <h2>
+    Documentation: <a href="../../../../../../github.com/redhat-developer/odo/pkg/registry">github.com/redhat-developer/odo/pkg/registry</a>
+  </h2>
+
+
+
+<div id="nav"></div>
+
+
+
+<pre><span id="L1" class="ln">     1  </span>package registry
+<span id="L2" class="ln">     2  </span>
+<span id="L3" class="ln">     3  </span>import (
+<span id="L4" class="ln">     4  </span>	&#34;errors&#34;
+<span id="L5" class="ln">     5  </span>	&#34;fmt&#34;
+<span id="L6" class="ln">     6  </span>	&#34;sort&#34;
+<span id="L7" class="ln">     7  </span>
+<span id="L8" class="ln">     8  </span>	&#34;github.com/redhat-developer/odo/pkg/api&#34;
+<span id="L9" class="ln">     9  </span>)
+<span id="L10" class="ln">    10  </span>
+<span id="L11" class="ln">    11  </span><span class="comment">// GetOrderedLabels returns a list of labels for a list of project types</span>
+<span id="L12" class="ln">    12  </span>func (types TypesWithDetails) GetOrderedLabels() []string {
+<span id="L13" class="ln">    13  </span>	sortedTypes := sortTypes(types)
+<span id="L14" class="ln">    14  </span>	stringTypes := []string{}
+<span id="L15" class="ln">    15  </span>	for _, typ := range sortedTypes {
+<span id="L16" class="ln">    16  </span>		detailsList := types[typ]
+<span id="L17" class="ln">    17  </span>		if len(detailsList) == 1 {
+<span id="L18" class="ln">    18  </span>			stringTypes = append(stringTypes, typ)
+<span id="L19" class="ln">    19  </span>		} else {
+<span id="L20" class="ln">    20  </span>			for _, details := range detailsList {
+<span id="L21" class="ln">    21  </span>				stringTypes = append(stringTypes, fmt.Sprintf(&#34;%s (%s, registry: %s)&#34;, typ, details.Name, details.Registry.Name))
+<span id="L22" class="ln">    22  </span>			}
+<span id="L23" class="ln">    23  </span>		}
+<span id="L24" class="ln">    24  </span>	}
+<span id="L25" class="ln">    25  </span>	return stringTypes
+<span id="L26" class="ln">    26  </span>}
+<span id="L27" class="ln">    27  </span>
+<span id="L28" class="ln">    28  </span><span class="comment">// GetAtOrderedPosition returns the project type at the given position,</span>
+<span id="L29" class="ln">    29  </span><span class="comment">// when the list of project types is ordered by GetOrderedLabels</span>
+<span id="L30" class="ln">    30  </span>func (types TypesWithDetails) GetAtOrderedPosition(pos int) (api.DevfileStack, error) {
+<span id="L31" class="ln">    31  </span>	sortedTypes := sortTypes(types)
+<span id="L32" class="ln">    32  </span>	for _, typ := range sortedTypes {
+<span id="L33" class="ln">    33  </span>		detailsList := types[typ]
+<span id="L34" class="ln">    34  </span>		if pos &gt;= len(detailsList) {
+<span id="L35" class="ln">    35  </span>			pos -= len(detailsList)
+<span id="L36" class="ln">    36  </span>			continue
+<span id="L37" class="ln">    37  </span>		}
+<span id="L38" class="ln">    38  </span>		return detailsList[pos], nil
+<span id="L39" class="ln">    39  </span>	}
+<span id="L40" class="ln">    40  </span>	return api.DevfileStack{}, errors.New(&#34;index not found&#34;)
+<span id="L41" class="ln">    41  </span>}
+<span id="L42" class="ln">    42  </span>
+<span id="L43" class="ln">    43  </span>func sortTypes(types TypesWithDetails) []string {
+<span id="L44" class="ln">    44  </span>	sortedTypes := make([]string, 0, len(types))
+<span id="L45" class="ln">    45  </span>	for typ := range types {
+<span id="L46" class="ln">    46  </span>		sortedTypes = append(sortedTypes, typ)
+<span id="L47" class="ln">    47  </span>	}
+<span id="L48" class="ln">    48  </span>	sort.Strings(sortedTypes)
+<span id="L49" class="ln">    49  </span>	return sortedTypes
+<span id="L50" class="ln">    50  </span>}
+<span id="L51" class="ln">    51  </span>
+</pre><p><a href="../../../../../../src/github.com/redhat-developer/odo/pkg/registry/types_with_details.go.html?m=text">View as plain text</a></p>
+
+<div id="footer"><a href="../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

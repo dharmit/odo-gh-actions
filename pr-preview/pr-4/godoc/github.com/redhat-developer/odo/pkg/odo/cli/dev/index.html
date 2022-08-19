@@ -1,0 +1,361 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>dev - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package dev
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/odo/cli/dev" target="_blank">github.com/redhat-developer/odo/pkg/odo/cli/dev</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="#NewCmdDev">func NewCmdDev(name, fullName string) *cobra.Command</a></dd>
+			
+			
+				
+				<dd><a href="#DevOptions">type DevOptions</a></dd>
+				
+					
+					<dd>    <a href="#NewDevOptions">func NewDevOptions() *DevOptions</a></dd>
+				
+				
+					
+					<dd>    <a href="#DevOptions.Cleanup">func (o *DevOptions) Cleanup(err error)</a></dd>
+				
+					
+					<dd>    <a href="#DevOptions.Complete">func (o *DevOptions) Complete(cmdline cmdline.Cmdline, args []string) error</a></dd>
+				
+					
+					<dd>    <a href="#DevOptions.HandleSignal">func (o *DevOptions) HandleSignal() error</a></dd>
+				
+					
+					<dd>    <a href="#DevOptions.Run">func (o *DevOptions) Run(ctx context.Context) (err error)</a></dd>
+				
+					
+					<dd>    <a href="#DevOptions.SetClientset">func (o *DevOptions) SetClientset(clientset *clientset.Clientset)</a></dd>
+				
+					
+					<dd>    <a href="#DevOptions.Validate">func (o *DevOptions) Validate() error</a></dd>
+				
+			
+				
+				<dd><a href="#Handler">type Handler</a></dd>
+				
+				
+					
+					<dd>    <a href="#Handler.RegenerateAdapterAndPush">func (o *Handler) RegenerateAdapterAndPush(pushParams adapters.PushParameters, watchParams watch.WatchParameters, componentStatus *watch.ComponentStatus) error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html">dev.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+RecommendedCommandName is the recommended command name
+</p>
+
+				<pre>const <span id="RecommendedCommandName">RecommendedCommandName</span> = &#34;dev&#34;</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="NewCmdDev">func <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html?s=10074:10126#L316">NewCmdDev</a>
+				<a class="permalink" href="#NewCmdDev">¶</a>
+				
+				
+			</h2>
+			<pre>func NewCmdDev(name, fullName <a href="../../../../../../../builtin/#string">string</a>) *<a href="../../../../../../../github.com/spf13/cobra/">cobra</a>.<a href="../../../../../../../github.com/spf13/cobra/#Command">Command</a></pre>
+			<p>
+NewCmdDev implements the odo dev command
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="DevOptions">type <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html?s=1356:2314#L31">DevOptions</a>
+				<a class="permalink" href="#DevOptions">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type DevOptions struct {
+    <span class="comment">// Context</span>
+    *<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/">genericclioptions</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/#Context">Context</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDevOptions">func <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html?s=2566:2598#L77">NewDevOptions</a>
+					<a class="permalink" href="#NewDevOptions">¶</a>
+					
+					
+				</h3>
+				<pre>func NewDevOptions() *<a href="#DevOptions">DevOptions</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="DevOptions.Cleanup">func (*DevOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html?s=9828:9867#L308">Cleanup</a>
+					<a class="permalink" href="#DevOptions.Cleanup">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#DevOptions">DevOptions</a>) Cleanup(err <a href="../../../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DevOptions.Complete">func (*DevOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html?s=3148:3223#L99">Complete</a>
+					<a class="permalink" href="#DevOptions.Complete">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#DevOptions">DevOptions</a>) Complete(cmdline <a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/cmdline/">cmdline</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/cmdline/#Cmdline">Cmdline</a>, args []<a href="../../../../../../../builtin/#string">string</a>) <a href="../../../../../../../builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DevOptions.HandleSignal">func (*DevOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html?s=9564:9605#L301">HandleSignal</a>
+					<a class="permalink" href="#DevOptions.HandleSignal">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#DevOptions">DevOptions</a>) HandleSignal() <a href="../../../../../../../builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DevOptions.Run">func (*DevOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html?s=6177:6234#L187">Run</a>
+					<a class="permalink" href="#DevOptions.Run">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#DevOptions">DevOptions</a>) Run(ctx <a href="../../../../../../../context/">context</a>.<a href="../../../../../../../context/#Context">Context</a>) (err <a href="../../../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DevOptions.SetClientset">func (*DevOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html?s=3052:3117#L95">SetClientset</a>
+					<a class="permalink" href="#DevOptions.SetClientset">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#DevOptions">DevOptions</a>) SetClientset(clientset *<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/clientset/">clientset</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/clientset/#Clientset">Clientset</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DevOptions.Validate">func (*DevOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html?s=5859:5896#L177">Validate</a>
+					<a class="permalink" href="#DevOptions.Validate">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#DevOptions">DevOptions</a>) Validate() <a href="../../../../../../../builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Handler">type <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html?s=2430:2527#L69">Handler</a>
+				<a class="permalink" href="#Handler">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type Handler struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Handler.RegenerateAdapterAndPush">func (*Handler) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/dev/dev.go.html?s=8291:8450#L263">RegenerateAdapterAndPush</a>
+					<a class="permalink" href="#Handler.RegenerateAdapterAndPush">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#Handler">Handler</a>) RegenerateAdapterAndPush(pushParams <a href="../../../../../../../github.com/redhat-developer/odo/pkg/devfile/adapters/">adapters</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/devfile/adapters/#PushParameters">PushParameters</a>, watchParams <a href="../../../../../../../github.com/redhat-developer/odo/pkg/watch/">watch</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/watch/#WatchParameters">WatchParameters</a>, componentStatus *<a href="../../../../../../../github.com/redhat-developer/odo/pkg/watch/">watch</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/watch/#ComponentStatus">ComponentStatus</a>) <a href="../../../../../../../builtin/#error">error</a></pre>
+				<p>
+RegenerateAdapterAndPush regenerates the adapter and pushes the files to remote pod
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer"><a href="../../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>testingutil - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package testingutil
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/testingutil" target="_blank">github.com/redhat-developer/odo/pkg/testingutil</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#CreateFakeContainer">func CreateFakeContainer(containerName string) corev1.Container</a></dd>
+			
+				
+				<dd><a href="#CreateFakeContainerWithVolumeMounts">func CreateFakeContainerWithVolumeMounts(containerName string, volumeMounts []corev1.VolumeMount) corev1.Container</a></dd>
+			
+				
+				<dd><a href="#CreateFakeDeployment">func CreateFakeDeployment(podName string, isPartOfComponent bool) *appsv1.Deployment</a></dd>
+			
+				
+				<dd><a href="#CreateFakeDeploymentsWithContainers">func CreateFakeDeploymentsWithContainers(podName string, containers []corev1.Container, initContainers []corev1.Container, isPartOfComponent bool) *appsv1.Deployment</a></dd>
+			
+				
+				<dd><a href="#CreateFakePod">func CreateFakePod(componentName, podName string) *corev1.Pod</a></dd>
+			
+				
+				<dd><a href="#FakeKubeService">func FakeKubeService(componentName, serviceName string) corev1.Service</a></dd>
+			
+				
+				<dd><a href="#FakeKubeServices">func FakeKubeServices(componentName string) []corev1.Service</a></dd>
+			
+				
+				<dd><a href="#FakePVC">func FakePVC(pvcName, size string, labels map[string]string) *corev1.PersistentVolumeClaim</a></dd>
+			
+				
+				<dd><a href="#FakeProjects">func FakeProjects() *v1.ProjectList</a></dd>
+			
+				
+				<dd><a href="#GetFakeContainerComponent">func GetFakeContainerComponent(name string) v1.Component</a></dd>
+			
+				
+				<dd><a href="#GetFakeVolumeComponent">func GetFakeVolumeComponent(name, size string) v1.Component</a></dd>
+			
+				
+				<dd><a href="#GetTestDevfileObj">func GetTestDevfileObj(fs devfilefs.Filesystem) parser.DevfileObj</a></dd>
+			
+				
+				<dd><a href="#GetTestDevfileObjFromFile">func GetTestDevfileObjFromFile(fileName string) parser.DevfileObj</a></dd>
+			
+				
+				<dd><a href="#GetTestDevfileObjWithPreStopEvents">func GetTestDevfileObjWithPreStopEvents(fs devfilefs.Filesystem, preStopId, preStopCMD string) parser.DevfileObj</a></dd>
+			
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/containers.go.html">containers.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/deployments.go.html">deployments.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/devfile.go.html">devfile.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/pods.go.html">pods.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/projects.go.html">projects.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/pvcs.go.html">pvcs.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/services.go.html">services.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="CreateFakeContainer">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/containers.go.html?s=129:192#L1">CreateFakeContainer</a>
+				<a class="permalink" href="#CreateFakeContainer">¶</a>
+				
+				
+			</h2>
+			<pre>func CreateFakeContainer(containerName <a href="../../../../../builtin/#string">string</a>) <a href="../../../../../k8s.io/api/core/v1/">corev1</a>.<a href="../../../../../k8s.io/api/core/v1/#Container">Container</a></pre>
+			<p>
+CreateFakeContainer creates a container with the given containerName
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CreateFakeContainerWithVolumeMounts">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/containers.go.html?s=355:469#L3">CreateFakeContainerWithVolumeMounts</a>
+				<a class="permalink" href="#CreateFakeContainerWithVolumeMounts">¶</a>
+				
+				
+			</h2>
+			<pre>func CreateFakeContainerWithVolumeMounts(containerName <a href="../../../../../builtin/#string">string</a>, volumeMounts []<a href="../../../../../k8s.io/api/core/v1/">corev1</a>.<a href="../../../../../k8s.io/api/core/v1/#VolumeMount">VolumeMount</a>) <a href="../../../../../k8s.io/api/core/v1/">corev1</a>.<a href="../../../../../k8s.io/api/core/v1/#Container">Container</a></pre>
+			<p>
+CreateFakeContainerWithVolumeMounts creates a container with the given containerName and volumeMounts
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CreateFakeDeployment">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/deployments.go.html?s=434:518#L4">CreateFakeDeployment</a>
+				<a class="permalink" href="#CreateFakeDeployment">¶</a>
+				
+				
+			</h2>
+			<pre>func CreateFakeDeployment(podName <a href="../../../../../builtin/#string">string</a>, isPartOfComponent <a href="../../../../../builtin/#bool">bool</a>) *<a href="../../../../../k8s.io/api/apps/v1/">appsv1</a>.<a href="../../../../../k8s.io/api/apps/v1/#Deployment">Deployment</a></pre>
+			<p>
+CreateFakeDeployment creates a fake deployment with the given pod name and labels
+isPartOfComponent bool decides if the deployment is supposed to be a part of the core resources deployed by `odo dev`
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CreateFakeDeploymentsWithContainers">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/deployments.go.html?s=1358:1523#L32">CreateFakeDeploymentsWithContainers</a>
+				<a class="permalink" href="#CreateFakeDeploymentsWithContainers">¶</a>
+				
+				
+			</h2>
+			<pre>func CreateFakeDeploymentsWithContainers(podName <a href="../../../../../builtin/#string">string</a>, containers []<a href="../../../../../k8s.io/api/core/v1/">corev1</a>.<a href="../../../../../k8s.io/api/core/v1/#Container">Container</a>, initContainers []<a href="../../../../../k8s.io/api/core/v1/">corev1</a>.<a href="../../../../../k8s.io/api/core/v1/#Container">Container</a>, isPartOfComponent <a href="../../../../../builtin/#bool">bool</a>) *<a href="../../../../../k8s.io/api/apps/v1/">appsv1</a>.<a href="../../../../../k8s.io/api/apps/v1/#Deployment">Deployment</a></pre>
+			<p>
+CreateFakeDeploymentsWithContainers creates a fake pod with the given pod name, container name and containers
+isPartOfComponent bool decides if the deployment is supposed to be a part of the core resources deployed by `odo dev`
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CreateFakePod">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/pods.go.html?s=245:306#L1">CreateFakePod</a>
+				<a class="permalink" href="#CreateFakePod">¶</a>
+				
+				
+			</h2>
+			<pre>func CreateFakePod(componentName, podName <a href="../../../../../builtin/#string">string</a>) *<a href="../../../../../k8s.io/api/core/v1/">corev1</a>.<a href="../../../../../k8s.io/api/core/v1/#Pod">Pod</a></pre>
+			<p>
+CreateFakePod creates a fake pod with the given pod name and component name
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FakeKubeService">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/services.go.html?s=166:236#L1">FakeKubeService</a>
+				<a class="permalink" href="#FakeKubeService">¶</a>
+				
+				
+			</h2>
+			<pre>func FakeKubeService(componentName, serviceName <a href="../../../../../builtin/#string">string</a>) <a href="../../../../../k8s.io/api/core/v1/">corev1</a>.<a href="../../../../../k8s.io/api/core/v1/#Service">Service</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="FakeKubeServices">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/services.go.html?s=438:498#L10">FakeKubeServices</a>
+				<a class="permalink" href="#FakeKubeServices">¶</a>
+				
+				
+			</h2>
+			<pre>func FakeKubeServices(componentName <a href="../../../../../builtin/#string">string</a>) []<a href="../../../../../k8s.io/api/core/v1/">corev1</a>.<a href="../../../../../k8s.io/api/core/v1/#Service">Service</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="FakePVC">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/pvcs.go.html?s=150:240#L1">FakePVC</a>
+				<a class="permalink" href="#FakePVC">¶</a>
+				
+				
+			</h2>
+			<pre>func FakePVC(pvcName, size <a href="../../../../../builtin/#string">string</a>, labels map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) *<a href="../../../../../k8s.io/api/core/v1/">corev1</a>.<a href="../../../../../k8s.io/api/core/v1/#PersistentVolumeClaim">PersistentVolumeClaim</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="FakeProjects">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/projects.go.html?s=347:382#L7">FakeProjects</a>
+				<a class="permalink" href="#FakeProjects">¶</a>
+				
+				
+			</h2>
+			<pre>func FakeProjects() *<a href="../../../../../github.com/openshift/api/project/v1/">v1</a>.<a href="../../../../../github.com/openshift/api/project/v1/#ProjectList">ProjectList</a></pre>
+			<p>
+FakeProjects returns fake projectlist for use by API mock functions for Unit tests
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetFakeContainerComponent">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/devfile.go.html?s=542:598#L8">GetFakeContainerComponent</a>
+				<a class="permalink" href="#GetFakeContainerComponent">¶</a>
+				
+				
+			</h2>
+			<pre>func GetFakeContainerComponent(name <a href="../../../../../builtin/#string">string</a>) <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Component">Component</a></pre>
+			<p>
+GetFakeContainerComponent returns a fake container component for testing
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetFakeVolumeComponent">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/devfile.go.html?s=1196:1255#L34">GetFakeVolumeComponent</a>
+				<a class="permalink" href="#GetFakeVolumeComponent">¶</a>
+				
+				
+			</h2>
+			<pre>func GetFakeVolumeComponent(name, size <a href="../../../../../builtin/#string">string</a>) <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Component">Component</a></pre>
+			<p>
+GetFakeVolumeComponent returns a fake volume component for testing
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetTestDevfileObj">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/devfile.go.html?s=1474:1539#L46">GetTestDevfileObj</a>
+				<a class="permalink" href="#GetTestDevfileObj">¶</a>
+				
+				
+			</h2>
+			<pre>func GetTestDevfileObj(fs <a href="../../../../../github.com/devfile/library/pkg/testingutil/filesystem/">devfilefs</a>.<a href="../../../../../github.com/devfile/library/pkg/testingutil/filesystem/#Filesystem">Filesystem</a>) <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a></pre>
+			<p>
+GetTestDevfileObj returns a devfile object for testing
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetTestDevfileObjFromFile">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/devfile.go.html?s=3390:3455#L119">GetTestDevfileObjFromFile</a>
+				<a class="permalink" href="#GetTestDevfileObjFromFile">¶</a>
+				
+				
+			</h2>
+			<pre>func GetTestDevfileObjFromFile(fileName <a href="../../../../../builtin/#string">string</a>) <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a></pre>
+			<p>
+GetTestDevfileObjFromFile takes the filename of devfile from tests/examples/source/devfiles/nodejs and returns a parser.DevfileObj
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetTestDevfileObjWithPreStopEvents">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/testingutil/devfile.go.html?s=2710:2822#L97">GetTestDevfileObjWithPreStopEvents</a>
+				<a class="permalink" href="#GetTestDevfileObjWithPreStopEvents">¶</a>
+				
+				
+			</h2>
+			<pre>func GetTestDevfileObjWithPreStopEvents(fs <a href="../../../../../github.com/devfile/library/pkg/testingutil/filesystem/">devfilefs</a>.<a href="../../../../../github.com/devfile/library/pkg/testingutil/filesystem/#Filesystem">Filesystem</a>, preStopId, preStopCMD <a href="../../../../../builtin/#string">string</a>) <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a></pre>
+			<p>
+GetTestDevfileObjWithPreStopEvents returns a devfile object with preStop event.
+This function can further be extended to accept other type of events.
+</p>
+
+			
+			
+
+		
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tbody><tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="filesystem/">filesystem</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+		</tbody></table>
+	</div>
+
+
+
+<div id="footer"><a href="../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

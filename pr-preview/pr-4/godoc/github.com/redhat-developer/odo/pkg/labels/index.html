@@ -1,0 +1,424 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>labels - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package labels
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/labels" target="_blank">github.com/redhat-developer/odo/pkg/labels</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="#AddStorageInfo">func AddStorageInfo(labels map[string]string, storageName string, isSourceVolume bool)</a></dd>
+			
+				
+				<dd><a href="#Builder">func Builder() builder</a></dd>
+			
+				
+				<dd><a href="#GetAppName">func GetAppName(labels map[string]string) string</a></dd>
+			
+				
+				<dd><a href="#GetComponentName">func GetComponentName(labels map[string]string) string</a></dd>
+			
+				
+				<dd><a href="#GetDevfileStorageName">func GetDevfileStorageName(labels map[string]string) string</a></dd>
+			
+				
+				<dd><a href="#GetLabels">func GetLabels(componentName string, applicationName string, mode string, isPartOfComponent bool) map[string]string</a></dd>
+			
+				
+				<dd><a href="#GetManagedBy">func GetManagedBy(labels map[string]string) string</a></dd>
+			
+				
+				<dd><a href="#GetManagedByVersion">func GetManagedByVersion(labels map[string]string) string</a></dd>
+			
+				
+				<dd><a href="#GetMode">func GetMode(labels map[string]string) string</a></dd>
+			
+				
+				<dd><a href="#GetProjectType">func GetProjectType(labels map[string]string, annotations map[string]string) (string, error)</a></dd>
+			
+				
+				<dd><a href="#GetSelector">func GetSelector(componentName string, applicationName string, mode string, isPartOfComponent bool) string</a></dd>
+			
+				
+				<dd><a href="#GetStorageName">func GetStorageName(labels map[string]string) string</a></dd>
+			
+				
+				<dd><a href="#IsManagedByOdo">func IsManagedByOdo(labels map[string]string) bool</a></dd>
+			
+				
+				<dd><a href="#SelectorBuilder">func SelectorBuilder() selectorBuilder</a></dd>
+			
+				
+				<dd><a href="#SetProjectType">func SetProjectType(annotations map[string]string, value string)</a></dd>
+			
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/builder.go.html">builder.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/constants.go.html">constants.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html">labels.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/selector_builder.go.html">selector_builder.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span class="comment">// ComponentDevMode indicates the resource is deployed using dev command</span>
+    <span id="ComponentDevMode">ComponentDevMode</span> = &#34;Dev&#34;
+
+    <span class="comment">// ComponentDeployMode indicates the resource is deployed using deploy command</span>
+    <span id="ComponentDeployMode">ComponentDeployMode</span> = &#34;Deploy&#34;
+
+    <span class="comment">// ComponentAnyMode is used to search resources deployed using either dev or deploy command</span>
+    <span id="ComponentAnyMode">ComponentAnyMode</span> = &#34;&#34;
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="AddStorageInfo">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=880:966#L11">AddStorageInfo</a>
+				<a class="permalink" href="#AddStorageInfo">¶</a>
+				
+				
+			</h2>
+			<pre>func AddStorageInfo(labels map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>, storageName <a href="../../../../../builtin/#string">string</a>, isSourceVolume <a href="../../../../../builtin/#bool">bool</a>)</pre>
+			<p>
+AddStorageInfo adds labels for storage resources
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Builder">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/builder.go.html?s=109:131#L3">Builder</a>
+				<a class="permalink" href="#Builder">¶</a>
+				
+				
+			</h2>
+			<pre>func Builder() builder</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetAppName">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=1488:1536#L32">GetAppName</a>
+				<a class="permalink" href="#GetAppName">¶</a>
+				
+				
+			</h2>
+			<pre>func GetAppName(labels map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetComponentName">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=1388:1442#L28">GetComponentName</a>
+				<a class="permalink" href="#GetComponentName">¶</a>
+				
+				
+			</h2>
+			<pre>func GetComponentName(labels map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetDevfileStorageName">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=1287:1346#L24">GetDevfileStorageName</a>
+				<a class="permalink" href="#GetDevfileStorageName">¶</a>
+				
+				
+			</h2>
+			<pre>func GetDevfileStorageName(labels map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetLabels">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=608:723#L5">GetLabels</a>
+				<a class="permalink" href="#GetLabels">¶</a>
+				
+				
+			</h2>
+			<pre>func GetLabels(componentName <a href="../../../../../builtin/#string">string</a>, applicationName <a href="../../../../../builtin/#string">string</a>, mode <a href="../../../../../builtin/#string">string</a>, isPartOfComponent <a href="../../../../../builtin/#bool">bool</a>) map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a></pre>
+			<p>
+GetLabels return labels that should be applied to every object for given component in active application
+if you need labels to filter component then use GetSelector instead
+Note: isPartOfComponent denotes if the label is required for a core resource(deployment, svc, pvc, pv) of a given component deployed with `odo dev`;
+it is the only thing that sets it apart from the resources created via other ways (`odo deploy`, deploying resource with apply command during `odo dev`)
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetManagedBy">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=1580:1630#L36">GetManagedBy</a>
+				<a class="permalink" href="#GetManagedBy">¶</a>
+				
+				
+			</h2>
+			<pre>func GetManagedBy(labels map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetManagedByVersion">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=1677:1734#L40">GetManagedByVersion</a>
+				<a class="permalink" href="#GetManagedByVersion">¶</a>
+				
+				
+			</h2>
+			<pre>func GetManagedByVersion(labels map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetMode">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=1899:1944#L48">GetMode</a>
+				<a class="permalink" href="#GetMode">¶</a>
+				
+				
+			</h2>
+			<pre>func GetMode(labels map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetProjectType">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=1979:2071#L52">GetProjectType</a>
+				<a class="permalink" href="#GetProjectType">¶</a>
+				
+				
+			</h2>
+			<pre>func GetProjectType(labels map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>, annotations map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetSelector">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=3042:3148#L71">GetSelector</a>
+				<a class="permalink" href="#GetSelector">¶</a>
+				
+				
+			</h2>
+			<pre>func GetSelector(componentName <a href="../../../../../builtin/#string">string</a>, applicationName <a href="../../../../../builtin/#string">string</a>, mode <a href="../../../../../builtin/#string">string</a>, isPartOfComponent <a href="../../../../../builtin/#bool">bool</a>) <a href="../../../../../builtin/#string">string</a></pre>
+			<p>
+GetSelector returns a selector string used for selection of resources which are part of the given component in given mode
+Note: isPartOfComponent denotes if the selector is required for a core resource(deployment, svc, pvc, pv) of a given component deployed with `odo dev`
+it is the only thing that sets it apart from the resources created via other ways (`odo deploy`, deploying resource with apply command during `odo dev`)
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetStorageName">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=1186:1238#L20">GetStorageName</a>
+				<a class="permalink" href="#GetStorageName">¶</a>
+				
+				
+			</h2>
+			<pre>func GetStorageName(labels map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="IsManagedByOdo">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=1788:1838#L44">IsManagedByOdo</a>
+				<a class="permalink" href="#IsManagedByOdo">¶</a>
+				
+				
+			</h2>
+			<pre>func IsManagedByOdo(labels map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#bool">bool</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="SelectorBuilder">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/selector_builder.go.html?s=158:196#L2">SelectorBuilder</a>
+				<a class="permalink" href="#SelectorBuilder">¶</a>
+				
+				
+			</h2>
+			<pre>func SelectorBuilder() selectorBuilder</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="SetProjectType">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/labels/labels.go.html?s=2490:2554#L64">SetProjectType</a>
+				<a class="permalink" href="#SetProjectType">¶</a>
+				
+				
+			</h2>
+			<pre>func SetProjectType(annotations map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>, value <a href="../../../../../builtin/#string">string</a>)</pre>
+			
+			
+			
+
+		
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer"><a href="../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

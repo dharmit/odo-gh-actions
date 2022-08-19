@@ -1,0 +1,1358 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>libdevfile - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package libdevfile
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/libdevfile" target="_blank">github.com/redhat-developer/odo/pkg/libdevfile</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package libdevfile is a generated GoMock package.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#AddKubernetesComponentToDevfile">func AddKubernetesComponentToDevfile(crd, name string, devfileObj parser.DevfileObj) (parser.DevfileObj, error)</a></dd>
+			
+				
+				<dd><a href="#Build">func Build(devfileObj parser.DevfileObj, buildCmd string, handler Handler) error</a></dd>
+			
+				
+				<dd><a href="#Deploy">func Deploy(devfileObj parser.DevfileObj, handler Handler) error</a></dd>
+			
+				
+				<dd><a href="#ExecPostStartEvents">func ExecPostStartEvents(devfileObj parser.DevfileObj, handler Handler) error</a></dd>
+			
+				
+				<dd><a href="#ExecPreStopEvents">func ExecPreStopEvents(devfileObj parser.DevfileObj, handler Handler) error</a></dd>
+			
+				
+				<dd><a href="#ExecuteCommandByNameAndKind">func ExecuteCommandByNameAndKind(devfileObj parser.DevfileObj, cmdName string, kind v1alpha2.CommandGroupKind, handler Handler, ignoreCommandNotFound bool) error</a></dd>
+			
+				
+				<dd><a href="#GetCommand">func GetCommand(devfileObj parser.DevfileObj, commandName string, groupType v1alpha2.CommandGroupKind) (v1alpha2.Command, bool, error)</a></dd>
+			
+				
+				<dd><a href="#GetContainerComponentsForCommand">func GetContainerComponentsForCommand(devfileObj parser.DevfileObj, cmd v1alpha2.Command) ([]string, error)</a></dd>
+			
+				
+				<dd><a href="#GetContainerEndpointMapping">func GetContainerEndpointMapping(containers []v1alpha2.Component) map[string][]int</a></dd>
+			
+				
+				<dd><a href="#GetEndpointsFromDevfile">func GetEndpointsFromDevfile(devfileObj parser.DevfileObj, ignoreExposures []v1alpha2.EndpointExposure) ([]v1alpha2.Endpoint, error)</a></dd>
+			
+				
+				<dd><a href="#GetK8sComponentAsUnstructured">func GetK8sComponentAsUnstructured(devfileObj parser.DevfileObj, componentName string, context string, fs devfilefs.Filesystem) (unstructured.Unstructured, error)</a></dd>
+			
+				
+				<dd><a href="#GetK8sManifestWithVariablesSubstituted">func GetK8sManifestWithVariablesSubstituted(devfileObj parser.DevfileObj, devfileCmpName string, context string, fs devfilefs.Filesystem) (string, error)</a></dd>
+			
+				
+				<dd><a href="#GetReferencedLocalFiles">func GetReferencedLocalFiles(devfileObj parser.DevfileObj) (result []string, err error)</a></dd>
+			
+				
+				<dd><a href="#HasDebugCommand">func HasDebugCommand(devfileData data.DevfileData) bool</a></dd>
+			
+				
+				<dd><a href="#HasDeployCommand">func HasDeployCommand(devfileData data.DevfileData) bool</a></dd>
+			
+				
+				<dd><a href="#HasPostStartEvents">func HasPostStartEvents(devfileObj parser.DevfileObj) bool</a></dd>
+			
+				
+				<dd><a href="#HasPreStopEvents">func HasPreStopEvents(devfileObj parser.DevfileObj) bool</a></dd>
+			
+				
+				<dd><a href="#HasRunCommand">func HasRunCommand(devfileData data.DevfileData) bool</a></dd>
+			
+				
+				<dd><a href="#ListKubernetesComponents">func ListKubernetesComponents(devfileObj parser.DevfileObj, path string) (list []unstructured.Unstructured, err error)</a></dd>
+			
+				
+				<dd><a href="#ValidateAndGetCommand">func ValidateAndGetCommand(devfileObj parser.DevfileObj, commandName string, groupType v1alpha2.CommandGroupKind) (v1alpha2.Command, error)</a></dd>
+			
+				
+				<dd><a href="#ValidateAndGetPushCommands">func ValidateAndGetPushCommands(devfileObj parser.DevfileObj, devfileBuildCmd, devfileRunCmd string) (map[v1alpha2.CommandGroupKind]v1alpha2.Command, error)</a></dd>
+			
+			
+				
+				<dd><a href="#ComponentNotExistError">type ComponentNotExistError</a></dd>
+				
+					
+					<dd>    <a href="#NewComponentNotExistError">func NewComponentNotExistError(name string) ComponentNotExistError</a></dd>
+				
+				
+					
+					<dd>    <a href="#ComponentNotExistError.Error">func (e ComponentNotExistError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#ComponentTypeNotFoundError">type ComponentTypeNotFoundError</a></dd>
+				
+					
+					<dd>    <a href="#NewComponentTypeNotFoundError">func NewComponentTypeNotFoundError(componentType v1alpha2.ComponentType) ComponentTypeNotFoundError</a></dd>
+				
+				
+					
+					<dd>    <a href="#ComponentTypeNotFoundError.Error">func (e ComponentTypeNotFoundError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#ComponentsWithSameNameError">type ComponentsWithSameNameError</a></dd>
+				
+					
+					<dd>    <a href="#NewComponentsWithSameNameError">func NewComponentsWithSameNameError(name string) ComponentsWithSameNameError</a></dd>
+				
+				
+					
+					<dd>    <a href="#ComponentsWithSameNameError.Error">func (e ComponentsWithSameNameError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#DevfileCommands">type DevfileCommands</a></dd>
+				
+				
+			
+				
+				<dd><a href="#DevfileEventType">type DevfileEventType</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Handler">type Handler</a></dd>
+				
+				
+			
+				
+				<dd><a href="#MockHandler">type MockHandler</a></dd>
+				
+					
+					<dd>    <a href="#NewMockHandler">func NewMockHandler(ctrl *gomock.Controller) *MockHandler</a></dd>
+				
+				
+					
+					<dd>    <a href="#MockHandler.ApplyImage">func (m *MockHandler) ApplyImage(image v1alpha2.Component) error</a></dd>
+				
+					
+					<dd>    <a href="#MockHandler.ApplyKubernetes">func (m *MockHandler) ApplyKubernetes(kubernetes v1alpha2.Component) error</a></dd>
+				
+					
+					<dd>    <a href="#MockHandler.EXPECT">func (m *MockHandler) EXPECT() *MockHandlerMockRecorder</a></dd>
+				
+					
+					<dd>    <a href="#MockHandler.Execute">func (m *MockHandler) Execute(command v1alpha2.Command) error</a></dd>
+				
+			
+				
+				<dd><a href="#MockHandlerMockRecorder">type MockHandlerMockRecorder</a></dd>
+				
+				
+					
+					<dd>    <a href="#MockHandlerMockRecorder.ApplyImage">func (mr *MockHandlerMockRecorder) ApplyImage(image interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockHandlerMockRecorder.ApplyKubernetes">func (mr *MockHandlerMockRecorder) ApplyKubernetes(kubernetes interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockHandlerMockRecorder.Execute">func (mr *MockHandlerMockRecorder) Execute(command interface{}) *gomock.Call</a></dd>
+				
+			
+				
+				<dd><a href="#MoreThanOneDefaultCommandFoundError">type MoreThanOneDefaultCommandFoundError</a></dd>
+				
+					
+					<dd>    <a href="#NewMoreThanOneDefaultCommandFoundError">func NewMoreThanOneDefaultCommandFoundError(kind v1alpha2.CommandGroupKind) MoreThanOneDefaultCommandFoundError</a></dd>
+				
+				
+					
+					<dd>    <a href="#MoreThanOneDefaultCommandFoundError.Error">func (e MoreThanOneDefaultCommandFoundError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#NoCommandForGroup">type NoCommandForGroup</a></dd>
+				
+				
+					
+					<dd>    <a href="#NoCommandForGroup.Error">func (n NoCommandForGroup) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#NoCommandFoundError">type NoCommandFoundError</a></dd>
+				
+					
+					<dd>    <a href="#NewNoCommandFoundError">func NewNoCommandFoundError(kind v1alpha2.CommandGroupKind, name string) NoCommandFoundError</a></dd>
+				
+				
+					
+					<dd>    <a href="#NoCommandFoundError.Error">func (e NoCommandFoundError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#NoDefaultCommandFoundError">type NoDefaultCommandFoundError</a></dd>
+				
+					
+					<dd>    <a href="#NewNoDefaultCommandFoundError">func NewNoDefaultCommandFoundError(kind v1alpha2.CommandGroupKind) NoDefaultCommandFoundError</a></dd>
+				
+				
+					
+					<dd>    <a href="#NoDefaultCommandFoundError.Error">func (e NoDefaultCommandFoundError) Error() string</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/command.go.html">command.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/command_apply.go.html">command_apply.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/command_composite.go.html">command_composite.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/command_composite_parallel.go.html">command_composite_parallel.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/command_exec.go.html">command_exec.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/component.go.html">component.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/component_container.go.html">component_container.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/component_image.go.html">component_image.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/component_kubernetes.go.html">component_kubernetes.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/component_kubernetes_utils.go.html">component_kubernetes_utils.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/component_openshift.go.html">component_openshift.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/component_volume.go.html">component_volume.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html">errors.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/handler_mock.go.html">handler_mock.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html">libdevfile.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/types.go.html">types.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/uris.go.html">uris.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="AddKubernetesComponentToDevfile">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/component_kubernetes_utils.go.html?s=1837:1948#L41">AddKubernetesComponentToDevfile</a>
+				<a class="permalink" href="#AddKubernetesComponentToDevfile">¶</a>
+				
+				
+			</h2>
+			<pre>func AddKubernetesComponentToDevfile(crd, name <a href="../../../../../builtin/#string">string</a>, devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>) (<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+			<p>
+AddKubernetesComponentToDevfile adds a resource definition to devfile object as an inlined Kubernetes component
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Build">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=1215:1295#L25">Build</a>
+				<a class="permalink" href="#Build">¶</a>
+				
+				
+			</h2>
+			<pre>func Build(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, buildCmd <a href="../../../../../builtin/#string">string</a>, handler <a href="#Handler">Handler</a>) <a href="../../../../../builtin/#error">error</a></pre>
+			<p>
+Build executes the default Build command of the devfile.
+If buildCmd is empty, this looks for the default Build command in the Devfile. No error is returned and no operation is performed
+if the default command could not be found.
+An error is returned if buildCmd is not empty and has no corresponding command in the Devfile.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Deploy">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=707:771#L17">Deploy</a>
+				<a class="permalink" href="#Deploy">¶</a>
+				
+				
+			</h2>
+			<pre>func Deploy(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, handler <a href="#Handler">Handler</a>) <a href="../../../../../builtin/#error">error</a></pre>
+			<p>
+Deploy executes the default deploy command of the devfile.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ExecPostStartEvents">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=7671:7748#L202">ExecPostStartEvents</a>
+				<a class="permalink" href="#ExecPostStartEvents">¶</a>
+				
+				
+			</h2>
+			<pre>func ExecPostStartEvents(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, handler <a href="#Handler">Handler</a>) <a href="../../../../../builtin/#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ExecPreStopEvents">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=7875:7950#L207">ExecPreStopEvents</a>
+				<a class="permalink" href="#ExecPreStopEvents">¶</a>
+				
+				
+			</h2>
+			<pre>func ExecPreStopEvents(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, handler <a href="#Handler">Handler</a>) <a href="../../../../../builtin/#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ExecuteCommandByNameAndKind">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=1758:1927#L32">ExecuteCommandByNameAndKind</a>
+				<a class="permalink" href="#ExecuteCommandByNameAndKind">¶</a>
+				
+				
+			</h2>
+			<pre>func ExecuteCommandByNameAndKind(
+    devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>,
+    cmdName <a href="../../../../../builtin/#string">string</a>,
+    kind <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#CommandGroupKind">CommandGroupKind</a>,
+    handler <a href="#Handler">Handler</a>,
+    ignoreCommandNotFound <a href="../../../../../builtin/#bool">bool</a>,
+) <a href="../../../../../builtin/#error">error</a></pre>
+			<p>
+ExecuteCommandByNameAndKind executes the specified command cmdName of the given kind in the Devfile.
+If cmdName is empty, it executes the default command for the given kind or returns an error if there is no default command.
+If ignoreCommandNotFound is true, nothing is executed if the command is not found and no error is returned.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetCommand">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=2992:3132#L71">GetCommand</a>
+				<a class="permalink" href="#GetCommand">¶</a>
+				
+				
+			</h2>
+			<pre>func GetCommand(
+    devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>,
+    commandName <a href="../../../../../builtin/#string">string</a>,
+    groupType <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#CommandGroupKind">CommandGroupKind</a>,
+) (<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Command">Command</a>, <a href="../../../../../builtin/#bool">bool</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+			<p>
+GetCommand iterates through the devfile commands and returns the devfile command with the specified name and group kind.
+If commandName is empty, it returns the default command for the group kind or returns an error if there is no default command.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetContainerComponentsForCommand">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=11356:11463#L315">GetContainerComponentsForCommand</a>
+				<a class="permalink" href="#GetContainerComponentsForCommand">¶</a>
+				
+				
+			</h2>
+			<pre>func GetContainerComponentsForCommand(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, cmd <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Command">Command</a>) ([]<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+			<p>
+GetContainerComponentsForCommand returns the list of container components that would get used if the specified command runs.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetContainerEndpointMapping">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=9721:9803#L263">GetContainerEndpointMapping</a>
+				<a class="permalink" href="#GetContainerEndpointMapping">¶</a>
+				
+				
+			</h2>
+			<pre>func GetContainerEndpointMapping(containers []<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Component">Component</a>) map[<a href="../../../../../builtin/#string">string</a>][]<a href="../../../../../builtin/#int">int</a></pre>
+			<p>
+GetContainerEndpointMapping returns a map of container names and slice of its endpoints (in int) with exposure status other than none
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetEndpointsFromDevfile">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=10486:10618#L286">GetEndpointsFromDevfile</a>
+				<a class="permalink" href="#GetEndpointsFromDevfile">¶</a>
+				
+				
+			</h2>
+			<pre>func GetEndpointsFromDevfile(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, ignoreExposures []<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#EndpointExposure">EndpointExposure</a>) ([]<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Endpoint">Endpoint</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+			<p>
+GetEndpointsFromDevfile returns a slice of all endpoints in a devfile and ignores the endpoints with exposure values in ignoreExposures
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetK8sComponentAsUnstructured">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/component_kubernetes_utils.go.html?s=438:601#L3">GetK8sComponentAsUnstructured</a>
+				<a class="permalink" href="#GetK8sComponentAsUnstructured">¶</a>
+				
+				
+			</h2>
+			<pre>func GetK8sComponentAsUnstructured(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, componentName <a href="../../../../../builtin/#string">string</a>,
+    context <a href="../../../../../builtin/#string">string</a>, fs <a href="../../../../../github.com/devfile/library/pkg/testingutil/filesystem/">devfilefs</a>.<a href="../../../../../github.com/devfile/library/pkg/testingutil/filesystem/#Filesystem">Filesystem</a>) (<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+			<p>
+GetK8sComponentAsUnstructured parses the Inlined/URI K8s of the devfile K8s component
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetK8sManifestWithVariablesSubstituted">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=13402:13556#L381">GetK8sManifestWithVariablesSubstituted</a>
+				<a class="permalink" href="#GetK8sManifestWithVariablesSubstituted">¶</a>
+				
+				
+			</h2>
+			<pre>func GetK8sManifestWithVariablesSubstituted(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, devfileCmpName <a href="../../../../../builtin/#string">string</a>,
+    context <a href="../../../../../builtin/#string">string</a>, fs <a href="../../../../../github.com/devfile/library/pkg/testingutil/filesystem/">devfilefs</a>.<a href="../../../../../github.com/devfile/library/pkg/testingutil/filesystem/#Filesystem">Filesystem</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+			<p>
+GetK8sManifestWithVariablesSubstituted returns the full content of either a Kubernetes or an Openshift
+Devfile component, either Inlined or referenced via a URI.
+No matter how the component is defined, it returns the content with all variables substituted
+using the global variables map defined in `devfileObj`.
+An error is returned if the content references an invalid variable key not defined in the Devfile object.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetReferencedLocalFiles">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/uris.go.html?s=703:790#L14">GetReferencedLocalFiles</a>
+				<a class="permalink" href="#GetReferencedLocalFiles">¶</a>
+				
+				
+			</h2>
+			<pre>func GetReferencedLocalFiles(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>) (result []<a href="../../../../../builtin/#string">string</a>, err <a href="../../../../../builtin/#error">error</a>)</pre>
+			<p>
+GetReferencedLocalFiles returns the local files referenced by the Devfile. This includes:
+- the non-inlined Kubernetes and Openshift components
+- the Dockerfiles of Image components
+- the parent devfile
+- resursively, the local files referenced by the parent Devfile
+The passed Devfile must be flattened
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="HasDebugCommand">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=8589:8644#L229">HasDebugCommand</a>
+				<a class="permalink" href="#HasDebugCommand">¶</a>
+				
+				
+			</h2>
+			<pre>func HasDebugCommand(devfileData <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/data/">data</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/data/#DevfileData">DevfileData</a>) <a href="../../../../../builtin/#bool">bool</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HasDeployCommand">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=8462:8518#L225">HasDeployCommand</a>
+				<a class="permalink" href="#HasDeployCommand">¶</a>
+				
+				
+			</h2>
+			<pre>func HasDeployCommand(devfileData <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/data/">data</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/data/#DevfileData">DevfileData</a>) <a href="../../../../../builtin/#bool">bool</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HasPostStartEvents">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=7369:7427#L192">HasPostStartEvents</a>
+				<a class="permalink" href="#HasPostStartEvents">¶</a>
+				
+				
+			</h2>
+			<pre>func HasPostStartEvents(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>) <a href="../../../../../builtin/#bool">bool</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HasPreStopEvents">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=7524:7580#L197">HasPreStopEvents</a>
+				<a class="permalink" href="#HasPreStopEvents">¶</a>
+				
+				
+			</h2>
+			<pre>func HasPreStopEvents(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>) <a href="../../../../../builtin/#bool">bool</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HasRunCommand">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=8341:8394#L221">HasRunCommand</a>
+				<a class="permalink" href="#HasRunCommand">¶</a>
+				
+				
+			</h2>
+			<pre>func HasRunCommand(devfileData <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/data/">data</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/data/#DevfileData">DevfileData</a>) <a href="../../../../../builtin/#bool">bool</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ListKubernetesComponents">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/component_kubernetes_utils.go.html?s=1112:1230#L20">ListKubernetesComponents</a>
+				<a class="permalink" href="#ListKubernetesComponents">¶</a>
+				
+				
+			</h2>
+			<pre>func ListKubernetesComponents(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, path <a href="../../../../../builtin/#string">string</a>) (list []<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>, err <a href="../../../../../builtin/#error">error</a>)</pre>
+			<p>
+ListKubernetesComponents lists all the kubernetes components from the devfile
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ValidateAndGetCommand">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=5535:5674#L140">ValidateAndGetCommand</a>
+				<a class="permalink" href="#ValidateAndGetCommand">¶</a>
+				
+				
+			</h2>
+			<pre>func ValidateAndGetCommand(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, commandName <a href="../../../../../builtin/#string">string</a>, groupType <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#CommandGroupKind">CommandGroupKind</a>) (<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Command">Command</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+			<p>
+ValidateAndGetCommand validates and returns the command specified if it is valid.
+It works just like GetCommand, except that it returns an error if it could not find the command.
+</p>
+<p>
+If commandName is empty, it looks up the default command for the given kind.
+</p>
+<p>
+A command is &#34;valid&#34; here if it was found given its name (if commandName is not empty),
+or (for a default command), if there is no other default command for the same kind.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ValidateAndGetPushCommands">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=6146:6308#L153">ValidateAndGetPushCommands</a>
+				<a class="permalink" href="#ValidateAndGetPushCommands">¶</a>
+				
+				
+			</h2>
+			<pre>func ValidateAndGetPushCommands(
+    devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>,
+    devfileBuildCmd,
+    devfileRunCmd <a href="../../../../../builtin/#string">string</a>,
+) (map[<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#CommandGroupKind">CommandGroupKind</a>]<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Command">Command</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+			<p>
+ValidateAndGetPushCommands validates the build and the run commands, if provided through odo dev or else checks the devfile for devBuild and devRun.
+It returns the build and run commands if validated successfully, or an error otherwise.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ComponentNotExistError">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=1774:1825#L48">ComponentNotExistError</a>
+				<a class="permalink" href="#ComponentNotExistError">¶</a>
+				
+				
+			</h2>
+			<p>
+ComponentNotExistError is returned when a component referenced in a command or component does not exist
+</p>
+
+			<pre>type ComponentNotExistError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewComponentNotExistError">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=1827:1893#L52">NewComponentNotExistError</a>
+					<a class="permalink" href="#NewComponentNotExistError">¶</a>
+					
+					
+				</h3>
+				<pre>func NewComponentNotExistError(name <a href="../../../../../builtin/#string">string</a>) <a href="#ComponentNotExistError">ComponentNotExistError</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="ComponentNotExistError.Error">func (ComponentNotExistError) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=1948:1994#L58">Error</a>
+					<a class="permalink" href="#ComponentNotExistError.Error">¶</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="#ComponentNotExistError">ComponentNotExistError</a>) Error() <a href="../../../../../builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ComponentTypeNotFoundError">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=2517:2597#L77">ComponentTypeNotFoundError</a>
+				<a class="permalink" href="#ComponentTypeNotFoundError">¶</a>
+				
+				
+			</h2>
+			<p>
+ComponentTypeNotFoundError is returned when no component with the specified type has been found in Devfile
+</p>
+
+			<pre>type ComponentTypeNotFoundError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewComponentTypeNotFoundError">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=2599:2698#L81">NewComponentTypeNotFoundError</a>
+					<a class="permalink" href="#NewComponentTypeNotFoundError">¶</a>
+					
+					
+				</h3>
+				<pre>func NewComponentTypeNotFoundError(componentType <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#ComponentType">ComponentType</a>) <a href="#ComponentTypeNotFoundError">ComponentTypeNotFoundError</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="ComponentTypeNotFoundError.Error">func (ComponentTypeNotFoundError) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=2775:2825#L87">Error</a>
+					<a class="permalink" href="#ComponentTypeNotFoundError.Error">¶</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="#ComponentTypeNotFoundError">ComponentTypeNotFoundError</a>) Error() <a href="../../../../../builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ComponentsWithSameNameError">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=2060:2116#L62">ComponentsWithSameNameError</a>
+				<a class="permalink" href="#ComponentsWithSameNameError">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type ComponentsWithSameNameError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewComponentsWithSameNameError">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=2118:2194#L66">NewComponentsWithSameNameError</a>
+					<a class="permalink" href="#NewComponentsWithSameNameError">¶</a>
+					
+					
+				</h3>
+				<pre>func NewComponentsWithSameNameError(name <a href="../../../../../builtin/#string">string</a>) <a href="#ComponentsWithSameNameError">ComponentsWithSameNameError</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="ComponentsWithSameNameError.Error">func (ComponentsWithSameNameError) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=2254:2305#L72">Error</a>
+					<a class="permalink" href="#ComponentsWithSameNameError.Error">¶</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="#ComponentsWithSameNameError">ComponentsWithSameNameError</a>) Error() <a href="../../../../../builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DevfileCommands">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/types.go.html?s=131:213#L1">DevfileCommands</a>
+				<a class="permalink" href="#DevfileCommands">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type DevfileCommands struct {
+<span id="DevfileCommands.BuildCmd"></span>    BuildCmd <a href="../../../../../builtin/#string">string</a>
+<span id="DevfileCommands.RunCmd"></span>    RunCmd   <a href="../../../../../builtin/#string">string</a>
+<span id="DevfileCommands.DebugCmd"></span>    DebugCmd <a href="../../../../../builtin/#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DevfileEventType">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/types.go.html?s=20:48#L1">DevfileEventType</a>
+				<a class="permalink" href="#DevfileEventType">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type DevfileEventType <a href="../../../../../builtin/#string">string</a></pre>
+
+			
+				
+				<pre>const (
+
+    <span class="comment">// PreStop is a devfile event</span>
+    <span id="PreStop">PreStop</span> <a href="#DevfileEventType">DevfileEventType</a> = &#34;preStop&#34;
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Handler">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/libdevfile.go.html?s=478:643#L10">Handler</a>
+				<a class="permalink" href="#Handler">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type Handler interface {
+    ApplyImage(image <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Component">Component</a>) <a href="../../../../../builtin/#error">error</a>
+    ApplyKubernetes(kubernetes <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Component">Component</a>) <a href="../../../../../builtin/#error">error</a>
+    Execute(command <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Command">Command</a>) <a href="../../../../../builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MockHandler">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/handler_mock.go.html?s=343:434#L5">MockHandler</a>
+				<a class="permalink" href="#MockHandler">¶</a>
+				
+				
+			</h2>
+			<p>
+MockHandler is a mock of Handler interface.
+</p>
+
+			<pre>type MockHandler struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewMockHandler">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/handler_mock.go.html?s=608:665#L16">NewMockHandler</a>
+					<a class="permalink" href="#NewMockHandler">¶</a>
+					
+					
+				</h3>
+				<pre>func NewMockHandler(ctrl *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Controller">Controller</a>) *<a href="#MockHandler">MockHandler</a></pre>
+				<p>
+NewMockHandler creates a new mock instance.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="MockHandler.ApplyImage">func (*MockHandler) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/handler_mock.go.html?s=956:1020#L28">ApplyImage</a>
+					<a class="permalink" href="#MockHandler.ApplyImage">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockHandler">MockHandler</a>) ApplyImage(image <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Component">Component</a>) <a href="../../../../../builtin/#error">error</a></pre>
+				<p>
+ApplyImage mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockHandler.ApplyKubernetes">func (*MockHandler) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/handler_mock.go.html?s=1455:1529#L42">ApplyKubernetes</a>
+					<a class="permalink" href="#MockHandler.ApplyKubernetes">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockHandler">MockHandler</a>) ApplyKubernetes(kubernetes <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Component">Component</a>) <a href="../../../../../builtin/#error">error</a></pre>
+				<p>
+ApplyKubernetes mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockHandler.EXPECT">func (*MockHandler) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/handler_mock.go.html?s=843:898#L23">EXPECT</a>
+					<a class="permalink" href="#MockHandler.EXPECT">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockHandler">MockHandler</a>) EXPECT() *<a href="#MockHandlerMockRecorder">MockHandlerMockRecorder</a></pre>
+				<p>
+EXPECT returns an object that allows the caller to indicate expected use.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockHandler.Execute">func (*MockHandler) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/handler_mock.go.html?s=2001:2062#L56">Execute</a>
+					<a class="permalink" href="#MockHandler.Execute">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockHandler">MockHandler</a>) Execute(command <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Command">Command</a>) <a href="../../../../../builtin/#error">error</a></pre>
+				<p>
+Execute mocks base method.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MockHandlerMockRecorder">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/handler_mock.go.html?s=501:559#L11">MockHandlerMockRecorder</a>
+				<a class="permalink" href="#MockHandlerMockRecorder">¶</a>
+				
+				
+			</h2>
+			<p>
+MockHandlerMockRecorder is the mock recorder for MockHandler.
+</p>
+
+			<pre>type MockHandlerMockRecorder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="MockHandlerMockRecorder.ApplyImage">func (*MockHandlerMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/handler_mock.go.html?s=1185:1262#L36">ApplyImage</a>
+					<a class="permalink" href="#MockHandlerMockRecorder.ApplyImage">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockHandlerMockRecorder">MockHandlerMockRecorder</a>) ApplyImage(image interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+ApplyImage indicates an expected call of ApplyImage.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockHandlerMockRecorder.ApplyKubernetes">func (*MockHandlerMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/handler_mock.go.html?s=1714:1801#L50">ApplyKubernetes</a>
+					<a class="permalink" href="#MockHandlerMockRecorder.ApplyKubernetes">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockHandlerMockRecorder">MockHandlerMockRecorder</a>) ApplyKubernetes(kubernetes interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+ApplyKubernetes indicates an expected call of ApplyKubernetes.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockHandlerMockRecorder.Execute">func (*MockHandlerMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/handler_mock.go.html?s=2220:2296#L64">Execute</a>
+					<a class="permalink" href="#MockHandlerMockRecorder.Execute">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockHandlerMockRecorder">MockHandlerMockRecorder</a>) Execute(command interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+Execute indicates an expected call of Execute.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MoreThanOneDefaultCommandFoundError">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=1234:1317#L34">MoreThanOneDefaultCommandFoundError</a>
+				<a class="permalink" href="#MoreThanOneDefaultCommandFoundError">¶</a>
+				
+				
+			</h2>
+			<p>
+MoreThanOneDefaultCommandFoundError is returned when several default commands of the specified kind exist
+</p>
+
+			<pre>type MoreThanOneDefaultCommandFoundError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewMoreThanOneDefaultCommandFoundError">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=1319:1430#L38">NewMoreThanOneDefaultCommandFoundError</a>
+					<a class="permalink" href="#NewMoreThanOneDefaultCommandFoundError">¶</a>
+					
+					
+				</h3>
+				<pre>func NewMoreThanOneDefaultCommandFoundError(kind <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#CommandGroupKind">CommandGroupKind</a>) <a href="#MoreThanOneDefaultCommandFoundError">MoreThanOneDefaultCommandFoundError</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="MoreThanOneDefaultCommandFoundError.Error">func (MoreThanOneDefaultCommandFoundError) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=1497:1556#L43">Error</a>
+					<a class="permalink" href="#MoreThanOneDefaultCommandFoundError.Error">¶</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="#MoreThanOneDefaultCommandFoundError">MoreThanOneDefaultCommandFoundError</a>) Error() <a href="../../../../../builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="NoCommandForGroup">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=3000:3066#L92">NoCommandForGroup</a>
+				<a class="permalink" href="#NoCommandForGroup">¶</a>
+				
+				
+			</h2>
+			<p>
+NoCommandForGroup indicates an error when no command was found for the given Group
+</p>
+
+			<pre>type NoCommandForGroup struct {
+<span id="NoCommandForGroup.Group"></span>    Group <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#CommandGroupKind">CommandGroupKind</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="NoCommandForGroup.Error">func (NoCommandForGroup) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=3068:3109#L96">Error</a>
+					<a class="permalink" href="#NoCommandForGroup.Error">¶</a>
+					
+					
+				</h3>
+				<pre>func (n <a href="#NoCommandForGroup">NoCommandForGroup</a>) Error() <a href="../../../../../builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="NoCommandFoundError">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=191:271#L1">NoCommandFoundError</a>
+				<a class="permalink" href="#NoCommandFoundError">¶</a>
+				
+				
+			</h2>
+			<p>
+NoCommandFoundError is returned when no command of the specified kind is found in devfile
+</p>
+
+			<pre>type NoCommandFoundError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewNoCommandFoundError">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=273:365#L5">NewNoCommandFoundError</a>
+					<a class="permalink" href="#NewNoCommandFoundError">¶</a>
+					
+					
+				</h3>
+				<pre>func NewNoCommandFoundError(kind <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#CommandGroupKind">CommandGroupKind</a>, name <a href="../../../../../builtin/#string">string</a>) <a href="#NoCommandFoundError">NoCommandFoundError</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="NoCommandFoundError.Error">func (NoCommandFoundError) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=430:473#L11">Error</a>
+					<a class="permalink" href="#NoCommandFoundError.Error">¶</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="#NoCommandFoundError">NoCommandFoundError</a>) Error() <a href="../../../../../builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="NoDefaultCommandFoundError">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=772:846#L20">NoDefaultCommandFoundError</a>
+				<a class="permalink" href="#NoDefaultCommandFoundError">¶</a>
+				
+				
+			</h2>
+			<p>
+NoDefaultCommandFoundError is returned when several commands of the specified kind exist
+but no one is the default one
+</p>
+
+			<pre>type NoDefaultCommandFoundError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewNoDefaultCommandFoundError">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=848:941#L24">NewNoDefaultCommandFoundError</a>
+					<a class="permalink" href="#NewNoDefaultCommandFoundError">¶</a>
+					
+					
+				</h3>
+				<pre>func NewNoDefaultCommandFoundError(kind <a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#CommandGroupKind">CommandGroupKind</a>) <a href="#NoDefaultCommandFoundError">NoDefaultCommandFoundError</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="NoDefaultCommandFoundError.Error">func (NoDefaultCommandFoundError) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/errors.go.html?s=999:1049#L29">Error</a>
+					<a class="permalink" href="#NoDefaultCommandFoundError.Error">¶</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="#NoDefaultCommandFoundError">NoDefaultCommandFoundError</a>) Error() <a href="../../../../../builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tbody><tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="generator/">generator</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+		</tbody></table>
+	</div>
+
+
+
+<div id="footer"><a href="../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>
