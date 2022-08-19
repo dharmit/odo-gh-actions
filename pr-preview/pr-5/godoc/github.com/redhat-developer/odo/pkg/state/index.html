@@ -1,0 +1,314 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>state - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package state
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/state" target="_blank">github.com/redhat-developer/odo/pkg/state</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package state gives access to the state of the odo process stored in a local file
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="#Client">type Client</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Content">type Content</a></dd>
+				
+				
+			
+				
+				<dd><a href="#State">type State</a></dd>
+				
+					
+					<dd>    <a href="#NewStateClient">func NewStateClient(fs filesystem.Filesystem) *State</a></dd>
+				
+				
+					
+					<dd>    <a href="#State.GetForwardedPorts">func (o *State) GetForwardedPorts() ([]api.ForwardedPort, error)</a></dd>
+				
+					
+					<dd>    <a href="#State.SaveExit">func (o *State) SaveExit() error</a></dd>
+				
+					
+					<dd>    <a href="#State.SetForwardedPorts">func (o *State) SetForwardedPorts(fwPorts []api.ForwardedPort) error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/const.go.html">const.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/doc.go.html">doc.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/interface.go.html">interface.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/state.go.html">state.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/types.go.html">types.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="Client">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/interface.go.html?s=65:474#L1">Client</a>
+				<a class="permalink" href="#Client">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type Client interface {
+    <span class="comment">// SetForwardedPorts sets the forwarded ports in the state file and saves it to the file, updating the metadata</span>
+    SetForwardedPorts(fwPorts []<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ForwardedPort">ForwardedPort</a>) <a href="../../../../../builtin/#error">error</a>
+
+    <span class="comment">// GetForwardedPorts returns the ports forwarded by the current odo dev session</span>
+    GetForwardedPorts() ([]<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ForwardedPort">ForwardedPort</a>, <a href="../../../../../builtin/#error">error</a>)
+
+    <span class="comment">// SaveExit resets the state file to indicate odo is not running</span>
+    SaveExit() <a href="../../../../../builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Content">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/types.go.html?s=70:219#L1">Content</a>
+				<a class="permalink" href="#Content">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type Content struct {
+<span id="Content.ForwardedPorts"></span>    <span class="comment">// ForwardedPorts are the ports forwarded during odo dev session</span>
+    ForwardedPorts []<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ForwardedPort">ForwardedPort</a> `json:&#34;forwardedPorts&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="State">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/state.go.html?s=169:238#L2">State</a>
+				<a class="permalink" href="#State">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type State struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewStateClient">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/state.go.html?s=270:322#L9">NewStateClient</a>
+					<a class="permalink" href="#NewStateClient">¶</a>
+					
+					
+				</h3>
+				<pre>func NewStateClient(fs <a href="../../../../../github.com/redhat-developer/odo/pkg/testingutil/filesystem/">filesystem</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/testingutil/filesystem/#Filesystem">Filesystem</a>) *<a href="#State">State</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="State.GetForwardedPorts">func (*State) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/state.go.html?s=591:655#L21">GetForwardedPorts</a>
+					<a class="permalink" href="#State.GetForwardedPorts">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#State">State</a>) GetForwardedPorts() ([]<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ForwardedPort">ForwardedPort</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="State.SaveExit">func (*State) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/state.go.html?s=875:907#L32">SaveExit</a>
+					<a class="permalink" href="#State.SaveExit">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#State">State</a>) SaveExit() <a href="../../../../../builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="State.SetForwardedPorts">func (*State) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/state/state.go.html?s=357:425#L15">SetForwardedPorts</a>
+					<a class="permalink" href="#State.SetForwardedPorts">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#State">State</a>) SetForwardedPorts(fwPorts []<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ForwardedPort">ForwardedPort</a>) <a href="../../../../../builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer"><a href="../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>asker - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Source file
+    <a href="/src">src</a>/<a href="../../../../../../../src/github.com.html">github.com</a>/<a href="../../../../../../../src/github.com/redhat-developer">redhat-developer</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo">odo</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg">pkg</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/init">init</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/init/asker">asker</a>/<span class="text-muted">interface.go</span>
+  </h1>
+
+
+
+
+
+  <h2>
+    Documentation: <a href="../../../../../../../github.com/redhat-developer/odo/pkg/init/asker">github.com/redhat-developer/odo/pkg/init/asker</a>
+  </h2>
+
+
+
+<div id="nav"></div>
+
+
+
+<pre><span id="L1" class="ln">     1  </span><span class="comment">// package asker uses the Survey library to interact with the user and ask various information</span>
+<span id="L2" class="ln">     2  </span><span class="comment">// needed to initiate a project.</span>
+<span id="L3" class="ln">     3  </span>package asker
+<span id="L4" class="ln">     4  </span>
+<span id="L5" class="ln">     5  </span>import (
+<span id="L6" class="ln">     6  </span>	&#34;github.com/redhat-developer/odo/pkg/api&#34;
+<span id="L7" class="ln">     7  </span>	&#34;github.com/redhat-developer/odo/pkg/registry&#34;
+<span id="L8" class="ln">     8  </span>)
+<span id="L9" class="ln">     9  </span>
+<span id="L10" class="ln">    10  </span><span class="comment">// Asker interactively asks for information to the user</span>
+<span id="L11" class="ln">    11  </span>type Asker interface {
+<span id="L12" class="ln">    12  </span>	<span class="comment">// AskLanguage asks for a language, from a list of language names. The language name is returned</span>
+<span id="L13" class="ln">    13  </span>	AskLanguage(langs []string) (string, error)
+<span id="L14" class="ln">    14  </span>
+<span id="L15" class="ln">    15  </span>	<span class="comment">// AskType asks for a Devfile type, or to go back. back is returned as true if the user selected to go back,</span>
+<span id="L16" class="ln">    16  </span>	<span class="comment">// or the selected type is returned</span>
+<span id="L17" class="ln">    17  </span>	AskType(types registry.TypesWithDetails) (back bool, _ api.DevfileStack, _ error)
+<span id="L18" class="ln">    18  </span>
+<span id="L19" class="ln">    19  </span>	<span class="comment">// AskStarterProject asks for an optional project, from a list of projects. If no project is selected, false is returned.</span>
+<span id="L20" class="ln">    20  </span>	<span class="comment">// Or the index of the selected project is returned</span>
+<span id="L21" class="ln">    21  </span>	AskStarterProject(projects []string) (selected bool, _ int, _ error)
+<span id="L22" class="ln">    22  </span>
+<span id="L23" class="ln">    23  </span>	<span class="comment">// AskName asks for a devfile component name</span>
+<span id="L24" class="ln">    24  </span>	AskName(defaultName string) (string, error)
+<span id="L25" class="ln">    25  </span>
+<span id="L26" class="ln">    26  </span>	<span class="comment">// AskCorrect asks for confirmation</span>
+<span id="L27" class="ln">    27  </span>	AskCorrect() (bool, error)
+<span id="L28" class="ln">    28  </span>
+<span id="L29" class="ln">    29  </span>	AskContainerName(containers []string) (string, error)
+<span id="L30" class="ln">    30  </span>
+<span id="L31" class="ln">    31  </span>	<span class="comment">// AskPersonalizeConfiguration asks the configuration user wants to change</span>
+<span id="L32" class="ln">    32  </span>	AskPersonalizeConfiguration(configuration ContainerConfiguration) (OperationOnContainer, error)
+<span id="L33" class="ln">    33  </span>
+<span id="L34" class="ln">    34  </span>	<span class="comment">// AskAddEnvVar asks the key and value for env var</span>
+<span id="L35" class="ln">    35  </span>	AskAddEnvVar() (string, string, error)
+<span id="L36" class="ln">    36  </span>
+<span id="L37" class="ln">    37  </span>	<span class="comment">// AskAddPort asks the container name and port that user wants to add</span>
+<span id="L38" class="ln">    38  </span>	AskAddPort() (string, error)
+<span id="L39" class="ln">    39  </span>}
+<span id="L40" class="ln">    40  </span>
+<span id="L41" class="ln">    41  </span>type ContainerConfiguration struct {
+<span id="L42" class="ln">    42  </span>	Ports []string
+<span id="L43" class="ln">    43  </span>	Envs  map[string]string
+<span id="L44" class="ln">    44  </span>}
+<span id="L45" class="ln">    45  </span>
+<span id="L46" class="ln">    46  </span>type OperationOnContainer struct {
+<span id="L47" class="ln">    47  </span>	Ops  string
+<span id="L48" class="ln">    48  </span>	Kind string
+<span id="L49" class="ln">    49  </span>	Key  string
+<span id="L50" class="ln">    50  </span>}
+<span id="L51" class="ln">    51  </span>
+<span id="L52" class="ln">    52  </span><span class="comment">// key is container name</span>
+<span id="L53" class="ln">    53  </span>type DevfileConfiguration map[string]ContainerConfiguration
+<span id="L54" class="ln">    54  </span>
+</pre><p><a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/init/asker/interface.go.html?m=text">View as plain text</a></p>
+
+<div id="footer"><a href="../../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

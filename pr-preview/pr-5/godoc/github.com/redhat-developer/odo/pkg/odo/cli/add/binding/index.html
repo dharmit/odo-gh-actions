@@ -1,0 +1,287 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>binding - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package binding
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/odo/cli/add/binding" target="_blank">github.com/redhat-developer/odo/pkg/odo/cli/add/binding</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="#NewCmdBinding">func NewCmdBinding(name, fullName string) *cobra.Command</a></dd>
+			
+			
+				
+				<dd><a href="#AddBindingOptions">type AddBindingOptions</a></dd>
+				
+					
+					<dd>    <a href="#NewAddBindingOptions">func NewAddBindingOptions() *AddBindingOptions</a></dd>
+				
+				
+					
+					<dd>    <a href="#AddBindingOptions.Complete">func (o *AddBindingOptions) Complete(cmdline cmdline.Cmdline, args []string) (err error)</a></dd>
+				
+					
+					<dd>    <a href="#AddBindingOptions.Run">func (o *AddBindingOptions) Run(_ context.Context) error</a></dd>
+				
+					
+					<dd>    <a href="#AddBindingOptions.SetClientset">func (o *AddBindingOptions) SetClientset(clientset *clientset.Clientset)</a></dd>
+				
+					
+					<dd>    <a href="#AddBindingOptions.Validate">func (o *AddBindingOptions) Validate() (err error)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/add/binding/binding.go.html">binding.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+BindingRecommendedCommandName is the recommended binding sub-command name
+</p>
+
+				<pre>const <span id="BindingRecommendedCommandName">BindingRecommendedCommandName</span> = &#34;binding&#34;</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="NewCmdBinding">func <a href="../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/add/binding/binding.go.html?s=6111:6167#L190">NewCmdBinding</a>
+				<a class="permalink" href="#NewCmdBinding">¶</a>
+				
+				
+			</h2>
+			<pre>func NewCmdBinding(name, fullName <a href="../../../../../../../../builtin/#string">string</a>) *<a href="../../../../../../../../github.com/spf13/cobra/">cobra</a>.<a href="../../../../../../../../github.com/spf13/cobra/#Command">Command</a></pre>
+			<p>
+NewCmdBinding implements the component odo sub-command
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="AddBindingOptions">type <a href="../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/add/binding/binding.go.html?s=1816:1992#L35">AddBindingOptions</a>
+				<a class="permalink" href="#AddBindingOptions">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type AddBindingOptions struct {
+
+    <span class="comment">// Context</span>
+    *<a href="../../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/">genericclioptions</a>.<a href="../../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/#Context">Context</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewAddBindingOptions">func <a href="../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/add/binding/binding.go.html?s=2121:2167#L49">NewAddBindingOptions</a>
+					<a class="permalink" href="#NewAddBindingOptions">¶</a>
+					
+					
+				</h3>
+				<pre>func NewAddBindingOptions() *<a href="#AddBindingOptions">AddBindingOptions</a></pre>
+				<p>
+NewAddBindingOptions returns new instance of ComponentOptions
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="AddBindingOptions.Complete">func (*AddBindingOptions) <a href="../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/add/binding/binding.go.html?s=2305:2393#L57">Complete</a>
+					<a class="permalink" href="#AddBindingOptions.Complete">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#AddBindingOptions">AddBindingOptions</a>) Complete(cmdline <a href="../../../../../../../../github.com/redhat-developer/odo/pkg/odo/cmdline/">cmdline</a>.<a href="../../../../../../../../github.com/redhat-developer/odo/pkg/odo/cmdline/#Cmdline">Cmdline</a>, args []<a href="../../../../../../../../builtin/#string">string</a>) (err <a href="../../../../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AddBindingOptions.Run">func (*AddBindingOptions) <a href="../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/add/binding/binding.go.html?s=3018:3074#L77">Run</a>
+					<a class="permalink" href="#AddBindingOptions.Run">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#AddBindingOptions">AddBindingOptions</a>) Run(_ <a href="../../../../../../../../context/">context</a>.<a href="../../../../../../../../context/#Context">Context</a>) <a href="../../../../../../../../builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AddBindingOptions.SetClientset">func (*AddBindingOptions) <a href="../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/add/binding/binding.go.html?s=2202:2274#L53">SetClientset</a>
+					<a class="permalink" href="#AddBindingOptions.SetClientset">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#AddBindingOptions">AddBindingOptions</a>) SetClientset(clientset *<a href="../../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/clientset/">clientset</a>.<a href="../../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/clientset/#Clientset">Clientset</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AddBindingOptions.Validate">func (*AddBindingOptions) <a href="../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/add/binding/binding.go.html?s=2825:2875#L72">Validate</a>
+					<a class="permalink" href="#AddBindingOptions.Validate">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#AddBindingOptions">AddBindingOptions</a>) Validate() (err <a href="../../../../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer"><a href="../../../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

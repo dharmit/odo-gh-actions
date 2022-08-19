@@ -1,0 +1,204 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>namespace - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Source file
+    <a href="/src">src</a>/<a href="../../../../../../../../../src/github.com.html">github.com</a>/<a href="../../../../../../../../../src/github.com/redhat-developer">redhat-developer</a>/<a href="../../../../../../../../../src/github.com/redhat-developer/odo">odo</a>/<a href="../../../../../../../../../src/github.com/redhat-developer/odo/pkg">pkg</a>/<a href="../../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo">odo</a>/<a href="../../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli">cli</a>/<a href="../../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/set">set</a>/<a href="../../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/set/namespace">namespace</a>/<span class="text-muted">namespace.go</span>
+  </h1>
+
+
+
+
+
+  <h2>
+    Documentation: <a href="../../../../../../../../../github.com/redhat-developer/odo/pkg/odo/cli/set/namespace">github.com/redhat-developer/odo/pkg/odo/cli/set/namespace</a>
+  </h2>
+
+
+
+<div id="nav"></div>
+
+
+
+<pre><span id="L1" class="ln">     1  </span>package namespace
+<span id="L2" class="ln">     2  </span>
+<span id="L3" class="ln">     3  </span>import (
+<span id="L4" class="ln">     4  </span>	&#34;context&#34;
+<span id="L5" class="ln">     5  </span>	&#34;fmt&#34;
+<span id="L6" class="ln">     6  </span>	&#34;os&#34;
+<span id="L7" class="ln">     7  </span>
+<span id="L8" class="ln">     8  </span>	dfutil &#34;github.com/devfile/library/pkg/util&#34;
+<span id="L9" class="ln">     9  </span>
+<span id="L10" class="ln">    10  </span>	&#34;github.com/redhat-developer/odo/pkg/devfile/location&#34;
+<span id="L11" class="ln">    11  </span>	&#34;github.com/redhat-developer/odo/pkg/log&#34;
+<span id="L12" class="ln">    12  </span>	&#34;github.com/redhat-developer/odo/pkg/odo/cmdline&#34;
+<span id="L13" class="ln">    13  </span>	&#34;github.com/redhat-developer/odo/pkg/odo/genericclioptions&#34;
+<span id="L14" class="ln">    14  </span>	&#34;github.com/redhat-developer/odo/pkg/odo/genericclioptions/clientset&#34;
+<span id="L15" class="ln">    15  </span>	scontext &#34;github.com/redhat-developer/odo/pkg/segment/context&#34;
+<span id="L16" class="ln">    16  </span>
+<span id="L17" class="ln">    17  </span>	&#34;k8s.io/klog&#34;
+<span id="L18" class="ln">    18  </span>	ktemplates &#34;k8s.io/kubectl/pkg/util/templates&#34;
+<span id="L19" class="ln">    19  </span>
+<span id="L20" class="ln">    20  </span>	&#34;github.com/spf13/cobra&#34;
+<span id="L21" class="ln">    21  </span>)
+<span id="L22" class="ln">    22  </span>
+<span id="L23" class="ln">    23  </span>const RecommendedCommandName = &#34;namespace&#34;
+<span id="L24" class="ln">    24  </span>
+<span id="L25" class="ln">    25  </span>var (
+<span id="L26" class="ln">    26  </span>	setExample = ktemplates.Examples(`
+<span id="L27" class="ln">    27  </span>	# Set the specified namespace as the current active namespace in the config
+<span id="L28" class="ln">    28  </span>	%[1]s my-namespace
+<span id="L29" class="ln">    29  </span>	`)
+<span id="L30" class="ln">    30  </span>
+<span id="L31" class="ln">    31  </span>	setLongDesc = ktemplates.LongDesc(`Set the current active namespace.
+<span id="L32" class="ln">    32  </span>	
+<span id="L33" class="ln">    33  </span>	If executed inside a component directory, this command will not update the namespace of the existing component.
+<span id="L34" class="ln">    34  </span>	`)
+<span id="L35" class="ln">    35  </span>
+<span id="L36" class="ln">    36  </span>	setShortDesc = `Set the current active namespace`
+<span id="L37" class="ln">    37  </span>)
+<span id="L38" class="ln">    38  </span>
+<span id="L39" class="ln">    39  </span><span class="comment">// SetOptions encapsulates the options for the odo namespace create command</span>
+<span id="L40" class="ln">    40  </span>type SetOptions struct {
+<span id="L41" class="ln">    41  </span>	<span class="comment">// Context</span>
+<span id="L42" class="ln">    42  </span>	*genericclioptions.Context
+<span id="L43" class="ln">    43  </span>
+<span id="L44" class="ln">    44  </span>	<span class="comment">// Clients</span>
+<span id="L45" class="ln">    45  </span>	clientset *clientset.Clientset
+<span id="L46" class="ln">    46  </span>
+<span id="L47" class="ln">    47  </span>	<span class="comment">// Destination directory</span>
+<span id="L48" class="ln">    48  </span>	contextDir string
+<span id="L49" class="ln">    49  </span>
+<span id="L50" class="ln">    50  </span>	<span class="comment">// Parameters</span>
+<span id="L51" class="ln">    51  </span>	namespaceName string
+<span id="L52" class="ln">    52  </span>
+<span id="L53" class="ln">    53  </span>	<span class="comment">// value can be either &#39;project&#39; or &#39;namespace&#39;, depending on what command is called</span>
+<span id="L54" class="ln">    54  </span>	commandName string
+<span id="L55" class="ln">    55  </span>}
+<span id="L56" class="ln">    56  </span>
+<span id="L57" class="ln">    57  </span>var _ genericclioptions.Runnable = (*SetOptions)(nil)
+<span id="L58" class="ln">    58  </span>
+<span id="L59" class="ln">    59  </span><span class="comment">// NewSetOptions creates a SetOptions instance</span>
+<span id="L60" class="ln">    60  </span>func NewSetOptions() *SetOptions {
+<span id="L61" class="ln">    61  </span>	return &amp;SetOptions{}
+<span id="L62" class="ln">    62  </span>}
+<span id="L63" class="ln">    63  </span>
+<span id="L64" class="ln">    64  </span>func (so *SetOptions) SetClientset(clientset *clientset.Clientset) {
+<span id="L65" class="ln">    65  </span>	so.clientset = clientset
+<span id="L66" class="ln">    66  </span>}
+<span id="L67" class="ln">    67  </span>
+<span id="L68" class="ln">    68  </span><span class="comment">// Complete completes SetOptions after they&#39;ve been created</span>
+<span id="L69" class="ln">    69  </span>func (so *SetOptions) Complete(cmdline cmdline.Cmdline, args []string) (err error) {
+<span id="L70" class="ln">    70  </span>	so.namespaceName = args[0]
+<span id="L71" class="ln">    71  </span>	so.Context, err = genericclioptions.New(genericclioptions.NewCreateParameters(cmdline))
+<span id="L72" class="ln">    72  </span>	if err != nil {
+<span id="L73" class="ln">    73  </span>		return err
+<span id="L74" class="ln">    74  </span>	}
+<span id="L75" class="ln">    75  </span>	so.contextDir, err = so.clientset.FS.Getwd()
+<span id="L76" class="ln">    76  </span>	if err != nil {
+<span id="L77" class="ln">    77  </span>		return err
+<span id="L78" class="ln">    78  </span>	}
+<span id="L79" class="ln">    79  </span>	if scontext.GetTelemetryStatus(cmdline.Context()) {
+<span id="L80" class="ln">    80  </span>		scontext.SetClusterType(cmdline.Context(), so.KClient)
+<span id="L81" class="ln">    81  </span>	}
+<span id="L82" class="ln">    82  </span>	return nil
+<span id="L83" class="ln">    83  </span>}
+<span id="L84" class="ln">    84  </span>
+<span id="L85" class="ln">    85  </span><span class="comment">// Validate validates the parameters of the SetOptions</span>
+<span id="L86" class="ln">    86  </span>func (so *SetOptions) Validate() error {
+<span id="L87" class="ln">    87  </span>	return dfutil.ValidateK8sResourceName(&#34;namespace name&#34;, so.namespaceName)
+<span id="L88" class="ln">    88  </span>}
+<span id="L89" class="ln">    89  </span>
+<span id="L90" class="ln">    90  </span><span class="comment">// Run runs the &#39;set namespace&#39; command</span>
+<span id="L91" class="ln">    91  </span>func (so *SetOptions) Run(ctx context.Context) error {
+<span id="L92" class="ln">    92  </span>	devfilePresent, err := location.DirectoryContainsDevfile(so.clientset.FS, so.contextDir)
+<span id="L93" class="ln">    93  </span>	if err != nil {
+<span id="L94" class="ln">    94  </span>		<span class="comment">// Purposely ignoring the error, as it is not mandatory for this command</span>
+<span id="L95" class="ln">    95  </span>		klog.V(2).Infof(&#34;Unexpected error while checking if running inside a component directory: %v&#34;, err)
+<span id="L96" class="ln">    96  </span>	}
+<span id="L97" class="ln">    97  </span>	if devfilePresent {
+<span id="L98" class="ln">    98  </span>		log.Warningf(&#34;This is being executed inside a component directory. This will not update the %s of the existing component&#34;,
+<span id="L99" class="ln">    99  </span>			so.commandName)
+<span id="L100" class="ln">   100  </span>	}
+<span id="L101" class="ln">   101  </span>
+<span id="L102" class="ln">   102  </span>	err = so.clientset.ProjectClient.SetCurrent(so.namespaceName)
+<span id="L103" class="ln">   103  </span>	if err != nil {
+<span id="L104" class="ln">   104  </span>		return err
+<span id="L105" class="ln">   105  </span>	}
+<span id="L106" class="ln">   106  </span>
+<span id="L107" class="ln">   107  </span>	log.Successf(&#34;Current active %[1]s set to %q&#34;, so.commandName, so.namespaceName)
+<span id="L108" class="ln">   108  </span>
+<span id="L109" class="ln">   109  </span>	return nil
+<span id="L110" class="ln">   110  </span>}
+<span id="L111" class="ln">   111  </span>
+<span id="L112" class="ln">   112  </span><span class="comment">// NewCmdNamespaceSet creates the &#39;set namespace&#39; command</span>
+<span id="L113" class="ln">   113  </span>func NewCmdNamespaceSet(name, fullName string) *cobra.Command {
+<span id="L114" class="ln">   114  </span>	o := NewSetOptions()
+<span id="L115" class="ln">   115  </span>	<span class="comment">// To help the UI messages deal better with namespace vs project</span>
+<span id="L116" class="ln">   116  </span>	o.commandName = name
+<span id="L117" class="ln">   117  </span>	if len(os.Args) &gt; 2 {
+<span id="L118" class="ln">   118  </span>		o.commandName = os.Args[2]
+<span id="L119" class="ln">   119  </span>	}
+<span id="L120" class="ln">   120  </span>
+<span id="L121" class="ln">   121  </span>	namespaceSetCmd := &amp;cobra.Command{
+<span id="L122" class="ln">   122  </span>		Use:     name,
+<span id="L123" class="ln">   123  </span>		Short:   setShortDesc,
+<span id="L124" class="ln">   124  </span>		Long:    setLongDesc,
+<span id="L125" class="ln">   125  </span>		Example: fmt.Sprintf(setExample, fullName),
+<span id="L126" class="ln">   126  </span>		Args:    cobra.ExactArgs(1),
+<span id="L127" class="ln">   127  </span>		Run: func(cmd *cobra.Command, args []string) {
+<span id="L128" class="ln">   128  </span>			genericclioptions.GenericRun(o, cmd, args)
+<span id="L129" class="ln">   129  </span>		},
+<span id="L130" class="ln">   130  </span>		Annotations: map[string]string{&#34;command&#34;: &#34;main&#34;},
+<span id="L131" class="ln">   131  </span>		Aliases:     []string{&#34;project&#34;},
+<span id="L132" class="ln">   132  </span>	}
+<span id="L133" class="ln">   133  </span>
+<span id="L134" class="ln">   134  </span>	clientset.Add(namespaceSetCmd, clientset.FILESYSTEM, clientset.PROJECT)
+<span id="L135" class="ln">   135  </span>
+<span id="L136" class="ln">   136  </span>	return namespaceSetCmd
+<span id="L137" class="ln">   137  </span>}
+<span id="L138" class="ln">   138  </span>
+</pre><p><a href="../../../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/set/namespace/namespace.go.html?m=text">View as plain text</a></p>
+
+<div id="footer"><a href="../../../../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>
