@@ -7,7 +7,7 @@ module.exports = {
   title: 'odo',
   tagline: 'odo - Fast iterative Kubernetes and OpenShift development',
   url: 'https://odo.dev',
-  baseUrl: '/',
+  baseUrl: '/odo-gh-actions/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
