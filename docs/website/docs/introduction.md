@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Introduction
+title: Awesome Introduction!
 ---
 
 ### What is odo?
