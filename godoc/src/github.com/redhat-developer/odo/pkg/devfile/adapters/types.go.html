@@ -1,0 +1,113 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>adapters - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Source file
+    <a href="/src">src</a>/<a href="../../../../../../../src/github.com.html">github.com</a>/<a href="../../../../../../../src/github.com/redhat-developer">redhat-developer</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo">odo</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg">pkg</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/devfile">devfile</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/devfile/adapters">adapters</a>/<span class="text-muted">types.go</span>
+  </h1>
+
+
+
+
+
+  <h2>
+    Documentation: <a href="../../../../../../../github.com/redhat-developer/odo/pkg/devfile/adapters">github.com/redhat-developer/odo/pkg/devfile/adapters</a>
+  </h2>
+
+
+
+<div id="nav"></div>
+
+
+
+<pre><span id="L1" class="ln">     1  </span>package adapters
+<span id="L2" class="ln">     2  </span>
+<span id="L3" class="ln">     3  </span>import (
+<span id="L4" class="ln">     4  </span>	&#34;io&#34;
+<span id="L5" class="ln">     5  </span>
+<span id="L6" class="ln">     6  </span>	&#34;github.com/redhat-developer/odo/pkg/envinfo&#34;
+<span id="L7" class="ln">     7  </span>)
+<span id="L8" class="ln">     8  </span>
+<span id="L9" class="ln">     9  </span><span class="comment">// PushParameters is a struct containing the parameters to be used when pushing to a devfile component</span>
+<span id="L10" class="ln">    10  </span>type PushParameters struct {
+<span id="L11" class="ln">    11  </span>	Path                     string                  <span class="comment">// Path refers to the parent folder containing the source code to push up to a component</span>
+<span id="L12" class="ln">    12  </span>	WatchFiles               []string                <span class="comment">// Optional: WatchFiles is the list of changed files detected by odo watch. If empty or nil, odo will check .odo/odo-file-index.json to determine changed files</span>
+<span id="L13" class="ln">    13  </span>	WatchDeletedFiles        []string                <span class="comment">// Optional: WatchDeletedFiles is the list of deleted files detected by odo watch. If empty or nil, odo will check .odo/odo-file-index.json to determine deleted files</span>
+<span id="L14" class="ln">    14  </span>	IgnoredFiles             []string                <span class="comment">// IgnoredFiles is the list of files to not push up to a component</span>
+<span id="L15" class="ln">    15  </span>	ForceBuild               bool                    <span class="comment">// ForceBuild determines whether or not to push all of the files up to a component or just files that have changed, added or removed.</span>
+<span id="L16" class="ln">    16  </span>	Show                     bool                    <span class="comment">// Show tells whether the devfile command output should be shown on stdout</span>
+<span id="L17" class="ln">    17  </span>	DevfileBuildCmd          string                  <span class="comment">// DevfileBuildCmd takes the build command through the command line and overwrites devfile build command</span>
+<span id="L18" class="ln">    18  </span>	DevfileRunCmd            string                  <span class="comment">// DevfileRunCmd takes the run command through the command line and overwrites devfile run command</span>
+<span id="L19" class="ln">    19  </span>	DevfileDebugCmd          string                  <span class="comment">// DevfileDebugCmd takes the debug command through the command line and overwrites the devfile debug command</span>
+<span id="L20" class="ln">    20  </span>	DevfileScanIndexForWatch bool                    <span class="comment">// DevfileScanIndexForWatch is true if watch&#39;s push should regenerate the index file during SyncFiles, false otherwise. See &#39;pkg/sync/adapter.go&#39; for details</span>
+<span id="L21" class="ln">    21  </span>	EnvSpecificInfo          envinfo.EnvSpecificInfo <span class="comment">// EnvSpecificInfo contains information of env.yaml file</span>
+<span id="L22" class="ln">    22  </span>	Debug                    bool                    <span class="comment">// Runs the component in debug mode</span>
+<span id="L23" class="ln">    23  </span>	DebugPort                int                     <span class="comment">// Port used for remote debugging</span>
+<span id="L24" class="ln">    24  </span>	RandomPorts              bool                    <span class="comment">// True to forward containers ports on local random ports</span>
+<span id="L25" class="ln">    25  </span>	ErrOut                   io.Writer               <span class="comment">// Writer to output forwarded port information</span>
+<span id="L26" class="ln">    26  </span>}
+<span id="L27" class="ln">    27  </span>
+<span id="L28" class="ln">    28  </span><span class="comment">// SyncParameters is a struct containing the parameters to be used when syncing a devfile component</span>
+<span id="L29" class="ln">    29  </span>type SyncParameters struct {
+<span id="L30" class="ln">    30  </span>	PushParams      PushParameters
+<span id="L31" class="ln">    31  </span>	CompInfo        ComponentInfo
+<span id="L32" class="ln">    32  </span>	PodChanged      bool
+<span id="L33" class="ln">    33  </span>	ComponentExists bool
+<span id="L34" class="ln">    34  </span>	Files           map[string]string
+<span id="L35" class="ln">    35  </span>}
+<span id="L36" class="ln">    36  </span>
+<span id="L37" class="ln">    37  </span><span class="comment">// ComponentInfo is a struct that holds information about a component i.e.; pod name, container name, and source mount (if applicable)</span>
+<span id="L38" class="ln">    38  </span>type ComponentInfo struct {
+<span id="L39" class="ln">    39  </span>	PodName       string
+<span id="L40" class="ln">    40  </span>	ContainerName string
+<span id="L41" class="ln">    41  </span>	SyncFolder    string
+<span id="L42" class="ln">    42  </span>}
+<span id="L43" class="ln">    43  </span>
+<span id="L44" class="ln">    44  </span>func (ci ComponentInfo) IsEmpty() bool {
+<span id="L45" class="ln">    45  </span>	return len(ci.ContainerName) == 0
+<span id="L46" class="ln">    46  </span>}
+<span id="L47" class="ln">    47  </span>
+</pre><p><a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/devfile/adapters/types.go.html?m=text">View as plain text</a></p>
+
+<div id="footer"><a href="../../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

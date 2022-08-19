@@ -1,0 +1,98 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>backend - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Source file
+    <a href="/src">src</a>/<a href="../../../../../../../src/github.com.html">github.com</a>/<a href="../../../../../../../src/github.com/redhat-developer">redhat-developer</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo">odo</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg">pkg</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/init">init</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/init/backend">backend</a>/<span class="text-muted">interface.go</span>
+  </h1>
+
+
+
+
+
+  <h2>
+    Documentation: <a href="../../../../../../../github.com/redhat-developer/odo/pkg/init/backend">github.com/redhat-developer/odo/pkg/init/backend</a>
+  </h2>
+
+
+
+<div id="nav"></div>
+
+
+
+<pre><span id="L1" class="ln">     1  </span><span class="comment">// package backend provides different backends to initiate projects.</span>
+<span id="L2" class="ln">     2  </span><span class="comment">// - `Flags` backend gets needed information from command line flags.</span>
+<span id="L3" class="ln">     3  </span><span class="comment">// - `Interactive` backend interacts with the user to get needed information.</span>
+<span id="L4" class="ln">     4  </span>package backend
+<span id="L5" class="ln">     5  </span>
+<span id="L6" class="ln">     6  </span>import (
+<span id="L7" class="ln">     7  </span>	&#34;github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2&#34;
+<span id="L8" class="ln">     8  </span>	&#34;github.com/devfile/library/pkg/devfile/parser&#34;
+<span id="L9" class="ln">     9  </span>	&#34;github.com/redhat-developer/odo/pkg/api&#34;
+<span id="L10" class="ln">    10  </span>	&#34;github.com/redhat-developer/odo/pkg/testingutil/filesystem&#34;
+<span id="L11" class="ln">    11  </span>)
+<span id="L12" class="ln">    12  </span>
+<span id="L13" class="ln">    13  </span><span class="comment">// InitBackend is a specialized backend for steps of initiating a project, based on various input (either from CLI flags or interactively from user)</span>
+<span id="L14" class="ln">    14  </span>type InitBackend interface {
+<span id="L15" class="ln">    15  </span>	<span class="comment">// Validate returns an error if it does not validate the flags based on the directory content</span>
+<span id="L16" class="ln">    16  </span>	Validate(flags map[string]string, fs filesystem.Filesystem, dir string) error
+<span id="L17" class="ln">    17  </span>
+<span id="L18" class="ln">    18  </span>	<span class="comment">// SelectDevfile selects a devfile and returns its location information, depending on the flags</span>
+<span id="L19" class="ln">    19  </span>	SelectDevfile(flags map[string]string, fs filesystem.Filesystem, dir string) (location *api.DevfileLocation, err error)
+<span id="L20" class="ln">    20  </span>
+<span id="L21" class="ln">    21  </span>	<span class="comment">// SelectStarterProject selects a starter project from the devfile and returns information about the starter project,</span>
+<span id="L22" class="ln">    22  </span>	<span class="comment">// depending on the flags. If not starter project is selected, a nil starter is returned</span>
+<span id="L23" class="ln">    23  </span>	SelectStarterProject(devfile parser.DevfileObj, flags map[string]string) (starter *v1alpha2.StarterProject, err error)
+<span id="L24" class="ln">    24  </span>
+<span id="L25" class="ln">    25  </span>	<span class="comment">// PersonalizeName returns the customized Devfile Metadata Name.</span>
+<span id="L26" class="ln">    26  </span>	<span class="comment">// Depending on the flags, it may return a name set interactively or not.</span>
+<span id="L27" class="ln">    27  </span>	PersonalizeName(devfile parser.DevfileObj, flags map[string]string) (string, error)
+<span id="L28" class="ln">    28  </span>
+<span id="L29" class="ln">    29  </span>	<span class="comment">// PersonalizeDevfileConfig updates the devfile config for ports and environment variables</span>
+<span id="L30" class="ln">    30  </span>	PersonalizeDevfileConfig(devfileobj parser.DevfileObj) (parser.DevfileObj, error)
+<span id="L31" class="ln">    31  </span>}
+<span id="L32" class="ln">    32  </span>
+</pre><p><a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/init/backend/interface.go.html?m=text">View as plain text</a></p>
+
+<div id="footer"><a href="../../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

@@ -1,0 +1,960 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>log - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package log
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/log" target="_blank">github.com/redhat-developer/odo/pkg/log</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package log contains logging related functionality
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#Bold">func Bold(s string)</a></dd>
+			
+				
+				<dd><a href="#ColorPicker">func ColorPicker() color.Attribute</a></dd>
+			
+				
+				<dd><a href="#Deprecate">func Deprecate(what, nextAction string)</a></dd>
+			
+				
+				<dd><a href="#Describef">func Describef(title string, format string, a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Error">func Error(a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Errorf">func Errorf(format string, a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Finfof">func Finfof(w io.Writer, format string, a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Fsuccess">func Fsuccess(out io.Writer, a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Fwarning">func Fwarning(out io.Writer, a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#GetStderr">func GetStderr() io.Writer</a></dd>
+			
+				
+				<dd><a href="#GetStdout">func GetStdout() io.Writer</a></dd>
+			
+				
+				<dd><a href="#Info">func Info(a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Infof">func Infof(format string, a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#IsAppleSilicon">func IsAppleSilicon() bool</a></dd>
+			
+				
+				<dd><a href="#IsDebug">func IsDebug() bool</a></dd>
+			
+				
+				<dd><a href="#IsJSON">func IsJSON() bool</a></dd>
+			
+				
+				<dd><a href="#IsTerminal">func IsTerminal(w io.Writer) bool</a></dd>
+			
+				
+				<dd><a href="#Printf">func Printf(format string, a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Sbold">func Sbold(s string) string</a></dd>
+			
+				
+				<dd><a href="#SboldColor">func SboldColor(c color.Attribute, s string) string</a></dd>
+			
+				
+				<dd><a href="#Section">func Section(a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Sectionf">func Sectionf(format string, a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Stitle">func Stitle(firstLine, secondLine, thirdLine string) string</a></dd>
+			
+				
+				<dd><a href="#Success">func Success(a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Successf">func Successf(format string, a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Title">func Title(firstLine, secondLine, thirdLine string)</a></dd>
+			
+				
+				<dd><a href="#Warning">func Warning(a ...interface{})</a></dd>
+			
+				
+				<dd><a href="#Warningf">func Warningf(format string, a ...interface{})</a></dd>
+			
+			
+				
+				<dd><a href="#Status">type Status</a></dd>
+				
+					
+					<dd>    <a href="#ExplicitSpinner">func ExplicitSpinner(status string, preventSpinning bool) *Status</a></dd>
+				
+					
+					<dd>    <a href="#NewStatus">func NewStatus(w io.Writer) *Status</a></dd>
+				
+					
+					<dd>    <a href="#Spinner">func Spinner(status string) *Status</a></dd>
+				
+					
+					<dd>    <a href="#SpinnerNoSpin">func SpinnerNoSpin(status string) *Status</a></dd>
+				
+					
+					<dd>    <a href="#Spinnerf">func Spinnerf(format string, a ...interface{}) *Status</a></dd>
+				
+				
+					
+					<dd>    <a href="#Status.End">func (s *Status) End(success bool)</a></dd>
+				
+					
+					<dd>    <a href="#Status.EndWithStatus">func (s *Status) EndWithStatus(status string, success bool)</a></dd>
+				
+					
+					<dd>    <a href="#Status.Start">func (s *Status) Start(status string, debug bool)</a></dd>
+				
+					
+					<dd>    <a href="#Status.WarningStatus">func (s *Status) WarningStatus(status string)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html">status.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="Bold">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=12811:12830#L406">Bold</a>
+				<a class="permalink" href="#Bold">¶</a>
+				
+				
+			</h2>
+			<pre>func Bold(s <a href="../../../../../builtin/#string">string</a>)</pre>
+			<p>
+Bold will print out a bolded string
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ColorPicker">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=17680:17714#L553">ColorPicker</a>
+				<a class="permalink" href="#ColorPicker">¶</a>
+				
+				
+			</h2>
+			<pre>func ColorPicker() <a href="../../../../../github.com/fatih/color/">color</a>.<a href="../../../../../github.com/fatih/color/#Attribute">Attribute</a></pre>
+			<p>
+ColorPicker picks a color from colors slice defined at the starting of this file
+It increments the colorCounter variable so that next iteration returns a different color
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Deprecate">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=10483:10522#L334">Deprecate</a>
+				<a class="permalink" href="#Deprecate">¶</a>
+				
+				
+			</h2>
+			<pre>func Deprecate(what, nextAction <a href="../../../../../builtin/#string">string</a>)</pre>
+			<p>
+Deprecate will output a warning symbol and then &#34;Deprecated&#34; at the end of the output in YELLOW
+</p>
+<pre>⚠ &lt;message all yellow&gt;
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Describef">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=13361:13422#L422">Describef</a>
+				<a class="permalink" href="#Describef">¶</a>
+				
+				
+			</h2>
+			<pre>func Describef(title <a href="../../../../../builtin/#string">string</a>, format <a href="../../../../../builtin/#string">string</a>, a ...interface{})</pre>
+			<p>
+Describef will print out the first variable as BOLD and then the second not..
+this is intended to be used with `odo describe` and other outputs that list
+a lot of information
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Error">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=11156:11184#L353">Error</a>
+				<a class="permalink" href="#Error">¶</a>
+				
+				
+			</h2>
+			<pre>func Error(a ...interface{})</pre>
+			<p>
+Error will output in an appropriate &#34;progress&#34; manner
+✗ &lt;message&gt;
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Errorf">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=10865:10909#L344">Errorf</a>
+				<a class="permalink" href="#Errorf">¶</a>
+				
+				
+			</h2>
+			<pre>func Errorf(format <a href="../../../../../builtin/#string">string</a>, a ...interface{})</pre>
+			<p>
+Errorf will output in an appropriate &#34;progress&#34; manner
+✗ &lt;message&gt;
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Finfof">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=12343:12400#L386">Finfof</a>
+				<a class="permalink" href="#Finfof">¶</a>
+				
+				
+			</h2>
+			<pre>func Finfof(w <a href="../../../../../io/">io</a>.<a href="../../../../../io/#Writer">Writer</a>, format <a href="../../../../../builtin/#string">string</a>, a ...interface{})</pre>
+			<p>
+Finfof will simply print out information on a new (bolded) line
+this is intended as information *after* something has been deployed
+This will also use a WRITER input
+We will have to manually check to see if it&#39;s Windows platform or not to
+determine if we are allowed to bold the output or not.
+**Line in bold**
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Fsuccess">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=8308:8354#L275">Fsuccess</a>
+				<a class="permalink" href="#Fsuccess">¶</a>
+				
+				
+			</h2>
+			<pre>func Fsuccess(out <a href="../../../../../io/">io</a>.<a href="../../../../../io/#Writer">Writer</a>, a ...interface{})</pre>
+			<p>
+Fsuccess will output in an appropriate &#34;progress&#34; manner in out writer
+</p>
+<pre>✓ &lt;message&gt;
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Fwarning">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=7678:7724#L257">Fwarning</a>
+				<a class="permalink" href="#Fwarning">¶</a>
+				
+				
+			</h2>
+			<pre>func Fwarning(out <a href="../../../../../io/">io</a>.<a href="../../../../../io/#Writer">Writer</a>, a ...interface{})</pre>
+			<p>
+Fwarning will output in an appropriate &#34;progress&#34; manner in out writer
+</p>
+<pre>⚠ &lt;message&gt;
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetStderr">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=16075:16101#L504">GetStderr</a>
+				<a class="permalink" href="#GetStderr">¶</a>
+				
+				
+			</h2>
+			<pre>func GetStderr() <a href="../../../../../io/">io</a>.<a href="../../../../../io/#Writer">Writer</a></pre>
+			<p>
+GetStderr gets the appropriate stderrfrom the OS. If it&#39;s Linux, it will use
+the go-colorable library in order to fix any and all color ASCII issues.
+TODO: Test needs to be added once we get Windows testing available on TravisCI / CI platform.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GetStdout">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=15697:15723#L494">GetStdout</a>
+				<a class="permalink" href="#GetStdout">¶</a>
+				
+				
+			</h2>
+			<pre>func GetStdout() <a href="../../../../../io/">io</a>.<a href="../../../../../io/#Writer">Writer</a></pre>
+			<p>
+GetStdout gets the appropriate stdout from the OS. If it&#39;s Linux, it will use
+the go-colorable library in order to fix any and all color ASCII issues.
+TODO: Test needs to be added once we get Windows testing available on TravisCI / CI platform.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Info">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=11520:11547#L363">Info</a>
+				<a class="permalink" href="#Info">¶</a>
+				
+				
+			</h2>
+			<pre>func Info(a ...interface{})</pre>
+			<p>
+Info will simply print out information on a new (bolded) line
+this is intended as information *after* something has been deployed
+**Line in bold**
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Infof">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=11833:11876#L373">Infof</a>
+				<a class="permalink" href="#Infof">¶</a>
+				
+				
+			</h2>
+			<pre>func Infof(format <a href="../../../../../builtin/#string">string</a>, a ...interface{})</pre>
+			<p>
+Infof will simply print out information on a new (bolded) line
+this is intended as information *after* something has been deployed
+**Line in bold**
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsAppleSilicon">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=15286:15312#L487">IsAppleSilicon</a>
+				<a class="permalink" href="#IsAppleSilicon">¶</a>
+				
+				
+			</h2>
+			<pre>func IsAppleSilicon() <a href="../../../../../builtin/#bool">bool</a></pre>
+			<p>
+IsAppleSilicon returns true if we are on a Mac M1 / Apple Silicon natively
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsDebug">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=15052:15071#L475">IsDebug</a>
+				<a class="permalink" href="#IsDebug">¶</a>
+				
+				
+			</h2>
+			<pre>func IsDebug() <a href="../../../../../builtin/#bool">bool</a></pre>
+			<p>
+IsDebug returns true if we are debugging (-v is set to anything but 0)
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsJSON">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=14806:14824#L464">IsJSON</a>
+				<a class="permalink" href="#IsJSON">¶</a>
+				
+				
+			</h2>
+			<pre>func IsJSON() <a href="../../../../../builtin/#bool">bool</a></pre>
+			<p>
+IsJSON returns true if we are in machine output mode..
+under NO circumstances should we output any logging.. as we are only outputting json
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsTerminal">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=1911:1944#L62">IsTerminal</a>
+				<a class="permalink" href="#IsTerminal">¶</a>
+				
+				
+			</h2>
+			<pre>func IsTerminal(w <a href="../../../../../io/">io</a>.<a href="../../../../../io/#Writer">Writer</a>) <a href="../../../../../builtin/#bool">bool</a></pre>
+			<p>
+IsTerminal returns true if the writer w is a terminal
+This function is modified if we are running within Windows..
+as Golang&#39;s built-in &#34;IsTerminal&#34; command only works on UNIX-based systems:
+<a href="https://github.com/golang/crypto/blob/master/ssh/terminal/util.go#L5">https://github.com/golang/crypto/blob/master/ssh/terminal/util.go#L5</a>
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Printf">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=6638:6682#L225">Printf</a>
+				<a class="permalink" href="#Printf">¶</a>
+				
+				
+			</h2>
+			<pre>func Printf(format <a href="../../../../../builtin/#string">string</a>, a ...interface{})</pre>
+			<p>
+Printf will output in an appropriate &#34;information&#34; manner; for e.g.
+• &lt;message&gt;
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Sbold">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=12667:12694#L400">Sbold</a>
+				<a class="permalink" href="#Sbold">¶</a>
+				
+				
+			</h2>
+			<pre>func Sbold(s <a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#string">string</a></pre>
+			<p>
+Sbold will return a bold string
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SboldColor">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=13034:13085#L414">SboldColor</a>
+				<a class="permalink" href="#SboldColor">¶</a>
+				
+				
+			</h2>
+			<pre>func SboldColor(c <a href="../../../../../github.com/fatih/color/">color</a>.<a href="../../../../../github.com/fatih/color/#Attribute">Attribute</a>, s <a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#string">string</a></pre>
+			<p>
+BoldColor will print out a bolded string with a color (that&#39;s passed in)
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Section">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=10055:10085#L321">Section</a>
+				<a class="permalink" href="#Section">¶</a>
+				
+				
+			</h2>
+			<pre>func Section(a ...interface{})</pre>
+			<p>
+Section outputs a title in BLUE and underlined for separating a section (such as building a container, deploying files, etc.)
+T͟h͟i͟s͟ ͟i͟s͟ ͟u͟n͟d͟e͟r͟l͟i͟n͟e͟d͟ ͟b͟l͟u͟e͟ ͟t͟e͟x͟t͟
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Sectionf">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=9503:9549#L308">Sectionf</a>
+				<a class="permalink" href="#Sectionf">¶</a>
+				
+				
+			</h2>
+			<pre>func Sectionf(format <a href="../../../../../builtin/#string">string</a>, a ...interface{})</pre>
+			<p>
+Sectionf outputs a title in BLUE and underlined for separating a section (such as building a container, deploying files, etc.)
+T͟h͟i͟s͟ ͟i͟s͟ ͟u͟n͟d͟e͟r͟l͟i͟n͟e͟d͟ ͟b͟l͟u͟e͟ ͟t͟e͟x͟t͟
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Stitle">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=9047:9106#L297">Stitle</a>
+				<a class="permalink" href="#Stitle">¶</a>
+				
+				
+			</h2>
+			<pre>func Stitle(firstLine, secondLine, thirdLine <a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#string">string</a></pre>
+			<p>
+Stitle is the same as Title but returns the string instead
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Success">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=6902:6932#L233">Success</a>
+				<a class="permalink" href="#Success">¶</a>
+				
+				
+			</h2>
+			<pre>func Success(a ...interface{})</pre>
+			<p>
+Success will output in an appropriate &#34;success&#34; manner
+</p>
+<pre>✓  &lt;message&gt;
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Successf">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=7201:7247#L242">Successf</a>
+				<a class="permalink" href="#Successf">¶</a>
+				
+				
+			</h2>
+			<pre>func Successf(format <a href="../../../../../builtin/#string">string</a>, a ...interface{})</pre>
+			<p>
+Successf will output in an appropriate &#34;progress&#34; manner
+</p>
+<pre>✓  &lt;message&gt;
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Title">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=8841:8892#L290">Title</a>
+				<a class="permalink" href="#Title">¶</a>
+				
+				
+			</h2>
+			<pre>func Title(firstLine, secondLine, thirdLine <a href="../../../../../builtin/#string">string</a>)</pre>
+			<p>
+Title Prints the logo as well as the first line being BLUE (indicator of the command information)
+the second and third lines are optional and provide information with regards to what is being ran
+</p>
+<pre>	 __
+ /  \__     **First line**
+ \__/  \    Second line
+ /  \__/    Third line
+ \__/
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Warning">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=7522:7552#L251">Warning</a>
+				<a class="permalink" href="#Warning">¶</a>
+				
+				
+			</h2>
+			<pre>func Warning(a ...interface{})</pre>
+			<p>
+Warning will output in an appropriate &#34;progress&#34; manner
+</p>
+<pre>⚠ &lt;message&gt;
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Warningf">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=7985:8031#L266">Warningf</a>
+				<a class="permalink" href="#Warningf">¶</a>
+				
+				
+			</h2>
+			<pre>func Warningf(format <a href="../../../../../builtin/#string">string</a>, a ...interface{})</pre>
+			<p>
+Warningf will output in an appropriate &#34;warning&#34; manner
+</p>
+<pre>⚠ &lt;message&gt;
+</pre>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Status">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=1343:1465#L41">Status</a>
+				<a class="permalink" href="#Status">¶</a>
+				
+				
+			</h2>
+			<p>
+Status is used to track ongoing status in a CLI, with a nice loading spinner
+when attached to a terminal
+</p>
+
+			<pre>type Status struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ExplicitSpinner">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=14453:14518#L452">ExplicitSpinner</a>
+					<a class="permalink" href="#ExplicitSpinner">¶</a>
+					
+					
+				</h3>
+				<pre>func ExplicitSpinner(status <a href="../../../../../builtin/#string">string</a>, preventSpinning <a href="../../../../../builtin/#bool">bool</a>) *<a href="#Status">Status</a></pre>
+				<p>
+ExplicitSpinner creates a spinner that can or not spin based on the value of the preventSpinning parameter
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewStatus">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=1509:1544#L49">NewStatus</a>
+					<a class="permalink" href="#NewStatus">¶</a>
+					
+					
+				</h3>
+				<pre>func NewStatus(w <a href="../../../../../io/">io</a>.<a href="../../../../../io/#Writer">Writer</a>) *<a href="#Status">Status</a></pre>
+				<p>
+NewStatus creates a new default Status
+</p>
+
+				
+				
+			
+				
+				<h3 id="Spinner">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=13734:13769#L432">Spinner</a>
+					<a class="permalink" href="#Spinner">¶</a>
+					
+					
+				</h3>
+				<pre>func Spinner(status <a href="../../../../../builtin/#string">string</a>) *<a href="#Status">Status</a></pre>
+				<p>
+Spinner creates a spinner, sets the prefix then returns it.
+Remember to use .End(bool) to stop the spin / when you&#39;re done.
+For example: defer s.End(false)
+</p>
+
+				
+				
+			
+				
+				<h3 id="SpinnerNoSpin">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=14258:14299#L447">SpinnerNoSpin</a>
+					<a class="permalink" href="#SpinnerNoSpin">¶</a>
+					
+					
+				</h3>
+				<pre>func SpinnerNoSpin(status <a href="../../../../../builtin/#string">string</a>) *<a href="#Status">Status</a></pre>
+				<p>
+SpinnerNoSpin is the same as the &#34;Spinner&#34; function but forces no spinning
+</p>
+
+				
+				
+			
+				
+				<h3 id="Spinnerf">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=14034:14088#L440">Spinnerf</a>
+					<a class="permalink" href="#Spinnerf">¶</a>
+					
+					
+				</h3>
+				<pre>func Spinnerf(format <a href="../../../../../builtin/#string">string</a>, a ...interface{}) *<a href="#Status">Status</a></pre>
+				<p>
+Spinnerf creates a spinner, sets the prefix then returns it.
+Remember to use .End(bool) to stop the spin / when you&#39;re done.
+For example: defer s.End(false)
+for situations where spinning isn&#39;t viable (debug)
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Status.End">func (*Status) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=5402:5436#L176">End</a>
+					<a class="permalink" href="#Status.End">¶</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Status">Status</a>) End(success <a href="../../../../../builtin/#bool">bool</a>)</pre>
+				<p>
+End completes the current status, ending any previous spinning and
+marking the status as success or failure
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Status.EndWithStatus">func (*Status) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=6419:6478#L215">EndWithStatus</a>
+					<a class="permalink" href="#Status.EndWithStatus">¶</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Status">Status</a>) EndWithStatus(status <a href="../../../../../builtin/#string">string</a>, success <a href="../../../../../builtin/#bool">bool</a>)</pre>
+				<p>
+EndWithStatus is similar to End, but lets the user specify a custom message/status while ending
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Status.Start">func (*Status) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=3368:3417#L102">Start</a>
+					<a class="permalink" href="#Status.Start">¶</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Status">Status</a>) Start(status <a href="../../../../../builtin/#string">string</a>, debug <a href="../../../../../builtin/#bool">bool</a>)</pre>
+				<p>
+Start starts a new phase of the status, if attached to a terminal
+there will be a loading spinner with this status
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Status.WarningStatus">func (*Status) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/log/status.go.html?s=2186:2231#L72">WarningStatus</a>
+					<a class="permalink" href="#Status.WarningStatus">¶</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Status">Status</a>) WarningStatus(status <a href="../../../../../builtin/#string">string</a>)</pre>
+				<p>
+WarningStatus puts a warning status within the spinner and then updates the current status
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tbody><tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="fidget/">fidget</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package fidget implements CLI functionality for bored users waiting for results
+					</td>
+				</tr>
+			
+		</tbody></table>
+	</div>
+
+
+
+<div id="footer"><a href="../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

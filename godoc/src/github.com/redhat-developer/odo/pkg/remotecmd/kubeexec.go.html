@@ -1,0 +1,391 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>remotecmd - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Source file
+    <a href="/src">src</a>/<a href="../../../../../../src/github.com.html">github.com</a>/<a href="../../../../../../src/github.com/redhat-developer">redhat-developer</a>/<a href="../../../../../../src/github.com/redhat-developer/odo">odo</a>/<a href="../../../../../../src/github.com/redhat-developer/odo/pkg">pkg</a>/<a href="../../../../../../src/github.com/redhat-developer/odo/pkg/remotecmd">remotecmd</a>/<span class="text-muted">kubeexec.go</span>
+  </h1>
+
+
+
+
+
+  <h2>
+    Documentation: <a href="../../../../../../github.com/redhat-developer/odo/pkg/remotecmd">github.com/redhat-developer/odo/pkg/remotecmd</a>
+  </h2>
+
+
+
+<div id="nav"></div>
+
+
+
+<pre><span id="L1" class="ln">     1  </span>package remotecmd
+<span id="L2" class="ln">     2  </span>
+<span id="L3" class="ln">     3  </span>import (
+<span id="L4" class="ln">     4  </span>	&#34;fmt&#34;
+<span id="L5" class="ln">     5  </span>	&#34;strconv&#34;
+<span id="L6" class="ln">     6  </span>	&#34;strings&#34;
+<span id="L7" class="ln">     7  </span>	&#34;time&#34;
+<span id="L8" class="ln">     8  </span>
+<span id="L9" class="ln">     9  </span>	&#34;k8s.io/klog&#34;
+<span id="L10" class="ln">    10  </span>
+<span id="L11" class="ln">    11  </span>	&#34;github.com/redhat-developer/odo/pkg/kclient&#34;
+<span id="L12" class="ln">    12  </span>	&#34;github.com/redhat-developer/odo/pkg/storage&#34;
+<span id="L13" class="ln">    13  </span>	&#34;github.com/redhat-developer/odo/pkg/task&#34;
+<span id="L14" class="ln">    14  </span>)
+<span id="L15" class="ln">    15  </span>
+<span id="L16" class="ln">    16  </span><span class="comment">// kubeExecProcessHandler implements RemoteProcessHandler by executing Devfile commands right away in the container</span>
+<span id="L17" class="ln">    17  </span><span class="comment">// (like a &#39;kubectl exec&#39;-like approach). Command execution is done in the background, in a separate goroutine.</span>
+<span id="L18" class="ln">    18  </span><span class="comment">// It works by storing the parent process PID in a file in the container,</span>
+<span id="L19" class="ln">    19  </span><span class="comment">// then fires the exec command in the background.</span>
+<span id="L20" class="ln">    20  </span><span class="comment">// The goroutine started can then be stopped by killing the process stored in the state file (_startCmdProcessPidFile)</span>
+<span id="L21" class="ln">    21  </span><span class="comment">// in the container.</span>
+<span id="L22" class="ln">    22  </span>type kubeExecProcessHandler struct{}
+<span id="L23" class="ln">    23  </span>
+<span id="L24" class="ln">    24  </span><span class="comment">//This allows to verify interface compliance at compile-time.</span>
+<span id="L25" class="ln">    25  </span><span class="comment">//See https://github.com/redhat-developer/odo/wiki/Dev:-Coding-Conventions#verify-interface-compliance</span>
+<span id="L26" class="ln">    26  </span>var _ RemoteProcessHandler = (*kubeExecProcessHandler)(nil)
+<span id="L27" class="ln">    27  </span>
+<span id="L28" class="ln">    28  </span>func NewKubeExecProcessHandler() *kubeExecProcessHandler {
+<span id="L29" class="ln">    29  </span>	return &amp;kubeExecProcessHandler{}
+<span id="L30" class="ln">    30  </span>}
+<span id="L31" class="ln">    31  </span>
+<span id="L32" class="ln">    32  </span><span class="comment">// GetProcessInfoForCommand returns information about the process representing the given Devfile command.</span>
+<span id="L33" class="ln">    33  </span><span class="comment">// A PID of 0 denotes a Stopped process.</span>
+<span id="L34" class="ln">    34  </span>func (k *kubeExecProcessHandler) GetProcessInfoForCommand(
+<span id="L35" class="ln">    35  </span>	def CommandDefinition,
+<span id="L36" class="ln">    36  </span>	kclient kclient.ClientInterface,
+<span id="L37" class="ln">    37  </span>	podName string,
+<span id="L38" class="ln">    38  </span>	containerName string,
+<span id="L39" class="ln">    39  </span>) (RemoteProcessInfo, error) {
+<span id="L40" class="ln">    40  </span>	klog.V(4).Infof(&#34;GetProcessInfoForCommand for %q&#34;, def.Id)
+<span id="L41" class="ln">    41  </span>
+<span id="L42" class="ln">    42  </span>	pid, exitStatus, err := getRemoteProcessPID(kclient, def, podName, containerName)
+<span id="L43" class="ln">    43  </span>	if err != nil {
+<span id="L44" class="ln">    44  </span>		return RemoteProcessInfo{}, err
+<span id="L45" class="ln">    45  </span>	}
+<span id="L46" class="ln">    46  </span>
+<span id="L47" class="ln">    47  </span>	return k.getProcessInfoFromPid(pid, exitStatus, kclient, podName, containerName)
+<span id="L48" class="ln">    48  </span>}
+<span id="L49" class="ln">    49  </span>
+<span id="L50" class="ln">    50  </span><span class="comment">// StartProcessForCommand runs the (potentially never finishing) Devfile command in the background.</span>
+<span id="L51" class="ln">    51  </span><span class="comment">// The goroutine spawned here can be stopped either by stopping the parent process (e.g., &#39;odo dev&#39;),</span>
+<span id="L52" class="ln">    52  </span><span class="comment">// or by stopping the underlying remote process by calling the StopProcessForCommand method.</span>
+<span id="L53" class="ln">    53  </span>func (k *kubeExecProcessHandler) StartProcessForCommand(
+<span id="L54" class="ln">    54  </span>	def CommandDefinition,
+<span id="L55" class="ln">    55  </span>	kclient kclient.ClientInterface,
+<span id="L56" class="ln">    56  </span>	podName string,
+<span id="L57" class="ln">    57  </span>	containerName string,
+<span id="L58" class="ln">    58  </span>	outputHandler CommandOutputHandler,
+<span id="L59" class="ln">    59  </span>) error {
+<span id="L60" class="ln">    60  </span>	klog.V(4).Infof(&#34;StartProcessForCommand for %q&#34;, def.Id)
+<span id="L61" class="ln">    61  </span>
+<span id="L62" class="ln">    62  </span>	<span class="comment">// deal with environment variables</span>
+<span id="L63" class="ln">    63  </span>	cmdLine := def.CmdLine
+<span id="L64" class="ln">    64  </span>	envCommands := make([]string, 0, len(def.EnvVars))
+<span id="L65" class="ln">    65  </span>	for _, envVar := range def.EnvVars {
+<span id="L66" class="ln">    66  </span>		envCommands = append(envCommands, fmt.Sprintf(&#34;%s=&#39;%s&#39;&#34;, envVar.Key, envVar.Value))
+<span id="L67" class="ln">    67  </span>	}
+<span id="L68" class="ln">    68  </span>	var setEnvCmd string
+<span id="L69" class="ln">    69  </span>	if len(envCommands) != 0 {
+<span id="L70" class="ln">    70  </span>		setEnvCmd = fmt.Sprintf(&#34;export %s &amp;&amp;&#34;, strings.Join(envCommands, &#34; &#34;))
+<span id="L71" class="ln">    71  </span>	}
+<span id="L72" class="ln">    72  </span>
+<span id="L73" class="ln">    73  </span>	var cdCmd string
+<span id="L74" class="ln">    74  </span>	if def.WorkingDir != &#34;&#34; {
+<span id="L75" class="ln">    75  </span>		<span class="comment">// Change to the workdir and execute the command</span>
+<span id="L76" class="ln">    76  </span>		cdCmd = fmt.Sprintf(&#34;cd %s &amp;&amp;&#34;, def.WorkingDir)
+<span id="L77" class="ln">    77  </span>	}
+<span id="L78" class="ln">    78  </span>
+<span id="L79" class="ln">    79  </span>	<span class="comment">// since we are using /bin/sh -c, the command needs to be within a single double quote instance,</span>
+<span id="L80" class="ln">    80  </span>	<span class="comment">// for example &#34;cd /tmp &amp;&amp; pwd&#34;</span>
+<span id="L81" class="ln">    81  </span>	<span class="comment">// Full command is: /bin/sh -c &#34;[cd $workingDir &amp;&amp; ] echo $$ &gt; $pidFile &amp;&amp; (envVar1=&#39;value1&#39; envVar2=&#39;value2&#39; $cmdLine) 1&gt;&gt;/proc/1/fd/1 2&gt;&gt;/proc/1/fd/2&#34;</span>
+<span id="L82" class="ln">    82  </span>	<span class="comment">//</span>
+<span id="L83" class="ln">    83  </span>	<span class="comment">// &#34;echo $$ &gt; $pidFile&#34; allows to store the /bin/sh parent process PID. It will allow to determine its children later on and kill them when a stop is requested.</span>
+<span id="L84" class="ln">    84  </span>	<span class="comment">// ($cmdLine) runs the command passed in a subshell (to handle cases where the command does more complex things like running processes in the background),</span>
+<span id="L85" class="ln">    85  </span>	<span class="comment">// which will be the child process of the /bin/sh one.</span>
+<span id="L86" class="ln">    86  </span>	<span class="comment">//</span>
+<span id="L87" class="ln">    87  </span>	<span class="comment">// Redirecting to /proc/1/fd/* allows to redirect the process output to the output streams of PID 1 process inside the container.</span>
+<span id="L88" class="ln">    88  </span>	<span class="comment">// This way, returning the container logs with &#39;odo logs&#39; or &#39;kubectl logs&#39; would work seamlessly.</span>
+<span id="L89" class="ln">    89  </span>	<span class="comment">// See https://stackoverflow.com/questions/58716574/where-exactly-do-the-logs-of-kubernetes-pods-come-from-at-the-container-level</span>
+<span id="L90" class="ln">    90  </span>	pidFile := getPidFileForCommand(def)
+<span id="L91" class="ln">    91  </span>	cmd := []string{
+<span id="L92" class="ln">    92  </span>		ShellExecutable, &#34;-c&#34;,
+<span id="L93" class="ln">    93  </span>		fmt.Sprintf(&#34;echo $$ &gt; %[1]s &amp;&amp; %s %s (%s) 1&gt;&gt;/proc/1/fd/1 2&gt;&gt;/proc/1/fd/2; echo $? &gt;&gt; %[1]s&#34;, pidFile, cdCmd, setEnvCmd, cmdLine),
+<span id="L94" class="ln">    94  </span>	}
+<span id="L95" class="ln">    95  </span>
+<span id="L96" class="ln">    96  </span>	go func() {
+<span id="L97" class="ln">    97  </span>		if outputHandler != nil {
+<span id="L98" class="ln">    98  </span>			outputHandler(Starting, nil, nil, nil)
+<span id="L99" class="ln">    99  </span>		}
+<span id="L100" class="ln">   100  </span>
+<span id="L101" class="ln">   101  </span>		stdout, stderr, err := ExecuteCommand(cmd, kclient, podName, containerName, false, nil, nil)
+<span id="L102" class="ln">   102  </span>		if err != nil {
+<span id="L103" class="ln">   103  </span>			klog.V(2).Infof(&#34;error while running background command: %v&#34;, err)
+<span id="L104" class="ln">   104  </span>		}
+<span id="L105" class="ln">   105  </span>
+<span id="L106" class="ln">   106  </span>		if outputHandler != nil {
+<span id="L107" class="ln">   107  </span>			processInfo, infoErr := k.GetProcessInfoForCommand(def, kclient, podName, containerName)
+<span id="L108" class="ln">   108  </span>			if infoErr != nil {
+<span id="L109" class="ln">   109  </span>				outputHandler(Errored, stdout, stderr, err)
+<span id="L110" class="ln">   110  </span>				return
+<span id="L111" class="ln">   111  </span>			}
+<span id="L112" class="ln">   112  </span>			outputHandler(processInfo.Status, stdout, stderr, err)
+<span id="L113" class="ln">   113  </span>		}
+<span id="L114" class="ln">   114  </span>	}()
+<span id="L115" class="ln">   115  </span>
+<span id="L116" class="ln">   116  </span>	return nil
+<span id="L117" class="ln">   117  </span>}
+<span id="L118" class="ln">   118  </span>
+<span id="L119" class="ln">   119  </span><span class="comment">// StopProcessForCommand stops the process representing the specified Devfile command.</span>
+<span id="L120" class="ln">   120  </span><span class="comment">// Because of the way this process is launched and its PID stored (see StartProcessForCommand),</span>
+<span id="L121" class="ln">   121  </span><span class="comment">// we need to determine the process children (there should be only one child which is the sub-shell running the command passed to StartProcessForCommand).</span>
+<span id="L122" class="ln">   122  </span><span class="comment">// Then killing those children will exit the parent &#39;sh&#39; process.</span>
+<span id="L123" class="ln">   123  </span>func (k *kubeExecProcessHandler) StopProcessForCommand(
+<span id="L124" class="ln">   124  </span>	def CommandDefinition,
+<span id="L125" class="ln">   125  </span>	kclient kclient.ClientInterface,
+<span id="L126" class="ln">   126  </span>	podName string,
+<span id="L127" class="ln">   127  </span>	containerName string,
+<span id="L128" class="ln">   128  </span>) error {
+<span id="L129" class="ln">   129  </span>	klog.V(4).Infof(&#34;StopProcessForCommand for %q&#34;, def.Id)
+<span id="L130" class="ln">   130  </span>	defer func() {
+<span id="L131" class="ln">   131  </span>		pidFile := getPidFileForCommand(def)
+<span id="L132" class="ln">   132  </span>		_, _, err := ExecuteCommand([]string{ShellExecutable, &#34;-c&#34;, fmt.Sprintf(&#34;rm -f %s&#34;, pidFile)},
+<span id="L133" class="ln">   133  </span>			kclient, podName, containerName, false, nil, nil)
+<span id="L134" class="ln">   134  </span>		if err != nil {
+<span id="L135" class="ln">   135  </span>			klog.V(2).Infof(&#34;Could not remove file %q: %v&#34;, pidFile, err)
+<span id="L136" class="ln">   136  </span>		}
+<span id="L137" class="ln">   137  </span>	}()
+<span id="L138" class="ln">   138  </span>
+<span id="L139" class="ln">   139  </span>	kill := func(p int) error {
+<span id="L140" class="ln">   140  </span>		_, _, err := ExecuteCommand([]string{ShellExecutable, &#34;-c&#34;, fmt.Sprintf(&#34;kill %d || true&#34;, p)},
+<span id="L141" class="ln">   141  </span>			kclient, podName, containerName, false, nil, nil)
+<span id="L142" class="ln">   142  </span>		if err != nil {
+<span id="L143" class="ln">   143  </span>			return err
+<span id="L144" class="ln">   144  </span>		}
+<span id="L145" class="ln">   145  </span>
+<span id="L146" class="ln">   146  </span>		<span class="comment">//Because the process we just stopped might take longer to exit (it might have caught the signal and is performing additional cleanup),</span>
+<span id="L147" class="ln">   147  </span>		<span class="comment">//retry detecting its actual state till it is stopped or timeout expires</span>
+<span id="L148" class="ln">   148  </span>		var processInfo interface{}
+<span id="L149" class="ln">   149  </span>		processInfo, err = task.NewRetryable(fmt.Sprintf(&#34;status for remote process %d&#34;, p), func() (bool, interface{}, error) {
+<span id="L150" class="ln">   150  </span>			pInfo, e := k.getProcessInfoFromPid(p, 0, kclient, podName, containerName)
+<span id="L151" class="ln">   151  </span>			return e == nil &amp;&amp; (pInfo.Status == Stopped || pInfo.Status == Errored), pInfo, e
+<span id="L152" class="ln">   152  </span>		}).RetryWithSchedule([]time.Duration{2 * time.Second, 4 * time.Second, 8 * time.Second}, true)
+<span id="L153" class="ln">   153  </span>		if err != nil {
+<span id="L154" class="ln">   154  </span>			return err
+<span id="L155" class="ln">   155  </span>		}
+<span id="L156" class="ln">   156  </span>
+<span id="L157" class="ln">   157  </span>		pInfo, ok := processInfo.(RemoteProcessInfo)
+<span id="L158" class="ln">   158  </span>		if !ok {
+<span id="L159" class="ln">   159  </span>			klog.V(2).Infof(&#34;invalid type for remote process (%d) info, expected RemoteProcessInfo&#34;, p)
+<span id="L160" class="ln">   160  </span>			return fmt.Errorf(&#34;internal error while checking remote process status: %d&#34;, p)
+<span id="L161" class="ln">   161  </span>		}
+<span id="L162" class="ln">   162  </span>		if pInfo.Status != Stopped &amp;&amp; pInfo.Status != Errored {
+<span id="L163" class="ln">   163  </span>			return fmt.Errorf(&#34;invalid status for remote process %d: %+v&#34;, p, processInfo)
+<span id="L164" class="ln">   164  </span>		}
+<span id="L165" class="ln">   165  </span>		return nil
+<span id="L166" class="ln">   166  </span>	}
+<span id="L167" class="ln">   167  </span>
+<span id="L168" class="ln">   168  </span>	ppid, _, err := getRemoteProcessPID(kclient, def, podName, containerName)
+<span id="L169" class="ln">   169  </span>	if err != nil {
+<span id="L170" class="ln">   170  </span>		return err
+<span id="L171" class="ln">   171  </span>	}
+<span id="L172" class="ln">   172  </span>	if ppid == 0 {
+<span id="L173" class="ln">   173  </span>		return nil
+<span id="L174" class="ln">   174  </span>	}
+<span id="L175" class="ln">   175  </span>
+<span id="L176" class="ln">   176  </span>	children, err := getProcessChildren(ppid, kclient, podName, containerName)
+<span id="L177" class="ln">   177  </span>	if err != nil {
+<span id="L178" class="ln">   178  </span>		return err
+<span id="L179" class="ln">   179  </span>	}
+<span id="L180" class="ln">   180  </span>
+<span id="L181" class="ln">   181  </span>	if len(children) == 0 {
+<span id="L182" class="ln">   182  </span>		<span class="comment">//TODO(rm3l): A length of 0 might indicate that there is no children file, which might happen if the host kernel</span>
+<span id="L183" class="ln">   183  </span>		<span class="comment">//was not built with the CONFIG_PROC_CHILDREN config.</span>
+<span id="L184" class="ln">   184  </span>		<span class="comment">//This happened for example with the Minikube VM when using its (non-default) VirtualBox driver.</span>
+<span id="L185" class="ln">   185  </span>		<span class="comment">//In this case, we should find a fallback mechanism to identify those children processes and kill them.</span>
+<span id="L186" class="ln">   186  </span>		return kill(ppid)
+<span id="L187" class="ln">   187  </span>	}
+<span id="L188" class="ln">   188  </span>
+<span id="L189" class="ln">   189  </span>	for _, child := range children {
+<span id="L190" class="ln">   190  </span>		if err = kill(child); err != nil {
+<span id="L191" class="ln">   191  </span>			return err
+<span id="L192" class="ln">   192  </span>		}
+<span id="L193" class="ln">   193  </span>	}
+<span id="L194" class="ln">   194  </span>
+<span id="L195" class="ln">   195  </span>	return nil
+<span id="L196" class="ln">   196  </span>}
+<span id="L197" class="ln">   197  </span>
+<span id="L198" class="ln">   198  </span>func getRemoteProcessPID(kclient kclient.ClientInterface, def CommandDefinition, podName string, containerName string) (int, int, error) {
+<span id="L199" class="ln">   199  </span>	pidFile := getPidFileForCommand(def)
+<span id="L200" class="ln">   200  </span>	stdout, stderr, err := ExecuteCommand(
+<span id="L201" class="ln">   201  </span>		[]string{ShellExecutable, &#34;-c&#34;, fmt.Sprintf(&#34;cat %s || true&#34;, pidFile)},
+<span id="L202" class="ln">   202  </span>		kclient, podName, containerName, false, nil, nil)
+<span id="L203" class="ln">   203  </span>
+<span id="L204" class="ln">   204  </span>	if err != nil {
+<span id="L205" class="ln">   205  </span>		return 0, 0, err
+<span id="L206" class="ln">   206  </span>	}
+<span id="L207" class="ln">   207  </span>
+<span id="L208" class="ln">   208  </span>	if len(stdout) == 0 {
+<span id="L209" class="ln">   209  </span>		<span class="comment">//The file does not exist. We assume the process has not run yet.</span>
+<span id="L210" class="ln">   210  </span>		return 0, 0, nil
+<span id="L211" class="ln">   211  </span>	}
+<span id="L212" class="ln">   212  </span>	if len(stdout) &gt; 2 {
+<span id="L213" class="ln">   213  </span>		return 0, 0, fmt.Errorf(
+<span id="L214" class="ln">   214  </span>			&#34;unable to determine command status, due to unexpected number of lines for %s, output: %v %v&#34;,
+<span id="L215" class="ln">   215  </span>			pidFile, stdout, stderr)
+<span id="L216" class="ln">   216  </span>	}
+<span id="L217" class="ln">   217  </span>
+<span id="L218" class="ln">   218  </span>	line := stdout[0]
+<span id="L219" class="ln">   219  </span>	var pid int
+<span id="L220" class="ln">   220  </span>	pid, err = strconv.Atoi(strings.TrimSpace(line))
+<span id="L221" class="ln">   221  </span>	if err != nil {
+<span id="L222" class="ln">   222  </span>		klog.V(2).Infof(&#34;error while trying to retrieve status of command: %+v&#34;, err)
+<span id="L223" class="ln">   223  </span>		return 0, 0, fmt.Errorf(&#34;unable to determine command status, due to unexpected PID content for %s: %s&#34;,
+<span id="L224" class="ln">   224  </span>			pidFile, line)
+<span id="L225" class="ln">   225  </span>	}
+<span id="L226" class="ln">   226  </span>	if len(stdout) == 1 {
+<span id="L227" class="ln">   227  </span>		return pid, 0, nil
+<span id="L228" class="ln">   228  </span>	}
+<span id="L229" class="ln">   229  </span>
+<span id="L230" class="ln">   230  </span>	line2 := stdout[1]
+<span id="L231" class="ln">   231  </span>	var exitStatus int
+<span id="L232" class="ln">   232  </span>	exitStatus, err = strconv.Atoi(strings.TrimSpace(line2))
+<span id="L233" class="ln">   233  </span>	if err != nil {
+<span id="L234" class="ln">   234  </span>		klog.V(2).Infof(&#34;error while trying to retrieve status of command: %+v&#34;, err)
+<span id="L235" class="ln">   235  </span>		return pid, 0, fmt.Errorf(&#34;unable to determine command status, due to unexpected exit status content for %s: %s&#34;,
+<span id="L236" class="ln">   236  </span>			pidFile, line2)
+<span id="L237" class="ln">   237  </span>	}
+<span id="L238" class="ln">   238  </span>
+<span id="L239" class="ln">   239  </span>	return pid, exitStatus, nil
+<span id="L240" class="ln">   240  </span>}
+<span id="L241" class="ln">   241  </span>
+<span id="L242" class="ln">   242  </span>func (k *kubeExecProcessHandler) getProcessInfoFromPid(
+<span id="L243" class="ln">   243  </span>	pid int,
+<span id="L244" class="ln">   244  </span>	lastKnownExitStatus int,
+<span id="L245" class="ln">   245  </span>	kclient kclient.ClientInterface,
+<span id="L246" class="ln">   246  </span>	podName string,
+<span id="L247" class="ln">   247  </span>	containerName string,
+<span id="L248" class="ln">   248  </span>) (RemoteProcessInfo, error) {
+<span id="L249" class="ln">   249  </span>	process := RemoteProcessInfo{Pid: pid}
+<span id="L250" class="ln">   250  </span>
+<span id="L251" class="ln">   251  </span>	if pid &lt; 0 {
+<span id="L252" class="ln">   252  </span>		process.Status = Unknown
+<span id="L253" class="ln">   253  </span>		return process, fmt.Errorf(&#34;invalid PID value for remote process: %d&#34;, pid)
+<span id="L254" class="ln">   254  </span>	}
+<span id="L255" class="ln">   255  </span>	if pid == 0 {
+<span id="L256" class="ln">   256  </span>		process.Status = Stopped
+<span id="L257" class="ln">   257  </span>		return process, nil
+<span id="L258" class="ln">   258  </span>	}
+<span id="L259" class="ln">   259  </span>
+<span id="L260" class="ln">   260  </span>	<span class="comment">//Now check that the PID value is a valid process</span>
+<span id="L261" class="ln">   261  </span>	stdout, _, err := ExecuteCommand(
+<span id="L262" class="ln">   262  </span>		[]string{ShellExecutable, &#34;-c&#34;, fmt.Sprintf(&#34;kill -0 %d; echo $?&#34;, pid)},
+<span id="L263" class="ln">   263  </span>		kclient, podName, containerName, false, nil, nil)
+<span id="L264" class="ln">   264  </span>
+<span id="L265" class="ln">   265  </span>	if err != nil {
+<span id="L266" class="ln">   266  </span>		process.Status = Unknown
+<span id="L267" class="ln">   267  </span>		return process, err
+<span id="L268" class="ln">   268  </span>	}
+<span id="L269" class="ln">   269  </span>
+<span id="L270" class="ln">   270  </span>	var killStatus int
+<span id="L271" class="ln">   271  </span>	killStatus, err = strconv.Atoi(strings.TrimSpace(stdout[0]))
+<span id="L272" class="ln">   272  </span>	if err != nil {
+<span id="L273" class="ln">   273  </span>		process.Status = Unknown
+<span id="L274" class="ln">   274  </span>		return process, err
+<span id="L275" class="ln">   275  </span>	}
+<span id="L276" class="ln">   276  </span>
+<span id="L277" class="ln">   277  </span>	if killStatus == 0 {
+<span id="L278" class="ln">   278  </span>		process.Status = Running
+<span id="L279" class="ln">   279  </span>	} else {
+<span id="L280" class="ln">   280  </span>		if lastKnownExitStatus == 0 {
+<span id="L281" class="ln">   281  </span>			process.Status = Stopped
+<span id="L282" class="ln">   282  </span>		} else {
+<span id="L283" class="ln">   283  </span>			process.Status = Errored
+<span id="L284" class="ln">   284  </span>		}
+<span id="L285" class="ln">   285  </span>	}
+<span id="L286" class="ln">   286  </span>
+<span id="L287" class="ln">   287  </span>	return process, nil
+<span id="L288" class="ln">   288  </span>}
+<span id="L289" class="ln">   289  </span>
+<span id="L290" class="ln">   290  </span><span class="comment">// getProcessChildren returns the children of the specified process in the given container.</span>
+<span id="L291" class="ln">   291  </span><span class="comment">// It works by reading the /proc/&lt;pid&gt;/task/&lt;pid&gt;/children file, which is a space-separated list of children</span>
+<span id="L292" class="ln">   292  </span>func getProcessChildren(pid int, kclient kclient.ClientInterface, podName string, containerName string) ([]int, error) {
+<span id="L293" class="ln">   293  </span>	if pid &lt;= 0 {
+<span id="L294" class="ln">   294  </span>		return nil, fmt.Errorf(&#34;invalid pid: %d&#34;, pid)
+<span id="L295" class="ln">   295  </span>	}
+<span id="L296" class="ln">   296  </span>
+<span id="L297" class="ln">   297  </span>	stdout, _, err := ExecuteCommand(
+<span id="L298" class="ln">   298  </span>		[]string{ShellExecutable, &#34;-c&#34;, fmt.Sprintf(&#34;cat /proc/%[1]d/task/%[1]d/children || true&#34;, pid)},
+<span id="L299" class="ln">   299  </span>		kclient, podName, containerName, false, nil, nil)
+<span id="L300" class="ln">   300  </span>	if err != nil {
+<span id="L301" class="ln">   301  </span>		return nil, err
+<span id="L302" class="ln">   302  </span>	}
+<span id="L303" class="ln">   303  </span>
+<span id="L304" class="ln">   304  </span>	var children []int
+<span id="L305" class="ln">   305  </span>	for _, line := range stdout {
+<span id="L306" class="ln">   306  </span>		l := strings.Split(strings.TrimSpace(line), &#34; &#34;)
+<span id="L307" class="ln">   307  </span>		for _, p := range l {
+<span id="L308" class="ln">   308  </span>			c, err := strconv.Atoi(p)
+<span id="L309" class="ln">   309  </span>			if err != nil {
+<span id="L310" class="ln">   310  </span>				return children, err
+<span id="L311" class="ln">   311  </span>			}
+<span id="L312" class="ln">   312  </span>			children = append(children, c)
+<span id="L313" class="ln">   313  </span>		}
+<span id="L314" class="ln">   314  </span>	}
+<span id="L315" class="ln">   315  </span>
+<span id="L316" class="ln">   316  </span>	return children, nil
+<span id="L317" class="ln">   317  </span>}
+<span id="L318" class="ln">   318  </span>
+<span id="L319" class="ln">   319  </span><span class="comment">// getPidFileForCommand returns the path to the PID file in the remote container.</span>
+<span id="L320" class="ln">   320  </span><span class="comment">// The parent folder is supposed to be existing, because it should be mounted in the container using the mandatory</span>
+<span id="L321" class="ln">   321  </span><span class="comment">// shared volume (more info in the AddOdoMandatoryVolume function from the utils package).</span>
+<span id="L322" class="ln">   322  </span>func getPidFileForCommand(def CommandDefinition) string {
+<span id="L323" class="ln">   323  </span>	return fmt.Sprintf(&#34;%s/.odo_cmd_%s.pid&#34;, strings.TrimSuffix(storage.SharedDataMountPath, &#34;/&#34;), def.Id)
+<span id="L324" class="ln">   324  </span>}
+<span id="L325" class="ln">   325  </span>
+</pre><p><a href="../../../../../../src/github.com/redhat-developer/odo/pkg/remotecmd/kubeexec.go.html?m=text">View as plain text</a></p>
+
+<div id="footer"><a href="../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

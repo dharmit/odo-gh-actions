@@ -1,0 +1,399 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>alizer - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package alizer
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/alizer" target="_blank">github.com/redhat-developer/odo/pkg/alizer</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package alizer is a generated GoMock package.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#GetDevfileLocationFromDetection">func GetDevfileLocationFromDetection(typ recognizer.DevFileType, registry api.Registry) *api.DevfileLocation</a></dd>
+			
+			
+				
+				<dd><a href="#Alizer">type Alizer</a></dd>
+				
+					
+					<dd>    <a href="#NewAlizerClient">func NewAlizerClient(registryClient registry.Client) *Alizer</a></dd>
+				
+				
+					
+					<dd>    <a href="#Alizer.DetectFramework">func (o *Alizer) DetectFramework(path string) (recognizer.DevFileType, api.Registry, error)</a></dd>
+				
+			
+				
+				<dd><a href="#Client">type Client</a></dd>
+				
+				
+			
+				
+				<dd><a href="#MockClient">type MockClient</a></dd>
+				
+					
+					<dd>    <a href="#NewMockClient">func NewMockClient(ctrl *gomock.Controller) *MockClient</a></dd>
+				
+				
+					
+					<dd>    <a href="#MockClient.DetectFramework">func (m *MockClient) DetectFramework(path string) (recognizer.DevFileType, api.Registry, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.EXPECT">func (m *MockClient) EXPECT() *MockClientMockRecorder</a></dd>
+				
+			
+				
+				<dd><a href="#MockClientMockRecorder">type MockClientMockRecorder</a></dd>
+				
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.DetectFramework">func (mr *MockClientMockRecorder) DetectFramework(path interface{}) *gomock.Call</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/alizer.go.html">alizer.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/interface.go.html">interface.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/mock.go.html">mock.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="GetDevfileLocationFromDetection">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/alizer.go.html?s=1221:1329#L34">GetDevfileLocationFromDetection</a>
+				<a class="permalink" href="#GetDevfileLocationFromDetection">¶</a>
+				
+				
+			</h2>
+			<pre>func GetDevfileLocationFromDetection(typ <a href="../../../../../github.com/redhat-developer/alizer/go/pkg/apis/recognizer/">recognizer</a>.<a href="../../../../../github.com/redhat-developer/alizer/go/pkg/apis/recognizer/#DevFileType">DevFileType</a>, registry <a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#Registry">Registry</a>) *<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#DevfileLocation">DevfileLocation</a></pre>
+			
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Alizer">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/alizer.go.html?s=180:234#L1">Alizer</a>
+				<a class="permalink" href="#Alizer">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type Alizer struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewAlizerClient">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/alizer.go.html?s=267:327#L5">NewAlizerClient</a>
+					<a class="permalink" href="#NewAlizerClient">¶</a>
+					
+					
+				</h3>
+				<pre>func NewAlizerClient(registryClient <a href="../../../../../github.com/redhat-developer/odo/pkg/registry/">registry</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/registry/#Client">Client</a>) *<a href="#Alizer">Alizer</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="Alizer.DetectFramework">func (*Alizer) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/alizer.go.html?s=506:597#L13">DetectFramework</a>
+					<a class="permalink" href="#Alizer.DetectFramework">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#Alizer">Alizer</a>) DetectFramework(path <a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../github.com/redhat-developer/alizer/go/pkg/apis/recognizer/">recognizer</a>.<a href="../../../../../github.com/redhat-developer/alizer/go/pkg/apis/recognizer/#DevFileType">DevFileType</a>, <a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#Registry">Registry</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+DetectFramework uses the alizer library in order to detect the devfile
+to use depending on the files in the path
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Client">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/interface.go.html?s=132:233#L1">Client</a>
+				<a class="permalink" href="#Client">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type Client interface {
+    DetectFramework(path <a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../github.com/redhat-developer/alizer/go/pkg/apis/recognizer/">recognizer</a>.<a href="../../../../../github.com/redhat-developer/alizer/go/pkg/apis/recognizer/#DevFileType">DevFileType</a>, <a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#Registry">Registry</a>, <a href="../../../../../builtin/#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MockClient">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/mock.go.html?s=380:469#L6">MockClient</a>
+				<a class="permalink" href="#MockClient">¶</a>
+				
+				
+			</h2>
+			<p>
+MockClient is a mock of Client interface.
+</p>
+
+			<pre>type MockClient struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewMockClient">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/mock.go.html?s=638:693#L17">NewMockClient</a>
+					<a class="permalink" href="#NewMockClient">¶</a>
+					
+					
+				</h3>
+				<pre>func NewMockClient(ctrl *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Controller">Controller</a>) *<a href="#MockClient">MockClient</a></pre>
+				<p>
+NewMockClient creates a new mock instance.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="MockClient.DetectFramework">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/mock.go.html?s=985:1080#L29">DetectFramework</a>
+					<a class="permalink" href="#MockClient.DetectFramework">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) DetectFramework(path <a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../github.com/redhat-developer/alizer/go/pkg/apis/recognizer/">recognizer</a>.<a href="../../../../../github.com/redhat-developer/alizer/go/pkg/apis/recognizer/#DevFileType">DevFileType</a>, <a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#Registry">Registry</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+DetectFramework mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.EXPECT">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/mock.go.html?s=869:922#L24">EXPECT</a>
+					<a class="permalink" href="#MockClient.EXPECT">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) EXPECT() *<a href="#MockClientMockRecorder">MockClientMockRecorder</a></pre>
+				<p>
+EXPECT returns an object that allows the caller to indicate expected use.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MockClientMockRecorder">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/mock.go.html?s=534:590#L12">MockClientMockRecorder</a>
+				<a class="permalink" href="#MockClientMockRecorder">¶</a>
+				
+				
+			</h2>
+			<p>
+MockClientMockRecorder is the mock recorder for MockClient.
+</p>
+
+			<pre>type MockClientMockRecorder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="MockClientMockRecorder.DetectFramework">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/alizer/mock.go.html?s=1349:1429#L39">DetectFramework</a>
+					<a class="permalink" href="#MockClientMockRecorder.DetectFramework">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) DetectFramework(path interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+DetectFramework indicates an expected call of DetectFramework.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer"><a href="../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

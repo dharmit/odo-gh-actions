@@ -1,0 +1,487 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>describe - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package describe
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/odo/cli/describe" target="_blank">github.com/redhat-developer/odo/pkg/odo/cli/describe</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="#NewCmdBinding">func NewCmdBinding(name, fullName string) *cobra.Command</a></dd>
+			
+				
+				<dd><a href="#NewCmdComponent">func NewCmdComponent(name, fullName string) *cobra.Command</a></dd>
+			
+				
+				<dd><a href="#NewCmdDescribe">func NewCmdDescribe(name, fullName string) *cobra.Command</a></dd>
+			
+			
+				
+				<dd><a href="#BindingOptions">type BindingOptions</a></dd>
+				
+					
+					<dd>    <a href="#NewBindingOptions">func NewBindingOptions() *BindingOptions</a></dd>
+				
+				
+					
+					<dd>    <a href="#BindingOptions.Complete">func (o *BindingOptions) Complete(cmdline cmdline.Cmdline, args []string) (err error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingOptions.Run">func (o *BindingOptions) Run(ctx context.Context) error</a></dd>
+				
+					
+					<dd>    <a href="#BindingOptions.RunForJsonOutput">func (o *BindingOptions) RunForJsonOutput(ctx context.Context) (out interface{}, err error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingOptions.SetClientset">func (o *BindingOptions) SetClientset(clientset *clientset.Clientset)</a></dd>
+				
+					
+					<dd>    <a href="#BindingOptions.Validate">func (o *BindingOptions) Validate() (err error)</a></dd>
+				
+			
+				
+				<dd><a href="#ComponentOptions">type ComponentOptions</a></dd>
+				
+					
+					<dd>    <a href="#NewComponentOptions">func NewComponentOptions() *ComponentOptions</a></dd>
+				
+				
+					
+					<dd>    <a href="#ComponentOptions.Complete">func (o *ComponentOptions) Complete(cmdline cmdline.Cmdline, args []string) (err error)</a></dd>
+				
+					
+					<dd>    <a href="#ComponentOptions.Run">func (o *ComponentOptions) Run(ctx context.Context) error</a></dd>
+				
+					
+					<dd>    <a href="#ComponentOptions.RunForJsonOutput">func (o *ComponentOptions) RunForJsonOutput(ctx context.Context) (out interface{}, err error)</a></dd>
+				
+					
+					<dd>    <a href="#ComponentOptions.SetClientset">func (o *ComponentOptions) SetClientset(clientset *clientset.Clientset)</a></dd>
+				
+					
+					<dd>    <a href="#ComponentOptions.Validate">func (o *ComponentOptions) Validate() (err error)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/binding.go.html">binding.go</a>
+			
+				<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/component.go.html">component.go</a>
+			
+				<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/describe.go.html">describe.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+BindingRecommendedCommandName is the recommended binding sub-command name
+</p>
+
+				<pre>const <span id="BindingRecommendedCommandName">BindingRecommendedCommandName</span> = &#34;binding&#34;</pre>
+			
+				<p>
+ComponentRecommendedCommandName is the recommended component sub-command name
+</p>
+
+				<pre>const <span id="ComponentRecommendedCommandName">ComponentRecommendedCommandName</span> = &#34;component&#34;</pre>
+			
+				<p>
+RecommendedCommandName is the recommended delete command name
+</p>
+
+				<pre>const <span id="RecommendedCommandName">RecommendedCommandName</span> = &#34;describe&#34;</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="NewCmdBinding">func <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/binding.go.html?s=2866:2922#L105">NewCmdBinding</a>
+				<a class="permalink" href="#NewCmdBinding">¶</a>
+				
+				
+			</h2>
+			<pre>func NewCmdBinding(name, fullName <a href="../../../../../../../builtin/#string">string</a>) *<a href="../../../../../../../github.com/spf13/cobra/">cobra</a>.<a href="../../../../../../../github.com/spf13/cobra/#Command">Command</a></pre>
+			<p>
+NewCmdBinding implements the binding odo sub-command
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewCmdComponent">func <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/component.go.html?s=7395:7453#L220">NewCmdComponent</a>
+				<a class="permalink" href="#NewCmdComponent">¶</a>
+				
+				
+			</h2>
+			<pre>func NewCmdComponent(name, fullName <a href="../../../../../../../builtin/#string">string</a>) *<a href="../../../../../../../github.com/spf13/cobra/">cobra</a>.<a href="../../../../../../../github.com/spf13/cobra/#Command">Command</a></pre>
+			<p>
+NewCmdComponent implements the component odo sub-command
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewCmdDescribe">func <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/describe.go.html?s=266:323#L2">NewCmdDescribe</a>
+				<a class="permalink" href="#NewCmdDescribe">¶</a>
+				
+				
+			</h2>
+			<pre>func NewCmdDescribe(name, fullName <a href="../../../../../../../builtin/#string">string</a>) *<a href="../../../../../../../github.com/spf13/cobra/">cobra</a>.<a href="../../../../../../../github.com/spf13/cobra/#Command">Command</a></pre>
+			<p>
+NewCmdDescribe implements the describe odo command
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="BindingOptions">type <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/binding.go.html?s=798:1025#L22">BindingOptions</a>
+				<a class="permalink" href="#BindingOptions">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type BindingOptions struct {
+
+    <span class="comment">// Context</span>
+    *<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/">genericclioptions</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/#Context">Context</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewBindingOptions">func <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/binding.go.html?s=1209:1249#L40">NewBindingOptions</a>
+					<a class="permalink" href="#NewBindingOptions">¶</a>
+					
+					
+				</h3>
+				<pre>func NewBindingOptions() *<a href="#BindingOptions">BindingOptions</a></pre>
+				<p>
+NewBindingOptions returns new instance of BindingOptions
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="BindingOptions.Complete">func (*BindingOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/binding.go.html?s=1381:1466#L48">Complete</a>
+					<a class="permalink" href="#BindingOptions.Complete">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingOptions">BindingOptions</a>) Complete(cmdline <a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/cmdline/">cmdline</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/cmdline/#Cmdline">Cmdline</a>, args []<a href="../../../../../../../builtin/#string">string</a>) (err <a href="../../../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingOptions.Run">func (*BindingOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/binding.go.html?s=1920:1975#L70">Run</a>
+					<a class="permalink" href="#BindingOptions.Run">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingOptions">BindingOptions</a>) Run(ctx <a href="../../../../../../../context/">context</a>.<a href="../../../../../../../context/#Context">Context</a>) <a href="../../../../../../../builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingOptions.RunForJsonOutput">func (*BindingOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/binding.go.html?s=2312:2403#L89">RunForJsonOutput</a>
+					<a class="permalink" href="#BindingOptions.RunForJsonOutput">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingOptions">BindingOptions</a>) RunForJsonOutput(ctx <a href="../../../../../../../context/">context</a>.<a href="../../../../../../../context/#Context">Context</a>) (out interface{}, err <a href="../../../../../../../builtin/#error">error</a>)</pre>
+				<p>
+Run contains the logic for the odo command
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BindingOptions.SetClientset">func (*BindingOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/binding.go.html?s=1281:1350#L44">SetClientset</a>
+					<a class="permalink" href="#BindingOptions.SetClientset">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingOptions">BindingOptions</a>) SetClientset(clientset *<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/clientset/">clientset</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/clientset/#Clientset">Clientset</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingOptions.Validate">func (*BindingOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/binding.go.html?s=1855:1902#L66">Validate</a>
+					<a class="permalink" href="#BindingOptions.Validate">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingOptions">BindingOptions</a>) Validate() (err <a href="../../../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ComponentOptions">type <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/component.go.html?s=1034:1350#L26">ComponentOptions</a>
+				<a class="permalink" href="#ComponentOptions">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type ComponentOptions struct {
+
+    <span class="comment">// Context</span>
+    *<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/">genericclioptions</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/#Context">Context</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewComponentOptions">func <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/component.go.html?s=1542:1586#L44">NewComponentOptions</a>
+					<a class="permalink" href="#NewComponentOptions">¶</a>
+					
+					
+				</h3>
+				<pre>func NewComponentOptions() *<a href="#ComponentOptions">ComponentOptions</a></pre>
+				<p>
+NewComponentOptions returns new instance of ComponentOptions
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ComponentOptions.Complete">func (*ComponentOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/component.go.html?s=1722:1809#L52">Complete</a>
+					<a class="permalink" href="#ComponentOptions.Complete">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#ComponentOptions">ComponentOptions</a>) Complete(cmdline <a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/cmdline/">cmdline</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/cmdline/#Cmdline">Cmdline</a>, args []<a href="../../../../../../../builtin/#string">string</a>) (err <a href="../../../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ComponentOptions.Run">func (*ComponentOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/component.go.html?s=2783:2840#L81">Run</a>
+					<a class="permalink" href="#ComponentOptions.Run">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#ComponentOptions">ComponentOptions</a>) Run(ctx <a href="../../../../../../../context/">context</a>.<a href="../../../../../../../context/#Context">Context</a>) <a href="../../../../../../../builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ComponentOptions.RunForJsonOutput">func (*ComponentOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/component.go.html?s=3017:3110#L90">RunForJsonOutput</a>
+					<a class="permalink" href="#ComponentOptions.RunForJsonOutput">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#ComponentOptions">ComponentOptions</a>) RunForJsonOutput(ctx <a href="../../../../../../../context/">context</a>.<a href="../../../../../../../context/#Context">Context</a>) (out interface{}, err <a href="../../../../../../../builtin/#error">error</a>)</pre>
+				<p>
+Run contains the logic for the odo command
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ComponentOptions.SetClientset">func (*ComponentOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/component.go.html?s=1620:1691#L48">SetClientset</a>
+					<a class="permalink" href="#ComponentOptions.SetClientset">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#ComponentOptions">ComponentOptions</a>) SetClientset(clientset *<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/clientset/">clientset</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/clientset/#Clientset">Clientset</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ComponentOptions.Validate">func (*ComponentOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/describe/component.go.html?s=2716:2765#L77">Validate</a>
+					<a class="permalink" href="#ComponentOptions.Validate">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#ComponentOptions">ComponentOptions</a>) Validate() (err <a href="../../../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer"><a href="../../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

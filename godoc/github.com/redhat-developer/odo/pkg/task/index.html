@@ -1,0 +1,250 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>task - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package task
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/task" target="_blank">github.com/redhat-developer/odo/pkg/task</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="#Retryable">type Retryable</a></dd>
+				
+					
+					<dd>    <a href="#NewRetryable">func NewRetryable(description string, runner Runner) Retryable</a></dd>
+				
+				
+					
+					<dd>    <a href="#Retryable.RetryWithSchedule">func (r Retryable) RetryWithSchedule(schedule []time.Duration, errorIfTimeout bool) (interface{}, error)</a></dd>
+				
+			
+				
+				<dd><a href="#Runner">type Runner</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/task/retry.go.html">retry.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="Retryable">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/task/retry.go.html?s=109:264#L1">Retryable</a>
+				<a class="permalink" href="#Retryable">¶</a>
+				
+				
+			</h2>
+			<p>
+Retryable represents a task that can be retried.
+</p>
+
+			<pre>type Retryable struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewRetryable">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/task/retry.go.html?s=641:703#L14">NewRetryable</a>
+					<a class="permalink" href="#NewRetryable">¶</a>
+					
+					
+				</h3>
+				<pre>func NewRetryable(description <a href="../../../../../builtin/#string">string</a>, runner <a href="#Runner">Runner</a>) <a href="#Retryable">Retryable</a></pre>
+				<p>
+NewRetryable creates and returns a new Retryable task.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Retryable.RetryWithSchedule">func (Retryable) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/task/retry.go.html?s=1322:1426#L26">RetryWithSchedule</a>
+					<a class="permalink" href="#Retryable.RetryWithSchedule">¶</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="#Retryable">Retryable</a>) RetryWithSchedule(schedule []<a href="../../../../../time/">time</a>.<a href="../../../../../time/#Duration">Duration</a>, errorIfTimeout <a href="../../../../../builtin/#bool">bool</a>) (interface{}, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+RetryWithSchedule invokes the retryable runner function, and keeps retrying until this runner returns an exitCondition that evaluates to false,
+or the given timeout expires. The timeout schedule can be a seen as a backoff schedule, in the sense that before recalling the runner function,
+RetryWithSchedule waits for each duration defined in the given schedule.
+If the exitCondition is not true after all retries, the behavior is governed by the errorIfTimeout parameter.
+If errorIfTimeout is true, then an error is returned.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Runner">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/task/retry.go.html?s=511:581#L11">Runner</a>
+				<a class="permalink" href="#Runner">¶</a>
+				
+				
+			</h2>
+			<p>
+Runner is a function that will get invoked via RetryWithSchedule. If exitCondition is false, the function will get invoked again, until
+the given timeout schedule expires. It then returns a result of any type along with a potential error.
+</p>
+
+			<pre>type Runner func() (exitCondition <a href="../../../../../builtin/#bool">bool</a>, result interface{}, err <a href="../../../../../builtin/#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer"><a href="../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

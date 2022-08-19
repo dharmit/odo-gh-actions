@@ -1,0 +1,137 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>libdevfile - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Source file
+    <a href="/src">src</a>/<a href="../../../../../../src/github.com.html">github.com</a>/<a href="../../../../../../src/github.com/redhat-developer">redhat-developer</a>/<a href="../../../../../../src/github.com/redhat-developer/odo">odo</a>/<a href="../../../../../../src/github.com/redhat-developer/odo/pkg">pkg</a>/<a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile">libdevfile</a>/<span class="text-muted">component_kubernetes_utils.go</span>
+  </h1>
+
+
+
+
+
+  <h2>
+    Documentation: <a href="../../../../../../github.com/redhat-developer/odo/pkg/libdevfile">github.com/redhat-developer/odo/pkg/libdevfile</a>
+  </h2>
+
+
+
+<div id="nav"></div>
+
+
+
+<pre><span id="L1" class="ln">     1  </span>package libdevfile
+<span id="L2" class="ln">     2  </span>
+<span id="L3" class="ln">     3  </span>import (
+<span id="L4" class="ln">     4  </span>	&#34;github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2&#34;
+<span id="L5" class="ln">     5  </span>	&#34;github.com/devfile/library/pkg/devfile/parser&#34;
+<span id="L6" class="ln">     6  </span>	&#34;github.com/devfile/library/pkg/devfile/parser/data/v2/common&#34;
+<span id="L7" class="ln">     7  </span>	devfilefs &#34;github.com/devfile/library/pkg/testingutil/filesystem&#34;
+<span id="L8" class="ln">     8  </span>	&#34;github.com/ghodss/yaml&#34;
+<span id="L9" class="ln">     9  </span>	&#34;k8s.io/apimachinery/pkg/apis/meta/v1/unstructured&#34;
+<span id="L10" class="ln">    10  </span>)
+<span id="L11" class="ln">    11  </span>
+<span id="L12" class="ln">    12  </span><span class="comment">// GetK8sComponentAsUnstructured parses the Inlined/URI K8s of the devfile K8s component</span>
+<span id="L13" class="ln">    13  </span>func GetK8sComponentAsUnstructured(devfileObj parser.DevfileObj, componentName string,
+<span id="L14" class="ln">    14  </span>	context string, fs devfilefs.Filesystem) (unstructured.Unstructured, error) {
+<span id="L15" class="ln">    15  </span>
+<span id="L16" class="ln">    16  </span>	strCRD, err := GetK8sManifestWithVariablesSubstituted(devfileObj, componentName, context, fs)
+<span id="L17" class="ln">    17  </span>	if err != nil {
+<span id="L18" class="ln">    18  </span>		return unstructured.Unstructured{}, err
+<span id="L19" class="ln">    19  </span>	}
+<span id="L20" class="ln">    20  </span>
+<span id="L21" class="ln">    21  </span>	<span class="comment">// convert the YAML definition into map[string]interface{} since it&#39;s needed to create dynamic resource</span>
+<span id="L22" class="ln">    22  </span>	u := unstructured.Unstructured{}
+<span id="L23" class="ln">    23  </span>	if err = yaml.Unmarshal([]byte(strCRD), &amp;u.Object); err != nil {
+<span id="L24" class="ln">    24  </span>		return unstructured.Unstructured{}, err
+<span id="L25" class="ln">    25  </span>	}
+<span id="L26" class="ln">    26  </span>	return u, nil
+<span id="L27" class="ln">    27  </span>}
+<span id="L28" class="ln">    28  </span>
+<span id="L29" class="ln">    29  </span><span class="comment">// ListKubernetesComponents lists all the kubernetes components from the devfile</span>
+<span id="L30" class="ln">    30  </span>func ListKubernetesComponents(devfileObj parser.DevfileObj, path string) (list []unstructured.Unstructured, err error) {
+<span id="L31" class="ln">    31  </span>	components, err := devfileObj.Data.GetComponents(common.DevfileOptions{
+<span id="L32" class="ln">    32  </span>		ComponentOptions: common.ComponentOptions{ComponentType: v1alpha2.KubernetesComponentType},
+<span id="L33" class="ln">    33  </span>	})
+<span id="L34" class="ln">    34  </span>	if err != nil {
+<span id="L35" class="ln">    35  </span>		return
+<span id="L36" class="ln">    36  </span>	}
+<span id="L37" class="ln">    37  </span>	var u unstructured.Unstructured
+<span id="L38" class="ln">    38  </span>	for _, kComponent := range components {
+<span id="L39" class="ln">    39  </span>		if kComponent.Kubernetes != nil {
+<span id="L40" class="ln">    40  </span>			u, err = GetK8sComponentAsUnstructured(devfileObj, kComponent.Name, path, devfilefs.DefaultFs{})
+<span id="L41" class="ln">    41  </span>			if err != nil {
+<span id="L42" class="ln">    42  </span>				return
+<span id="L43" class="ln">    43  </span>			}
+<span id="L44" class="ln">    44  </span>			list = append(list, u)
+<span id="L45" class="ln">    45  </span>		}
+<span id="L46" class="ln">    46  </span>	}
+<span id="L47" class="ln">    47  </span>	return
+<span id="L48" class="ln">    48  </span>}
+<span id="L49" class="ln">    49  </span>
+<span id="L50" class="ln">    50  </span><span class="comment">// AddKubernetesComponentToDevfile adds a resource definition to devfile object as an inlined Kubernetes component</span>
+<span id="L51" class="ln">    51  </span>func AddKubernetesComponentToDevfile(crd, name string, devfileObj parser.DevfileObj) (parser.DevfileObj, error) {
+<span id="L52" class="ln">    52  </span>	err := devfileObj.Data.AddComponents([]v1alpha2.Component{{
+<span id="L53" class="ln">    53  </span>		Name: name,
+<span id="L54" class="ln">    54  </span>		ComponentUnion: v1alpha2.ComponentUnion{
+<span id="L55" class="ln">    55  </span>			Kubernetes: &amp;v1alpha2.KubernetesComponent{
+<span id="L56" class="ln">    56  </span>				K8sLikeComponent: v1alpha2.K8sLikeComponent{
+<span id="L57" class="ln">    57  </span>					BaseComponent: v1alpha2.BaseComponent{},
+<span id="L58" class="ln">    58  </span>					K8sLikeComponentLocation: v1alpha2.K8sLikeComponentLocation{
+<span id="L59" class="ln">    59  </span>						Inlined: crd,
+<span id="L60" class="ln">    60  </span>					},
+<span id="L61" class="ln">    61  </span>				},
+<span id="L62" class="ln">    62  </span>			},
+<span id="L63" class="ln">    63  </span>		},
+<span id="L64" class="ln">    64  </span>	}})
+<span id="L65" class="ln">    65  </span>	if err != nil {
+<span id="L66" class="ln">    66  </span>		return devfileObj, err
+<span id="L67" class="ln">    67  </span>	}
+<span id="L68" class="ln">    68  </span>
+<span id="L69" class="ln">    69  </span>	return devfileObj, nil
+<span id="L70" class="ln">    70  </span>}
+<span id="L71" class="ln">    71  </span>
+</pre><p><a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/component_kubernetes_utils.go.html?m=text">View as plain text</a></p>
+
+<div id="footer"><a href="../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>
