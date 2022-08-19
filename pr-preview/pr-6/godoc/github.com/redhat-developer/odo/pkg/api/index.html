@@ -1,0 +1,787 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>api - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package api
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/api" target="_blank">github.com/redhat-developer/odo/pkg/api</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package api contains structures returned by commands as JSON
+and utilities to build values of these structures
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="#Component">type Component</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ComponentAbstract">type ComponentAbstract</a></dd>
+				
+				
+			
+				
+				<dd><a href="#DevfileData">type DevfileData</a></dd>
+				
+					
+					<dd>    <a href="#GetDevfileData">func GetDevfileData(devfileObj parser.DevfileObj) *DevfileData</a></dd>
+				
+				
+			
+				
+				<dd><a href="#DevfileLocation">type DevfileLocation</a></dd>
+				
+				
+			
+				
+				<dd><a href="#DevfileStack">type DevfileStack</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ForwardedPort">type ForwardedPort</a></dd>
+				
+				
+			
+				
+				<dd><a href="#GenericError">type GenericError</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Registry">type Registry</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ResourcesList">type ResourcesList</a></dd>
+				
+				
+			
+				
+				<dd><a href="#RunningMode">type RunningMode</a></dd>
+				
+				
+			
+				
+				<dd><a href="#RunningModeList">type RunningModeList</a></dd>
+				
+				
+					
+					<dd>    <a href="#RunningModeList.Len">func (u RunningModeList) Len() int</a></dd>
+				
+					
+					<dd>    <a href="#RunningModeList.Less">func (u RunningModeList) Less(i, j int) bool</a></dd>
+				
+					
+					<dd>    <a href="#RunningModeList.String">func (o RunningModeList) String() string</a></dd>
+				
+					
+					<dd>    <a href="#RunningModeList.Swap">func (u RunningModeList) Swap(i, j int)</a></dd>
+				
+			
+				
+				<dd><a href="#ServiceBinding">type ServiceBinding</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ServiceBindingSpec">type ServiceBindingSpec</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ServiceBindingStatus">type ServiceBindingStatus</a></dd>
+				
+				
+			
+				
+				<dd><a href="#SupportedOdoFeatures">type SupportedOdoFeatures</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/binding.go.html">binding.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/component-abstract.go.html">component-abstract.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/component.go.html">component.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/devfile-data.go.html">devfile-data.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/devfile-location.go.html">devfile-location.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/doc.go.html">doc.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/error.go.html">error.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/list.go.html">list.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/registry.go.html">registry.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/utils.go.html">utils.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span class="comment">// TypeUnknown means that odo cannot tell its state</span>
+    <span id="TypeUnknown">TypeUnknown</span> = &#34;Unknown&#34;
+    <span class="comment">// TypeNone means that it has not been pushed to the cluster *at all* in either deploy or dev</span>
+    <span id="TypeNone">TypeNone</span> = &#34;None&#34;
+)</pre>
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="Component">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/component.go.html?s=719:1056#L29">Component</a>
+				<a class="permalink" href="#Component">¶</a>
+				
+				
+			</h2>
+			<p>
+Component describes the state of a devfile component
+</p>
+
+			<pre>type Component struct {
+<span id="Component.DevfilePath"></span>    DevfilePath       <a href="../../../../../builtin/#string">string</a>          `json:&#34;devfilePath,omitempty&#34;`
+<span id="Component.DevfileData"></span>    DevfileData       *<a href="#DevfileData">DevfileData</a>    `json:&#34;devfileData,omitempty&#34;`
+<span id="Component.DevForwardedPorts"></span>    DevForwardedPorts []<a href="#ForwardedPort">ForwardedPort</a> `json:&#34;devForwardedPorts,omitempty&#34;`
+<span id="Component.RunningIn"></span>    RunningIn         <a href="#RunningModeList">RunningModeList</a> `json:&#34;runningIn&#34;`
+<span id="Component.ManagedBy"></span>    ManagedBy         <a href="../../../../../builtin/#string">string</a>          `json:&#34;managedBy&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ComponentAbstract">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/component-abstract.go.html?s=89:391#L1">ComponentAbstract</a>
+				<a class="permalink" href="#ComponentAbstract">¶</a>
+				
+				
+			</h2>
+			<p>
+ComponentAbstract represents a component as part of a list of components
+</p>
+
+			<pre>type ComponentAbstract struct {
+<span id="ComponentAbstract.Name"></span>    Name             <a href="../../../../../builtin/#string">string</a>          `json:&#34;name&#34;`
+<span id="ComponentAbstract.ManagedBy"></span>    ManagedBy        <a href="../../../../../builtin/#string">string</a>          `json:&#34;managedBy&#34;`
+<span id="ComponentAbstract.ManagedByVersion"></span>    ManagedByVersion <a href="../../../../../builtin/#string">string</a>          `json:&#34;managedByVersion&#34;`
+<span id="ComponentAbstract.RunningIn"></span>    RunningIn        <a href="#RunningModeList">RunningModeList</a> `json:&#34;runningIn&#34;`
+<span id="ComponentAbstract.Type"></span>    Type             <a href="../../../../../builtin/#string">string</a>          `json:&#34;projectType&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DevfileData">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/devfile-data.go.html?s=117:289#L1">DevfileData</a>
+				<a class="permalink" href="#DevfileData">¶</a>
+				
+				
+			</h2>
+			<p>
+DevfileData describes a devfile content
+</p>
+
+			<pre>type DevfileData struct {
+<span id="DevfileData.Devfile"></span>    Devfile              <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/data/">data</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/data/#DevfileData">DevfileData</a>      `json:&#34;devfile&#34;`
+<span id="DevfileData.SupportedOdoFeatures"></span>    SupportedOdoFeatures *<a href="#SupportedOdoFeatures">SupportedOdoFeatures</a> `json:&#34;supportedOdoFeatures,omitempty&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="GetDevfileData">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/utils.go.html?s=178:240#L1">GetDevfileData</a>
+					<a class="permalink" href="#GetDevfileData">¶</a>
+					
+					
+				</h3>
+				<pre>func GetDevfileData(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>) *<a href="#DevfileData">DevfileData</a></pre>
+				
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="DevfileLocation">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/devfile-location.go.html?s=124:708#L1">DevfileLocation</a>
+				<a class="permalink" href="#DevfileLocation">¶</a>
+				
+				
+			</h2>
+			<p>
+DevfileLocation indicates the location of a devfile, either in a devfile registry or using a path or an URI
+</p>
+
+			<pre>type DevfileLocation struct {
+    <span class="comment">// name of the Devfile in Devfile registry (required if DevfilePath is not defined)</span>
+<span id="DevfileLocation.Devfile"></span>    Devfile <a href="../../../../../builtin/#string">string</a> `json:&#34;devfile,omitempty&#34;`
+
+    <span class="comment">// name of the devfile registry (as configured in odo registry). It can be used in combination with Devfile, but not with DevfilePath (optional)</span>
+<span id="DevfileLocation.DevfileRegistry"></span>    DevfileRegistry <a href="../../../../../builtin/#string">string</a> `json:&#34;devfileRegistry,omitempty&#34;`
+
+    <span class="comment">// path to a devfile. This is alternative to using devfile from Devfile registry. It can be local filesystem path or http(s) URL (required if Devfile is not defined)</span>
+<span id="DevfileLocation.DevfilePath"></span>    DevfilePath <a href="../../../../../builtin/#string">string</a> `json:&#34;devfilePath,omitempty&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DevfileStack">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/registry.go.html?s=354:882#L3">DevfileStack</a>
+				<a class="permalink" href="#DevfileStack">¶</a>
+				
+				
+			</h2>
+			<p>
+DevfileStack is the main struct for devfile stack
+</p>
+
+			<pre>type DevfileStack struct {
+<span id="DevfileStack.Name"></span>    Name            <a href="../../../../../builtin/#string">string</a>       `json:&#34;name&#34;`
+<span id="DevfileStack.DisplayName"></span>    DisplayName     <a href="../../../../../builtin/#string">string</a>       `json:&#34;displayName&#34;`
+<span id="DevfileStack.Description"></span>    Description     <a href="../../../../../builtin/#string">string</a>       `json:&#34;description&#34;`
+<span id="DevfileStack.Registry"></span>    Registry        <a href="#Registry">Registry</a>     `json:&#34;registry&#34;`
+<span id="DevfileStack.Language"></span>    Language        <a href="../../../../../builtin/#string">string</a>       `json:&#34;language&#34;`
+<span id="DevfileStack.Tags"></span>    Tags            []<a href="../../../../../builtin/#string">string</a>     `json:&#34;tags&#34;`
+<span id="DevfileStack.ProjectType"></span>    ProjectType     <a href="../../../../../builtin/#string">string</a>       `json:&#34;projectType&#34;`
+<span id="DevfileStack.Version"></span>    Version         <a href="../../../../../builtin/#string">string</a>       `json:&#34;version&#34;`
+<span id="DevfileStack.StarterProjects"></span>    StarterProjects []<a href="../../../../../builtin/#string">string</a>     `json:&#34;starterProjects&#34;`
+<span id="DevfileStack.DevfileData"></span>    DevfileData     *<a href="#DevfileData">DevfileData</a> `json:&#34;devfileData,omitempty&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ForwardedPort">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/component.go.html?s=1058:1262#L37">ForwardedPort</a>
+				<a class="permalink" href="#ForwardedPort">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type ForwardedPort struct {
+<span id="ForwardedPort.ContainerName"></span>    ContainerName <a href="../../../../../builtin/#string">string</a> `json:&#34;containerName&#34;`
+<span id="ForwardedPort.LocalAddress"></span>    LocalAddress  <a href="../../../../../builtin/#string">string</a> `json:&#34;localAddress&#34;`
+<span id="ForwardedPort.LocalPort"></span>    LocalPort     <a href="../../../../../builtin/#int">int</a>    `json:&#34;localPort&#34;`
+<span id="ForwardedPort.ContainerPort"></span>    ContainerPort <a href="../../../../../builtin/#int">int</a>    `json:&#34;containerPort&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="GenericError">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/error.go.html?s=72:133#L1">GenericError</a>
+				<a class="permalink" href="#GenericError">¶</a>
+				
+				
+			</h2>
+			<p>
+GenericError for machine readable output error messages
+</p>
+
+			<pre>type GenericError struct {
+<span id="GenericError.Message"></span>    Message <a href="../../../../../builtin/#string">string</a> `json:&#34;message&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Registry">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/registry.go.html?s=64:299#L1">Registry</a>
+				<a class="permalink" href="#Registry">¶</a>
+				
+				
+			</h2>
+			<p>
+Registry is the main struct of devfile registry
+</p>
+
+			<pre>type Registry struct {
+<span id="Registry.Name"></span>    Name   <a href="../../../../../builtin/#string">string</a> `json:&#34;name&#34;`
+<span id="Registry.URL"></span>    URL    <a href="../../../../../builtin/#string">string</a> `json:&#34;url&#34;`
+<span id="Registry.Secure"></span>    Secure <a href="../../../../../builtin/#bool">bool</a>   `json:&#34;secure&#34;`
+<span id="Registry.Priority"></span>    <span class="comment">// Priority of the registry for listing purposes. The higher the number, the higher the priority</span>
+    Priority <a href="../../../../../builtin/#int">int</a> `json:&#34;-&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ResourcesList">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/list.go.html?s=70:705#L1">ResourcesList</a>
+				<a class="permalink" href="#ResourcesList">¶</a>
+				
+				
+			</h2>
+			<p>
+ResourcesList is the result of the `odo list` command
+</p>
+
+			<pre>type ResourcesList struct {
+<span id="ResourcesList.ComponentInDevfile"></span>    <span class="comment">// ComponentInDevfile is the component name present in the local Devfile when `odo list` is executed, or empty</span>
+    ComponentInDevfile <a href="../../../../../builtin/#string">string</a> `json:&#34;componentInDevfile,omitempty&#34;`
+<span id="ResourcesList.Components"></span>    <span class="comment">// Components is a list of components deployed in the cluster or present in the local Devfile</span>
+    Components []<a href="#ComponentAbstract">ComponentAbstract</a> `json:&#34;components,omitempty&#34;`
+
+<span id="ResourcesList.BindingsInDevfile"></span>    <span class="comment">// BindingsInDevfile is the list of binding names present in the local devfile</span>
+    BindingsInDevfile []<a href="../../../../../builtin/#string">string</a> `json:&#34;bindingsInDevfile,omitempty&#34;`
+<span id="ResourcesList.Bindings"></span>    <span class="comment">// Bindings is a list of bindings in the local devfile and/or cluster</span>
+    Bindings []<a href="#ServiceBinding">ServiceBinding</a> `json:&#34;bindings,omitempty&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RunningMode">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/component.go.html?s=36:59#L1">RunningMode</a>
+				<a class="permalink" href="#RunningMode">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type RunningMode <a href="../../../../../builtin/#string">string</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="RunningModeDev">RunningModeDev</span>     <a href="#RunningMode">RunningMode</a> = &#34;Dev&#34;
+    <span id="RunningModeDeploy">RunningModeDeploy</span>  <a href="#RunningMode">RunningMode</a> = &#34;Deploy&#34;
+    <span id="RunningModeUnknown">RunningModeUnknown</span> <a href="#RunningMode">RunningMode</a> = &#34;Unknown&#34;
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RunningModeList">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/component.go.html?s=60:94#L1">RunningModeList</a>
+				<a class="permalink" href="#RunningModeList">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type RunningModeList []<a href="#RunningMode">RunningMode</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="RunningModeList.Len">func (RunningModeList) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/component.go.html?s=444:478#L17">Len</a>
+					<a class="permalink" href="#RunningModeList.Len">¶</a>
+					
+					
+				</h3>
+				<pre>func (u <a href="#RunningModeList">RunningModeList</a>) Len() <a href="../../../../../builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RunningModeList.Less">func (RunningModeList) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/component.go.html?s=567:611#L23">Less</a>
+					<a class="permalink" href="#RunningModeList.Less">¶</a>
+					
+					
+				</h3>
+				<pre>func (u <a href="#RunningModeList">RunningModeList</a>) Less(i, j <a href="../../../../../builtin/#int">int</a>) <a href="../../../../../builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RunningModeList.String">func (RunningModeList) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/component.go.html?s=234:274#L6">String</a>
+					<a class="permalink" href="#RunningModeList.String">¶</a>
+					
+					
+				</h3>
+				<pre>func (o <a href="#RunningModeList">RunningModeList</a>) String() <a href="../../../../../builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RunningModeList.Swap">func (RunningModeList) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/component.go.html?s=498:537#L20">Swap</a>
+					<a class="permalink" href="#RunningModeList.Swap">¶</a>
+					
+					
+				</h3>
+				<pre>func (u <a href="#RunningModeList">RunningModeList</a>) Swap(i, j <a href="../../../../../builtin/#int">int</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ServiceBinding">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/binding.go.html?s=180:354#L1">ServiceBinding</a>
+				<a class="permalink" href="#ServiceBinding">¶</a>
+				
+				
+			</h2>
+			<p>
+ServiceBinding describes a service binding, from group binding.operators.coreos.com/v1alpha1 or servicebinding.io/v1alpha3
+</p>
+
+			<pre>type ServiceBinding struct {
+<span id="ServiceBinding.Name"></span>    Name   <a href="../../../../../builtin/#string">string</a>                `json:&#34;name&#34;`
+<span id="ServiceBinding.Spec"></span>    Spec   <a href="#ServiceBindingSpec">ServiceBindingSpec</a>    `json:&#34;spec&#34;`
+<span id="ServiceBinding.Status"></span>    Status *<a href="#ServiceBindingStatus">ServiceBindingStatus</a> `json:&#34;status,omitempty&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ServiceBindingSpec">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/binding.go.html?s=356:761#L4">ServiceBindingSpec</a>
+				<a class="permalink" href="#ServiceBindingSpec">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type ServiceBindingSpec struct {
+<span id="ServiceBindingSpec.Application"></span>    Application            <a href="../../../../../k8s.io/api/core/v1/">corev1</a>.<a href="../../../../../k8s.io/api/core/v1/#ObjectReference">ObjectReference</a>   `json:&#34;application&#34;`
+<span id="ServiceBindingSpec.Services"></span>    Services               []<a href="../../../../../k8s.io/api/core/v1/">corev1</a>.<a href="../../../../../k8s.io/api/core/v1/#ObjectReference">ObjectReference</a> `json:&#34;services&#34;`
+<span id="ServiceBindingSpec.DetectBindingResources"></span>    DetectBindingResources <a href="../../../../../builtin/#bool">bool</a>                     `json:&#34;detectBindingResources&#34;`
+<span id="ServiceBindingSpec.BindAsFiles"></span>    BindAsFiles            <a href="../../../../../builtin/#bool">bool</a>                     `json:&#34;bindAsFiles&#34;`
+<span id="ServiceBindingSpec.NamingStrategy"></span>    NamingStrategy         <a href="../../../../../builtin/#string">string</a>                   `json:&#34;namingStrategy,omitempty&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ServiceBindingStatus">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/binding.go.html?s=763:990#L12">ServiceBindingStatus</a>
+				<a class="permalink" href="#ServiceBindingStatus">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type ServiceBindingStatus struct {
+<span id="ServiceBindingStatus.BindingFiles"></span>    BindingFiles   []<a href="../../../../../builtin/#string">string</a>        `json:&#34;bindingFiles,omitempty&#34;`
+<span id="ServiceBindingStatus.BindingEnvVars"></span>    BindingEnvVars []<a href="../../../../../builtin/#string">string</a>        `json:&#34;bindingEnvVars,omitempty&#34;`
+<span id="ServiceBindingStatus.RunningIn"></span>    RunningIn      <a href="#RunningModeList">RunningModeList</a> `json:&#34;runningIn,omitempty&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="SupportedOdoFeatures">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/api/devfile-data.go.html?s=389:508#L2">SupportedOdoFeatures</a>
+				<a class="permalink" href="#SupportedOdoFeatures">¶</a>
+				
+				
+			</h2>
+			<p>
+SupportedOdoFeatures indicates the support of high-level (odo) features by a devfile component
+</p>
+
+			<pre>type SupportedOdoFeatures struct {
+<span id="SupportedOdoFeatures.Dev"></span>    Dev    <a href="../../../../../builtin/#bool">bool</a> `json:&#34;dev&#34;`
+<span id="SupportedOdoFeatures.Deploy"></span>    Deploy <a href="../../../../../builtin/#bool">bool</a> `json:&#34;deploy&#34;`
+<span id="SupportedOdoFeatures.Debug"></span>    Debug  <a href="../../../../../builtin/#bool">bool</a> `json:&#34;debug&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer"><a href="../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

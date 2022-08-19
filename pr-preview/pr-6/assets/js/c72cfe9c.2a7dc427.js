@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkodo_dev=self.webpackChunkodo_dev||[]).push([[551],{3755:o=>{o.exports=JSON.parse('{"permalink":"/odo-gh-actions/blog","page":1,"postsPerPage":5,"totalPages":2,"totalCount":10,"previousPage":null,"nextPage":"/odo-gh-actions/blog/page/2","blogDescription":"Blog","blogTitle":"Blog"}')}}]);

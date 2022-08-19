@@ -1,0 +1,283 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>logs - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package logs
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/odo/cli/logs" target="_blank">github.com/redhat-developer/odo/pkg/odo/cli/logs</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="#NewCmdLogs">func NewCmdLogs(name, fullname string) *cobra.Command</a></dd>
+			
+			
+				
+				<dd><a href="#LogsOptions">type LogsOptions</a></dd>
+				
+					
+					<dd>    <a href="#NewLogsOptions">func NewLogsOptions() *LogsOptions</a></dd>
+				
+				
+					
+					<dd>    <a href="#LogsOptions.Complete">func (o *LogsOptions) Complete(cmdline cmdline.Cmdline, _ []string) error</a></dd>
+				
+					
+					<dd>    <a href="#LogsOptions.Run">func (o *LogsOptions) Run(_ context.Context) error</a></dd>
+				
+					
+					<dd>    <a href="#LogsOptions.SetClientset">func (o *LogsOptions) SetClientset(clientset *clientset.Clientset)</a></dd>
+				
+					
+					<dd>    <a href="#LogsOptions.Validate">func (o *LogsOptions) Validate() error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/logs/logs.go.html">logs.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="DevMode">DevMode</span>    logsMode = &#34;dev&#34;
+    <span id="DeployMode">DeployMode</span> logsMode = &#34;deploy&#34;
+)</pre>
+			
+				
+				<pre>const <span id="RecommendedCommandName">RecommendedCommandName</span> = &#34;logs&#34;</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="NewCmdLogs">func <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/logs/logs.go.html?s=5600:5653#L224">NewCmdLogs</a>
+				<a class="permalink" href="#NewCmdLogs">¶</a>
+				
+				
+			</h2>
+			<pre>func NewCmdLogs(name, fullname <a href="../../../../../../../builtin/#string">string</a>) *<a href="../../../../../../../github.com/spf13/cobra/">cobra</a>.<a href="../../../../../../../github.com/spf13/cobra/#Command">Command</a></pre>
+			
+			
+			
+
+		
+		
+			
+			
+			<h2 id="LogsOptions">type <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/logs/logs.go.html?s=656:921#L21">LogsOptions</a>
+				<a class="permalink" href="#LogsOptions">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type LogsOptions struct {
+    <span class="comment">// context</span>
+<span id="LogsOptions.Context"></span>    Context *<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/">genericclioptions</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/#Context">Context</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewLogsOptions">func <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/logs/logs.go.html?s=1073:1107#L47">NewLogsOptions</a>
+					<a class="permalink" href="#NewLogsOptions">¶</a>
+					
+					
+				</h3>
+				<pre>func NewLogsOptions() *<a href="#LogsOptions">LogsOptions</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="LogsOptions.Complete">func (*LogsOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/logs/logs.go.html?s=1341:1414#L62">Complete</a>
+					<a class="permalink" href="#LogsOptions.Complete">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#LogsOptions">LogsOptions</a>) Complete(cmdline <a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/cmdline/">cmdline</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/cmdline/#Cmdline">Cmdline</a>, _ []<a href="../../../../../../../builtin/#string">string</a>) <a href="../../../../../../../builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="LogsOptions.Run">func (*LogsOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/logs/logs.go.html?s=2317:2367#L95">Run</a>
+					<a class="permalink" href="#LogsOptions.Run">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#LogsOptions">LogsOptions</a>) Run(_ <a href="../../../../../../../context/">context</a>.<a href="../../../../../../../context/#Context">Context</a>) <a href="../../../../../../../builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="LogsOptions.SetClientset">func (*LogsOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/logs/logs.go.html?s=1244:1310#L58">SetClientset</a>
+					<a class="permalink" href="#LogsOptions.SetClientset">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#LogsOptions">LogsOptions</a>) SetClientset(clientset *<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/clientset/">clientset</a>.<a href="../../../../../../../github.com/redhat-developer/odo/pkg/odo/genericclioptions/clientset/#Clientset">Clientset</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="LogsOptions.Validate">func (*LogsOptions) <a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/odo/cli/logs/logs.go.html?s=2121:2159#L88">Validate</a>
+					<a class="permalink" href="#LogsOptions.Validate">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#LogsOptions">LogsOptions</a>) Validate() <a href="../../../../../../../builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer"><a href="../../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>generator - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package generator
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/libdevfile/generator" target="_blank">github.com/redhat-developer/odo/pkg/libdevfile/generator</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#GetApplyCommand">func GetApplyCommand(params ApplyCommandParams) v1alpha2.Command</a></dd>
+			
+				
+				<dd><a href="#GetCompositeCommand">func GetCompositeCommand(params CompositeCommandParams) v1alpha2.Command</a></dd>
+			
+				
+				<dd><a href="#GetContainerComponent">func GetContainerComponent(params ContainerComponentParams) v1alpha2.Component</a></dd>
+			
+				
+				<dd><a href="#GetExecCommand">func GetExecCommand(params ExecCommandParams) v1alpha2.Command</a></dd>
+			
+				
+				<dd><a href="#GetImageComponent">func GetImageComponent(params ImageComponentParams) v1alpha2.Component</a></dd>
+			
+				
+				<dd><a href="#GetKubernetesComponent">func GetKubernetesComponent(params KubernetesComponentParams) v1alpha2.Component</a></dd>
+			
+				
+				<dd><a href="#GetOpenshiftComponent">func GetOpenshiftComponent(params OpenshiftComponentParams) v1alpha2.Component</a></dd>
+			
+			
+				
+				<dd><a href="#ApplyCommandParams">type ApplyCommandParams</a></dd>
+				
+				
+			
+				
+				<dd><a href="#CompositeCommandParams">type CompositeCommandParams</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ContainerComponentParams">type ContainerComponentParams</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ExecCommandParams">type ExecCommandParams</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ImageComponentParams">type ImageComponentParams</a></dd>
+				
+				
+			
+				
+				<dd><a href="#KubernetesComponentParams">type KubernetesComponentParams</a></dd>
+				
+				
+			
+				
+				<dd><a href="#OpenshiftComponentParams">type OpenshiftComponentParams</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/command.go.html">command.go</a>
+			
+				<a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/component.go.html">component.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="GetApplyCommand">func <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/command.go.html?s=2225:2289#L93">GetApplyCommand</a>
+				<a class="permalink" href="#GetApplyCommand">¶</a>
+				
+				
+			</h2>
+			<pre>func GetApplyCommand(params <a href="#ApplyCommandParams">ApplyCommandParams</a>) <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Command">Command</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetCompositeCommand">func <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/command.go.html?s=337:409#L10">GetCompositeCommand</a>
+				<a class="permalink" href="#GetCompositeCommand">¶</a>
+				
+				
+			</h2>
+			<pre>func GetCompositeCommand(params <a href="#CompositeCommandParams">CompositeCommandParams</a>) <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Command">Command</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetContainerComponent">func <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/component.go.html?s=291:369#L6">GetContainerComponent</a>
+				<a class="permalink" href="#GetContainerComponent">¶</a>
+				
+				
+			</h2>
+			<pre>func GetContainerComponent(params <a href="#ContainerComponentParams">ContainerComponentParams</a>) <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Component">Component</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetExecCommand">func <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/command.go.html?s=1278:1340#L52">GetExecCommand</a>
+				<a class="permalink" href="#GetExecCommand">¶</a>
+				
+				
+			</h2>
+			<pre>func GetExecCommand(params <a href="#ExecCommandParams">ExecCommandParams</a>) <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Command">Command</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetImageComponent">func <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/component.go.html?s=790:860#L29">GetImageComponent</a>
+				<a class="permalink" href="#GetImageComponent">¶</a>
+				
+				
+			</h2>
+			<pre>func GetImageComponent(params <a href="#ImageComponentParams">ImageComponentParams</a>) <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Component">Component</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetKubernetesComponent">func <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/component.go.html?s=1257:1337#L51">GetKubernetesComponent</a>
+				<a class="permalink" href="#GetKubernetesComponent">¶</a>
+				
+				
+			</h2>
+			<pre>func GetKubernetesComponent(params <a href="#KubernetesComponentParams">KubernetesComponentParams</a>) <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Component">Component</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetOpenshiftComponent">func <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/component.go.html?s=1698:1776#L71">GetOpenshiftComponent</a>
+				<a class="permalink" href="#GetOpenshiftComponent">¶</a>
+				
+				
+			</h2>
+			<pre>func GetOpenshiftComponent(params <a href="#OpenshiftComponentParams">OpenshiftComponentParams</a>) <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Component">Component</a></pre>
+			
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ApplyCommandParams">type <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/command.go.html?s=2042:2223#L82">ApplyCommandParams</a>
+				<a class="permalink" href="#ApplyCommandParams">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type ApplyCommandParams struct {
+<span id="ApplyCommandParams.Id"></span>    Id         <a href="../../../../../../builtin/#string">string</a>
+<span id="ApplyCommandParams.Attributes"></span>    Attributes *<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/">attributes</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/#Attributes">Attributes</a>
+
+<span id="ApplyCommandParams.Component"></span>    Component <a href="../../../../../../builtin/#string">string</a>
+
+<span id="ApplyCommandParams.Label"></span>    Label     *<a href="../../../../../../builtin/#string">string</a>
+<span id="ApplyCommandParams.Kind"></span>    Kind      <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#CommandGroupKind">CommandGroupKind</a>
+<span id="ApplyCommandParams.IsDefault"></span>    IsDefault *<a href="../../../../../../builtin/#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CompositeCommandParams">type <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/command.go.html?s=133:335#L1">CompositeCommandParams</a>
+				<a class="permalink" href="#CompositeCommandParams">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type CompositeCommandParams struct {
+<span id="CompositeCommandParams.Id"></span>    Id         <a href="../../../../../../builtin/#string">string</a>
+<span id="CompositeCommandParams.Attributes"></span>    Attributes *<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/">attributes</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/#Attributes">Attributes</a>
+
+<span id="CompositeCommandParams.Commands"></span>    Commands []<a href="../../../../../../builtin/#string">string</a>
+<span id="CompositeCommandParams.Parallel"></span>    Parallel *<a href="../../../../../../builtin/#bool">bool</a>
+
+<span id="CompositeCommandParams.Label"></span>    Label     *<a href="../../../../../../builtin/#string">string</a>
+<span id="CompositeCommandParams.Kind"></span>    Kind      <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#CommandGroupKind">CommandGroupKind</a>
+<span id="CompositeCommandParams.IsDefault"></span>    IsDefault *<a href="../../../../../../builtin/#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ContainerComponentParams">type <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/component.go.html?s=133:289#L1">ContainerComponentParams</a>
+				<a class="permalink" href="#ContainerComponentParams">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type ContainerComponentParams struct {
+<span id="ContainerComponentParams.Name"></span>    Name       <a href="../../../../../../builtin/#string">string</a>
+<span id="ContainerComponentParams.Attributes"></span>    Attributes *<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/">attributes</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/#Attributes">Attributes</a>
+
+<span id="ContainerComponentParams.Container"></span>    Container <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Container">Container</a>
+<span id="ContainerComponentParams.Endpoints"></span>    Endpoints []<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Endpoint">Endpoint</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ExecCommandParams">type <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/command.go.html?s=979:1276#L37">ExecCommandParams</a>
+				<a class="permalink" href="#ExecCommandParams">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type ExecCommandParams struct {
+<span id="ExecCommandParams.Id"></span>    Id         <a href="../../../../../../builtin/#string">string</a>
+<span id="ExecCommandParams.Attributes"></span>    Attributes *<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/">attributes</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/#Attributes">Attributes</a>
+
+<span id="ExecCommandParams.CommandLine"></span>    CommandLine      <a href="../../../../../../builtin/#string">string</a>
+<span id="ExecCommandParams.Component"></span>    Component        <a href="../../../../../../builtin/#string">string</a>
+<span id="ExecCommandParams.WorkingDir"></span>    WorkingDir       <a href="../../../../../../builtin/#string">string</a>
+<span id="ExecCommandParams.Env"></span>    Env              []<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#EnvVar">EnvVar</a>
+<span id="ExecCommandParams.HotReloadCapable"></span>    HotReloadCapable *<a href="../../../../../../builtin/#bool">bool</a>
+
+<span id="ExecCommandParams.Label"></span>    Label     *<a href="../../../../../../builtin/#string">string</a>
+<span id="ExecCommandParams.Kind"></span>    Kind      <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#CommandGroupKind">CommandGroupKind</a>
+<span id="ExecCommandParams.IsDefault"></span>    IsDefault *<a href="../../../../../../builtin/#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ImageComponentParams">type <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/component.go.html?s=675:788#L22">ImageComponentParams</a>
+				<a class="permalink" href="#ImageComponentParams">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type ImageComponentParams struct {
+<span id="ImageComponentParams.Name"></span>    Name       <a href="../../../../../../builtin/#string">string</a>
+<span id="ImageComponentParams.Attributes"></span>    Attributes *<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/">attributes</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/#Attributes">Attributes</a>
+
+<span id="ImageComponentParams.Image"></span>    Image <a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#Image">Image</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="KubernetesComponentParams">type <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/component.go.html?s=1117:1255#L44">KubernetesComponentParams</a>
+				<a class="permalink" href="#KubernetesComponentParams">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type KubernetesComponentParams struct {
+<span id="KubernetesComponentParams.Name"></span>    Name       <a href="../../../../../../builtin/#string">string</a>
+<span id="KubernetesComponentParams.Attributes"></span>    Attributes *<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/">attributes</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/#Attributes">Attributes</a>
+
+<span id="KubernetesComponentParams.Kubernetes"></span>    Kubernetes *<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#KubernetesComponent">KubernetesComponent</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="OpenshiftComponentParams">type <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/libdevfile/generator/component.go.html?s=1561:1696#L64">OpenshiftComponentParams</a>
+				<a class="permalink" href="#OpenshiftComponentParams">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type OpenshiftComponentParams struct {
+<span id="OpenshiftComponentParams.Name"></span>    Name       <a href="../../../../../../builtin/#string">string</a>
+<span id="OpenshiftComponentParams.Attributes"></span>    Attributes *<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/">attributes</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/attributes/#Attributes">Attributes</a>
+
+<span id="OpenshiftComponentParams.Openshift"></span>    Openshift *<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/">v1alpha2</a>.<a href="../../../../../../github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2/#OpenshiftComponent">OpenshiftComponent</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer"><a href="../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

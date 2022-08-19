@@ -1,0 +1,118 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>asker - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Source file
+    <a href="/src">src</a>/<a href="../../../../../../../src/github.com.html">github.com</a>/<a href="../../../../../../../src/github.com/redhat-developer">redhat-developer</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo">odo</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg">pkg</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/binding">binding</a>/<a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/binding/asker">asker</a>/<span class="text-muted">interface.go</span>
+  </h1>
+
+
+
+
+
+  <h2>
+    Documentation: <a href="../../../../../../../github.com/redhat-developer/odo/pkg/binding/asker">github.com/redhat-developer/odo/pkg/binding/asker</a>
+  </h2>
+
+
+
+<div id="nav"></div>
+
+
+
+<pre><span id="L1" class="ln">     1  </span>package asker
+<span id="L2" class="ln">     2  </span>
+<span id="L3" class="ln">     3  </span>type CreationOption int
+<span id="L4" class="ln">     4  </span>
+<span id="L5" class="ln">     5  </span>const (
+<span id="L6" class="ln">     6  </span>	CreateOnCluster CreationOption = iota
+<span id="L7" class="ln">     7  </span>	OutputToStdout
+<span id="L8" class="ln">     8  </span>	OutputToFile
+<span id="L9" class="ln">     9  </span>)
+<span id="L10" class="ln">    10  </span>
+<span id="L11" class="ln">    11  </span>type ServiceInstancesNamespaceListOption int
+<span id="L12" class="ln">    12  </span>
+<span id="L13" class="ln">    13  </span>const (
+<span id="L14" class="ln">    14  </span>	CurrentNamespace ServiceInstancesNamespaceListOption = iota + 1
+<span id="L15" class="ln">    15  </span>	AllAccessibleNamespaces
+<span id="L16" class="ln">    16  </span>)
+<span id="L17" class="ln">    17  </span>
+<span id="L18" class="ln">    18  </span>type Asker interface {
+<span id="L19" class="ln">    19  </span>	<span class="comment">// SelectNamespaceListOption asks the user to select how service instances should be listed,</span>
+<span id="L20" class="ln">    20  </span>	<span class="comment">// i.e. from the current namespace or from all accessible namespaces.</span>
+<span id="L21" class="ln">    21  </span>	<span class="comment">// If user selects to list from all accessible namespaces, callers should fetch the list of namespaces</span>
+<span id="L22" class="ln">    22  </span>	<span class="comment">// and prompt users to either pick or enter one.</span>
+<span id="L23" class="ln">    23  </span>	<span class="comment">// See SelectNamespace and AskNamespace methods.</span>
+<span id="L24" class="ln">    24  </span>	SelectNamespaceListOption() (ServiceInstancesNamespaceListOption, error)
+<span id="L25" class="ln">    25  </span>	<span class="comment">// AskNamespace asks the user to enter a namespace</span>
+<span id="L26" class="ln">    26  </span>	AskNamespace() (string, error)
+<span id="L27" class="ln">    27  </span>	<span class="comment">// SelectNamespace takes a list of namespaces and asks the user to pick one of them</span>
+<span id="L28" class="ln">    28  </span>	SelectNamespace(options []string) (string, error)
+<span id="L29" class="ln">    29  </span>	<span class="comment">// SelectWorkloadResource takes a list of workloads resources and asks user to select one</span>
+<span id="L30" class="ln">    30  </span>	SelectWorkloadResource(options []string) (int, error)
+<span id="L31" class="ln">    31  </span>	<span class="comment">// SelectWorkloadResourceName takes a list of workloads resources names and asks user to select one</span>
+<span id="L32" class="ln">    32  </span>	<span class="comment">// returns back true if the user selected to go back</span>
+<span id="L33" class="ln">    33  </span>	SelectWorkloadResourceName(names []string) (back bool, selected string, err error)
+<span id="L34" class="ln">    34  </span>	<span class="comment">// SelectNamingStrategy asks for the naming strategy to be used from a list of options.</span>
+<span id="L35" class="ln">    35  </span>	<span class="comment">// If NamingStrategyCustom is returned, it means the user needs to be prompted for a value. See AskNamingStrategy.</span>
+<span id="L36" class="ln">    36  </span>	SelectNamingStrategy() (string, error)
+<span id="L37" class="ln">    37  </span>	<span class="comment">// AskWorkloadResourceName asks user to type resource name</span>
+<span id="L38" class="ln">    38  </span>	AskWorkloadResourceName() (string, error)
+<span id="L39" class="ln">    39  </span>	<span class="comment">// AskServiceInstance takes a list of services and asks user to select one</span>
+<span id="L40" class="ln">    40  </span>	AskServiceInstance(serviceInstanceOptions []string) (string, error)
+<span id="L41" class="ln">    41  </span>	<span class="comment">// AskServiceBindingName asks for service binding name to be set</span>
+<span id="L42" class="ln">    42  </span>	AskServiceBindingName(defaultName string) (string, error)
+<span id="L43" class="ln">    43  </span>	<span class="comment">// AskBindAsFiles asks if service should be binded as files</span>
+<span id="L44" class="ln">    44  </span>	AskBindAsFiles() (bool, error)
+<span id="L45" class="ln">    45  </span>	<span class="comment">// AskNamingStrategy prompts for the naming strategy to be used</span>
+<span id="L46" class="ln">    46  </span>	AskNamingStrategy() (string, error)
+<span id="L47" class="ln">    47  </span>	<span class="comment">// SelectCreationOptions asks to select creation options for the servicebinding</span>
+<span id="L48" class="ln">    48  </span>	SelectCreationOptions() ([]CreationOption, error)
+<span id="L49" class="ln">    49  </span>	<span class="comment">// AskOutputFilePath asks for the path of the file to output service binding</span>
+<span id="L50" class="ln">    50  </span>	AskOutputFilePath(defaultValue string) (string, error)
+<span id="L51" class="ln">    51  </span>}
+<span id="L52" class="ln">    52  </span>
+</pre><p><a href="../../../../../../../src/github.com/redhat-developer/odo/pkg/binding/asker/interface.go.html?m=text">View as plain text</a></p>
+
+<div id="footer"><a href="../../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

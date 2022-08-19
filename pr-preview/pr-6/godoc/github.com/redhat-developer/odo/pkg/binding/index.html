@@ -1,0 +1,1378 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>binding - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package binding
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/binding" target="_blank">github.com/redhat-developer/odo/pkg/binding</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package binding is a generated GoMock package.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="#BindingClient">type BindingClient</a></dd>
+				
+					
+					<dd>    <a href="#NewBindingClient">func NewBindingClient(projectClient project.Client, kubernetesClient kclient.ClientInterface) *BindingClient</a></dd>
+				
+				
+					
+					<dd>    <a href="#BindingClient.AddBinding">func (o *BindingClient) AddBinding(flags map[string]string, bindingName string, bindAsFiles bool, serviceNs string, namingStrategy string, unstructuredService unstructured.Unstructured, workloadName string, workloadGVK schema.GroupVersionKind) ([]asker.CreationOption, string, string, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.AddBindingToDevfile">func (o *BindingClient) AddBindingToDevfile(bindingName string, bindAsFiles bool, serviceNs string, namingStrategy string, unstructuredService unstructured.Unstructured, obj parser.DevfileObj) (parser.DevfileObj, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.AskBindAsFiles">func (o *BindingClient) AskBindAsFiles(flags map[string]string) (bool, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.AskBindingName">func (o *BindingClient) AskBindingName(serviceName, componentName string, flags map[string]string) (string, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.AskNamingStrategy">func (o *BindingClient) AskNamingStrategy(flags map[string]string) (string, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.CheckServiceBindingsInjectionDone">func (o *BindingClient) CheckServiceBindingsInjectionDone(componentName string, appName string) (bool, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.GetBindingFromCluster">func (o *BindingClient) GetBindingFromCluster(name string) (api.ServiceBinding, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.GetBindingsFromDevfile">func (o *BindingClient) GetBindingsFromDevfile(devfileObj parser.DevfileObj, context string) ([]api.ServiceBinding, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.GetFlags">func (o *BindingClient) GetFlags(flags map[string]string) map[string]string</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.GetServiceInstances">func (o *BindingClient) GetServiceInstances(namespace string) (map[string]unstructured.Unstructured, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.ListAllBindings">func (o *BindingClient) ListAllBindings(devfileObj parser.DevfileObj, context string) ([]api.ServiceBinding, []string, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.RemoveBinding">func (o *BindingClient) RemoveBinding(servicebindingName string, obj parser.DevfileObj) (parser.DevfileObj, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.SelectNamespace">func (o *BindingClient) SelectNamespace(flags map[string]string) (string, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.SelectServiceInstance">func (o *BindingClient) SelectServiceInstance(flags map[string]string, serviceMap map[string]unstructured.Unstructured) (string, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.SelectWorkloadInstance">func (o *BindingClient) SelectWorkloadInstance(flags map[string]string) (string, schema.GroupVersionKind, error)</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.ValidateAddBinding">func (o *BindingClient) ValidateAddBinding(flags map[string]string, withDevfile bool) error</a></dd>
+				
+					
+					<dd>    <a href="#BindingClient.ValidateRemoveBinding">func (o *BindingClient) ValidateRemoveBinding(flags map[string]string) error</a></dd>
+				
+			
+				
+				<dd><a href="#BindingSet">type BindingSet</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Client">type Client</a></dd>
+				
+				
+			
+				
+				<dd><a href="#MockClient">type MockClient</a></dd>
+				
+					
+					<dd>    <a href="#NewMockClient">func NewMockClient(ctrl *gomock.Controller) *MockClient</a></dd>
+				
+				
+					
+					<dd>    <a href="#MockClient.AddBinding">func (m *MockClient) AddBinding(flags map[string]string, bindingName string, bindAsFiles bool, serviceNs, namingStrategy string, unstructuredService unstructured.Unstructured, workloadName string, workloadGVK schema.GroupVersionKind) ([]asker.CreationOption, string, string, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.AddBindingToDevfile">func (m *MockClient) AddBindingToDevfile(bindingName string, bindAsFiles bool, serviceNs, namingStrategy string, unstructuredService unstructured.Unstructured, obj parser.DevfileObj) (parser.DevfileObj, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.AskBindAsFiles">func (m *MockClient) AskBindAsFiles(flags map[string]string) (bool, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.AskBindingName">func (m *MockClient) AskBindingName(serviceName, componentName string, flags map[string]string) (string, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.AskNamingStrategy">func (m *MockClient) AskNamingStrategy(flags map[string]string) (string, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.CheckServiceBindingsInjectionDone">func (m *MockClient) CheckServiceBindingsInjectionDone(componentName, appName string) (bool, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.EXPECT">func (m *MockClient) EXPECT() *MockClientMockRecorder</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.GetBindingFromCluster">func (m *MockClient) GetBindingFromCluster(name string) (api.ServiceBinding, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.GetBindingsFromDevfile">func (m *MockClient) GetBindingsFromDevfile(devfileObj parser.DevfileObj, context string) ([]api.ServiceBinding, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.GetFlags">func (m *MockClient) GetFlags(flags map[string]string) map[string]string</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.GetServiceInstances">func (m *MockClient) GetServiceInstances(namespace string) (map[string]unstructured.Unstructured, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.ListAllBindings">func (m *MockClient) ListAllBindings(devfileObj parser.DevfileObj, context string) ([]api.ServiceBinding, []string, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.RemoveBinding">func (m *MockClient) RemoveBinding(bindingName string, obj parser.DevfileObj) (parser.DevfileObj, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.SelectNamespace">func (m *MockClient) SelectNamespace(flags map[string]string) (string, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.SelectServiceInstance">func (m *MockClient) SelectServiceInstance(flags map[string]string, serviceMap map[string]unstructured.Unstructured) (string, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.SelectWorkloadInstance">func (m *MockClient) SelectWorkloadInstance(flags map[string]string) (string, schema.GroupVersionKind, error)</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.ValidateAddBinding">func (m *MockClient) ValidateAddBinding(flags map[string]string, withDevfile bool) error</a></dd>
+				
+					
+					<dd>    <a href="#MockClient.ValidateRemoveBinding">func (m *MockClient) ValidateRemoveBinding(flags map[string]string) error</a></dd>
+				
+			
+				
+				<dd><a href="#MockClientMockRecorder">type MockClientMockRecorder</a></dd>
+				
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.AddBinding">func (mr *MockClientMockRecorder) AddBinding(flags, bindingName, bindAsFiles, serviceNs, namingStrategy, unstructuredService, workloadName, workloadGVK interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.AddBindingToDevfile">func (mr *MockClientMockRecorder) AddBindingToDevfile(bindingName, bindAsFiles, serviceNs, namingStrategy, unstructuredService, obj interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.AskBindAsFiles">func (mr *MockClientMockRecorder) AskBindAsFiles(flags interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.AskBindingName">func (mr *MockClientMockRecorder) AskBindingName(serviceName, componentName, flags interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.AskNamingStrategy">func (mr *MockClientMockRecorder) AskNamingStrategy(flags interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.CheckServiceBindingsInjectionDone">func (mr *MockClientMockRecorder) CheckServiceBindingsInjectionDone(componentName, appName interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.GetBindingFromCluster">func (mr *MockClientMockRecorder) GetBindingFromCluster(name interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.GetBindingsFromDevfile">func (mr *MockClientMockRecorder) GetBindingsFromDevfile(devfileObj, context interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.GetFlags">func (mr *MockClientMockRecorder) GetFlags(flags interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.GetServiceInstances">func (mr *MockClientMockRecorder) GetServiceInstances(namespace interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.ListAllBindings">func (mr *MockClientMockRecorder) ListAllBindings(devfileObj, context interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.RemoveBinding">func (mr *MockClientMockRecorder) RemoveBinding(bindingName, obj interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.SelectNamespace">func (mr *MockClientMockRecorder) SelectNamespace(flags interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.SelectServiceInstance">func (mr *MockClientMockRecorder) SelectServiceInstance(flags, serviceMap interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.SelectWorkloadInstance">func (mr *MockClientMockRecorder) SelectWorkloadInstance(flags interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.ValidateAddBinding">func (mr *MockClientMockRecorder) ValidateAddBinding(flags, withDevfile interface{}) *gomock.Call</a></dd>
+				
+					
+					<dd>    <a href="#MockClientMockRecorder.ValidateRemoveBinding">func (mr *MockClientMockRecorder) ValidateRemoveBinding(flags interface{}) *gomock.Call</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/add.go.html">add.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/binding.go.html">binding.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/interface.go.html">interface.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/list.go.html">list.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html">mock.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/remove.go.html">remove.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="BindingClient">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/binding.go.html?s=1095:1288#L22">BindingClient</a>
+				<a class="permalink" href="#BindingClient">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type BindingClient struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewBindingClient">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/binding.go.html?s=1328:1436#L33">NewBindingClient</a>
+					<a class="permalink" href="#NewBindingClient">¶</a>
+					
+					
+				</h3>
+				<pre>func NewBindingClient(projectClient <a href="../../../../../github.com/redhat-developer/odo/pkg/project/">project</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/project/#Client">Client</a>, kubernetesClient <a href="../../../../../github.com/redhat-developer/odo/pkg/kclient/">kclient</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/kclient/#ClientInterface">ClientInterface</a>) *<a href="#BindingClient">BindingClient</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="BindingClient.AddBinding">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/add.go.html?s=4240:4542#L127">AddBinding</a>
+					<a class="permalink" href="#BindingClient.AddBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) AddBinding(
+    flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>,
+    bindingName <a href="../../../../../builtin/#string">string</a>,
+    bindAsFiles <a href="../../../../../builtin/#bool">bool</a>,
+    serviceNs <a href="../../../../../builtin/#string">string</a>,
+    namingStrategy <a href="../../../../../builtin/#string">string</a>,
+    unstructuredService <a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>,
+    workloadName <a href="../../../../../builtin/#string">string</a>,
+    workloadGVK <a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/">schema</a>.<a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/#GroupVersionKind">GroupVersionKind</a>,
+) ([]<a href="../../../../../github.com/redhat-developer/odo/pkg/binding/asker/">asker</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/binding/asker/#CreationOption">CreationOption</a>, <a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.AddBindingToDevfile">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/add.go.html?s=2999:3227#L92">AddBindingToDevfile</a>
+					<a class="permalink" href="#BindingClient.AddBindingToDevfile">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) AddBindingToDevfile(
+    bindingName <a href="../../../../../builtin/#string">string</a>,
+    bindAsFiles <a href="../../../../../builtin/#bool">bool</a>,
+    serviceNs <a href="../../../../../builtin/#string">string</a>,
+    namingStrategy <a href="../../../../../builtin/#string">string</a>,
+    unstructuredService <a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>,
+    obj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>,
+) (<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.AskBindAsFiles">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/add.go.html?s=2475:2552#L72">AskBindAsFiles</a>
+					<a class="permalink" href="#BindingClient.AskBindAsFiles">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) AskBindAsFiles(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#bool">bool</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.AskBindingName">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/add.go.html?s=2088:2202#L61">AskBindingName</a>
+					<a class="permalink" href="#BindingClient.AskBindingName">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) AskBindingName(serviceName, componentName <a href="../../../../../builtin/#string">string</a>, flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.AskNamingStrategy">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/add.go.html?s=2733:2815#L82">AskNamingStrategy</a>
+					<a class="permalink" href="#BindingClient.AskNamingStrategy">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) AskNamingStrategy(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.CheckServiceBindingsInjectionDone">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/binding.go.html?s=9746:9855#L293">CheckServiceBindingsInjectionDone</a>
+					<a class="permalink" href="#BindingClient.CheckServiceBindingsInjectionDone">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) CheckServiceBindingsInjectionDone(componentName <a href="../../../../../builtin/#string">string</a>, appName <a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#bool">bool</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.GetBindingFromCluster">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/binding.go.html?s=5729:5815#L165">GetBindingFromCluster</a>
+					<a class="permalink" href="#BindingClient.GetBindingFromCluster">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) GetBindingFromCluster(name <a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ServiceBinding">ServiceBinding</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+GetBindingFromCluster returns the ServiceBinding resource with the given name
+from the cluster, from group binding.operators.coreos.com/v1alpha1 or servicebinding.io/v1alpha3
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.GetBindingsFromDevfile">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/binding.go.html?s=3936:4058#L100">GetBindingsFromDevfile</a>
+					<a class="permalink" href="#BindingClient.GetBindingsFromDevfile">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) GetBindingsFromDevfile(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, context <a href="../../../../../builtin/#string">string</a>) ([]<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ServiceBinding">ServiceBinding</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+GetBindingsFromDevfile returns all ServiceBinding resources declared as Kubernertes component from a Devfile
+from group binding.operators.coreos.com/v1alpha1 or servicebinding.io/v1alpha3
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.GetFlags">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/binding.go.html?s=2046:2121#L45">GetFlags</a>
+					<a class="permalink" href="#BindingClient.GetFlags">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) GetFlags(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a></pre>
+				<p>
+GetFlags gets the flag specific to add binding operation so that it can correctly decide on the backend to be used
+It ignores all the flags except the ones specific to add binding operation, for e.g. verbosity flag
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.GetServiceInstances">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/binding.go.html?s=2507:2614#L60">GetServiceInstances</a>
+					<a class="permalink" href="#BindingClient.GetServiceInstances">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) GetServiceInstances(namespace <a href="../../../../../builtin/#string">string</a>) (map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.ListAllBindings">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/list.go.html?s=1161:1286#L35">ListAllBindings</a>
+					<a class="permalink" href="#BindingClient.ListAllBindings">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) ListAllBindings(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, context <a href="../../../../../builtin/#string">string</a>) ([]<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ServiceBinding">ServiceBinding</a>, []<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+ListAllBindings returns the list of Service Binding resources either defined in local Devfile
+or deployed in the current namespace
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.RemoveBinding">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/remove.go.html?s=888:1002#L18">RemoveBinding</a>
+					<a class="permalink" href="#BindingClient.RemoveBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) RemoveBinding(servicebindingName <a href="../../../../../builtin/#string">string</a>, obj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>) (<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+RemoveBinding removes the binding from devfile
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.SelectNamespace">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/add.go.html?s=527:607#L11">SelectNamespace</a>
+					<a class="permalink" href="#BindingClient.SelectNamespace">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) SelectNamespace(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.SelectServiceInstance">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/add.go.html?s=1295:1430#L37">SelectServiceInstance</a>
+					<a class="permalink" href="#BindingClient.SelectServiceInstance">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) SelectServiceInstance(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>, serviceMap map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.SelectWorkloadInstance">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/add.go.html?s=1655:1767#L47">SelectWorkloadInstance</a>
+					<a class="permalink" href="#BindingClient.SelectWorkloadInstance">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) SelectWorkloadInstance(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/">schema</a>.<a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/#GroupVersionKind">GroupVersionKind</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.ValidateAddBinding">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/add.go.html?s=933:1024#L22">ValidateAddBinding</a>
+					<a class="permalink" href="#BindingClient.ValidateAddBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) ValidateAddBinding(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>, withDevfile <a href="../../../../../builtin/#bool">bool</a>) <a href="../../../../../builtin/#error">error</a></pre>
+				<p>
+ValidateAddBinding calls Validate method of the adequate backend and then checks if the ServiceBinding Operator is installed in the cluster.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BindingClient.ValidateRemoveBinding">func (*BindingClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/remove.go.html?s=599:675#L10">ValidateRemoveBinding</a>
+					<a class="permalink" href="#BindingClient.ValidateRemoveBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#BindingClient">BindingClient</a>) ValidateRemoveBinding(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#error">error</a></pre>
+				<p>
+ValidateRemoveBinding validates if the command has adequate arguments/flags
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BindingSet">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/list.go.html?s=291:350#L4">BindingSet</a>
+				<a class="permalink" href="#BindingSet">¶</a>
+				
+				
+			</h2>
+			<p>
+BindingSet represents a Set of Bindings, indexed by their names
+</p>
+
+			<pre>type BindingSet struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Client">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/interface.go.html?s=270:3999#L2">Client</a>
+				<a class="permalink" href="#Client">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type Client interface {
+    <span class="comment">// GetFlags gets the necessary flags for binding</span>
+    GetFlags(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>
+    <span class="comment">// GetServiceInstances returns a map of bindable instance name with its unstructured.Unstructured object from the specified namespace, and an error</span>
+    GetServiceInstances(namespace <a href="../../../../../builtin/#string">string</a>) (map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>, <a href="../../../../../builtin/#error">error</a>)
+    <span class="comment">// GetBindingsFromDevfile returns the bindings defined in the devfile with the status extracted from cluster</span>
+    GetBindingsFromDevfile(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, context <a href="../../../../../builtin/#string">string</a>) ([]<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ServiceBinding">ServiceBinding</a>, <a href="../../../../../builtin/#error">error</a>)
+    <span class="comment">// GetBindingFromCluster returns information about a binding in the cluster (either from group binding.operators.coreos.com or servicebinding.io)</span>
+    GetBindingFromCluster(name <a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ServiceBinding">ServiceBinding</a>, <a href="../../../../../builtin/#error">error</a>)
+
+    <span class="comment">// SelectNamespace returns the namespace which services instances should be listed from.</span>
+    <span class="comment">// An empty return value means that service instances will be listed from the current namespace.</span>
+    SelectNamespace(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)
+    <span class="comment">// ValidateAddBinding returns error if the backend failed to validate; mainly useful for flags backend</span>
+    <span class="comment">// withDevfile indicates if a Devfile is present in the current directory</span>
+    ValidateAddBinding(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>, withDevfile <a href="../../../../../builtin/#bool">bool</a>) <a href="../../../../../builtin/#error">error</a>
+    <span class="comment">// SelectServiceInstance returns the service to bind to the component</span>
+    SelectServiceInstance(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>, serviceMap map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)
+    <span class="comment">// SelectWorkloadInstance returns the workload to bind, when a devfile is not in use</span>
+    SelectWorkloadInstance(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/">schema</a>.<a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/#GroupVersionKind">GroupVersionKind</a>, <a href="../../../../../builtin/#error">error</a>)
+    <span class="comment">// AskBindingName returns the name to be set for the binding</span>
+    AskBindingName(serviceName, componentName <a href="../../../../../builtin/#string">string</a>, flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)
+    <span class="comment">// AskBindAsFiles asks if the service should be bound as files</span>
+    AskBindAsFiles(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#bool">bool</a>, <a href="../../../../../builtin/#error">error</a>)
+    <span class="comment">// AskNamingStrategy asks the naming strategy to be used for the binding</span>
+    AskNamingStrategy(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)
+    <span class="comment">// AddBindingToDevfile adds the ServiceBinding manifest to the devfile</span>
+    AddBindingToDevfile(
+        bindingName <a href="../../../../../builtin/#string">string</a>,
+        bindAsFiles <a href="../../../../../builtin/#bool">bool</a>,
+        serviceNs <a href="../../../../../builtin/#string">string</a>,
+        namingStrategy <a href="../../../../../builtin/#string">string</a>,
+        unstructuredService <a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>,
+        obj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>,
+    ) (<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, <a href="../../../../../builtin/#error">error</a>)
+    <span class="comment">// AddBinding creates a binding in file and cluster (if options selected)</span>
+    <span class="comment">// and returns the selected options, the binding definition as string (if option selected)</span>
+    <span class="comment">// and the filename where definition is written (if options selected)</span>
+    AddBinding(
+        flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>,
+        bindingName <a href="../../../../../builtin/#string">string</a>,
+        bindAsFiles <a href="../../../../../builtin/#bool">bool</a>,
+        serviceNs <a href="../../../../../builtin/#string">string</a>,
+        namingStrategy <a href="../../../../../builtin/#string">string</a>,
+        unstructuredService <a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>,
+        workloadName <a href="../../../../../builtin/#string">string</a>,
+        workloadGVK <a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/">schema</a>.<a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/#GroupVersionKind">GroupVersionKind</a>,
+    ) (selectedOptions []<a href="../../../../../github.com/redhat-developer/odo/pkg/binding/asker/">asker</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/binding/asker/#CreationOption">CreationOption</a>, bindingDef <a href="../../../../../builtin/#string">string</a>, filename <a href="../../../../../builtin/#string">string</a>, err <a href="../../../../../builtin/#error">error</a>)
+
+    <span class="comment">// ListAllBindings returns all bindings either defined in the Devfile and/or deployed to the cluster</span>
+    <span class="comment">// inDevfile contains the names of the bindings at least defined in the devfile</span>
+    ListAllBindings(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, context <a href="../../../../../builtin/#string">string</a>) (bindings []<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ServiceBinding">ServiceBinding</a>, inDevfile []<a href="../../../../../builtin/#string">string</a>, err <a href="../../../../../builtin/#error">error</a>)
+
+    <span class="comment">// ValidateRemoveBinding validates if the command has adequate arguments/flags</span>
+    ValidateRemoveBinding(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#error">error</a>
+    <span class="comment">// RemoveBinding removes the binding from devfile</span>
+    RemoveBinding(bindingName <a href="../../../../../builtin/#string">string</a>, obj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>) (<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, <a href="../../../../../builtin/#error">error</a>)
+
+    <span class="comment">// CheckServiceBindingsInjectionDone checks that all service bindings pointing to component have InjectionReady condition</span>
+    CheckServiceBindingsInjectionDone(componentName <a href="../../../../../builtin/#string">string</a>, appName <a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#bool">bool</a>, <a href="../../../../../builtin/#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MockClient">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=541:630#L9">MockClient</a>
+				<a class="permalink" href="#MockClient">¶</a>
+				
+				
+			</h2>
+			<p>
+MockClient is a mock of Client interface.
+</p>
+
+			<pre>type MockClient struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewMockClient">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=799:854#L20">NewMockClient</a>
+					<a class="permalink" href="#NewMockClient">¶</a>
+					
+					
+				</h3>
+				<pre>func NewMockClient(ctrl *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Controller">Controller</a>) *<a href="#MockClient">MockClient</a></pre>
+				<p>
+NewMockClient creates a new mock instance.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="MockClient.AddBinding">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=1141:1422#L32">AddBinding</a>
+					<a class="permalink" href="#MockClient.AddBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) AddBinding(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>, bindingName <a href="../../../../../builtin/#string">string</a>, bindAsFiles <a href="../../../../../builtin/#bool">bool</a>, serviceNs, namingStrategy <a href="../../../../../builtin/#string">string</a>, unstructuredService <a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>, workloadName <a href="../../../../../builtin/#string">string</a>, workloadGVK <a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/">schema</a>.<a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/#GroupVersionKind">GroupVersionKind</a>) ([]<a href="../../../../../github.com/redhat-developer/odo/pkg/binding/asker/">asker</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/binding/asker/#CreationOption">CreationOption</a>, <a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+AddBinding mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.AddBindingToDevfile">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=2280:2489#L49">AddBindingToDevfile</a>
+					<a class="permalink" href="#MockClient.AddBindingToDevfile">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) AddBindingToDevfile(bindingName <a href="../../../../../builtin/#string">string</a>, bindAsFiles <a href="../../../../../builtin/#bool">bool</a>, serviceNs, namingStrategy <a href="../../../../../builtin/#string">string</a>, unstructuredService <a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>, obj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>) (<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+AddBindingToDevfile mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.AskBindAsFiles">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=3236:3310#L64">AskBindAsFiles</a>
+					<a class="permalink" href="#MockClient.AskBindAsFiles">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) AskBindAsFiles(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#bool">bool</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+AskBindAsFiles mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.AskBindingName">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=3798:3909#L79">AskBindingName</a>
+					<a class="permalink" href="#MockClient.AskBindingName">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) AskBindingName(serviceName, componentName <a href="../../../../../builtin/#string">string</a>, flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+AskBindingName mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.AskNamingStrategy">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=4486:4565#L94">AskNamingStrategy</a>
+					<a class="permalink" href="#MockClient.AskNamingStrategy">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) AskNamingStrategy(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+AskNamingStrategy mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.CheckServiceBindingsInjectionDone">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=5092:5191#L109">CheckServiceBindingsInjectionDone</a>
+					<a class="permalink" href="#MockClient.CheckServiceBindingsInjectionDone">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) CheckServiceBindingsInjectionDone(componentName, appName <a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#bool">bool</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+CheckServiceBindingsInjectionDone mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.EXPECT">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=1030:1083#L27">EXPECT</a>
+					<a class="permalink" href="#MockClient.EXPECT">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) EXPECT() *<a href="#MockClientMockRecorder">MockClientMockRecorder</a></pre>
+				<p>
+EXPECT returns an object that allows the caller to indicate expected use.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.GetBindingFromCluster">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=5851:5934#L124">GetBindingFromCluster</a>
+					<a class="permalink" href="#MockClient.GetBindingFromCluster">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) GetBindingFromCluster(name <a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ServiceBinding">ServiceBinding</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+GetBindingFromCluster mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.GetBindingsFromDevfile">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=6483:6602#L139">GetBindingsFromDevfile</a>
+					<a class="permalink" href="#MockClient.GetBindingsFromDevfile">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) GetBindingsFromDevfile(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, context <a href="../../../../../builtin/#string">string</a>) ([]<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ServiceBinding">ServiceBinding</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+GetBindingsFromDevfile mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.GetFlags">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=7190:7262#L154">GetFlags</a>
+					<a class="permalink" href="#MockClient.GetFlags">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) GetFlags(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a></pre>
+				<p>
+GetFlags mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.GetServiceInstances">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=7699:7803#L168">GetServiceInstances</a>
+					<a class="permalink" href="#MockClient.GetServiceInstances">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) GetServiceInstances(namespace <a href="../../../../../builtin/#string">string</a>) (map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+GetServiceInstances mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.ListAllBindings">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=8366:8488#L183">ListAllBindings</a>
+					<a class="permalink" href="#MockClient.ListAllBindings">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) ListAllBindings(devfileObj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, context <a href="../../../../../builtin/#string">string</a>) ([]<a href="../../../../../github.com/redhat-developer/odo/pkg/api/">api</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/api/#ServiceBinding">ServiceBinding</a>, []<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+ListAllBindings mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.RemoveBinding">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=9075:9179#L199">RemoveBinding</a>
+					<a class="permalink" href="#MockClient.RemoveBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) RemoveBinding(bindingName <a href="../../../../../builtin/#string">string</a>, obj <a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>) (<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/">parser</a>.<a href="../../../../../github.com/devfile/library/pkg/devfile/parser/#DevfileObj">DevfileObj</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+RemoveBinding mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.SelectNamespace">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=9708:9785#L214">SelectNamespace</a>
+					<a class="permalink" href="#MockClient.SelectNamespace">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) SelectNamespace(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+SelectNamespace mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.SelectServiceInstance">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=10288:10420#L229">SelectServiceInstance</a>
+					<a class="permalink" href="#MockClient.SelectServiceInstance">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) SelectServiceInstance(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>, serviceMap map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/">unstructured</a>.<a href="../../../../../k8s.io/apimachinery/pkg/apis/meta/v1/unstructured/#Unstructured">Unstructured</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+SelectServiceInstance mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.SelectWorkloadInstance">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=10996:11105#L244">SelectWorkloadInstance</a>
+					<a class="permalink" href="#MockClient.SelectWorkloadInstance">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) SelectWorkloadInstance(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) (<a href="../../../../../builtin/#string">string</a>, <a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/">schema</a>.<a href="../../../../../k8s.io/apimachinery/pkg/runtime/schema/#GroupVersionKind">GroupVersionKind</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				<p>
+SelectWorkloadInstance mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.ValidateAddBinding">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=11698:11786#L260">ValidateAddBinding</a>
+					<a class="permalink" href="#MockClient.ValidateAddBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) ValidateAddBinding(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>, withDevfile <a href="../../../../../builtin/#bool">bool</a>) <a href="../../../../../builtin/#error">error</a></pre>
+				<p>
+ValidateAddBinding mocks base method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClient.ValidateRemoveBinding">func (*MockClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=12312:12385#L274">ValidateRemoveBinding</a>
+					<a class="permalink" href="#MockClient.ValidateRemoveBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#MockClient">MockClient</a>) ValidateRemoveBinding(flags map[<a href="../../../../../builtin/#string">string</a>]<a href="../../../../../builtin/#string">string</a>) <a href="../../../../../builtin/#error">error</a></pre>
+				<p>
+ValidateRemoveBinding mocks base method.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MockClientMockRecorder">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=695:751#L15">MockClientMockRecorder</a>
+				<a class="permalink" href="#MockClientMockRecorder">¶</a>
+				
+				
+			</h2>
+			<p>
+MockClientMockRecorder is the mock recorder for MockClient.
+</p>
+
+			<pre>type MockClientMockRecorder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="MockClientMockRecorder.AddBinding">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=1806:1983#L43">AddBinding</a>
+					<a class="permalink" href="#MockClientMockRecorder.AddBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) AddBinding(flags, bindingName, bindAsFiles, serviceNs, namingStrategy, unstructuredService, workloadName, workloadGVK interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+AddBinding indicates an expected call of AddBinding.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.AddBindingToDevfile">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=2798:2955#L58">AddBindingToDevfile</a>
+					<a class="permalink" href="#MockClientMockRecorder.AddBindingToDevfile">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) AddBindingToDevfile(bindingName, bindAsFiles, serviceNs, namingStrategy, unstructuredService, obj interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+AddBindingToDevfile indicates an expected call of AddBindingToDevfile.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.AskBindAsFiles">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=3519:3599#L73">AskBindAsFiles</a>
+					<a class="permalink" href="#MockClientMockRecorder.AskBindAsFiles">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) AskBindAsFiles(flags interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+AskBindAsFiles indicates an expected call of AskBindAsFiles.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.AskBindingName">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=4148:4256#L88">AskBindingName</a>
+					<a class="permalink" href="#MockClientMockRecorder.AskBindingName">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) AskBindingName(serviceName, componentName, flags interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+AskBindingName indicates an expected call of AskBindingName.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.AskNamingStrategy">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=4785:4868#L103">AskNamingStrategy</a>
+					<a class="permalink" href="#MockClientMockRecorder.AskNamingStrategy">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) AskNamingStrategy(flags interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+AskNamingStrategy indicates an expected call of AskNamingStrategy.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.CheckServiceBindingsInjectionDone">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=5474:5590#L118">CheckServiceBindingsInjectionDone</a>
+					<a class="permalink" href="#MockClientMockRecorder.CheckServiceBindingsInjectionDone">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) CheckServiceBindingsInjectionDone(componentName, appName interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+CheckServiceBindingsInjectionDone indicates an expected call of CheckServiceBindingsInjectionDone.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.GetBindingFromCluster">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=6177:6263#L133">GetBindingFromCluster</a>
+					<a class="permalink" href="#MockClientMockRecorder.GetBindingFromCluster">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) GetBindingFromCluster(name interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+GetBindingFromCluster indicates an expected call of GetBindingFromCluster.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.GetBindingsFromDevfile">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=6865:6967#L148">GetBindingsFromDevfile</a>
+					<a class="permalink" href="#MockClientMockRecorder.GetBindingsFromDevfile">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) GetBindingsFromDevfile(devfileObj, context interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+GetBindingsFromDevfile indicates an expected call of GetBindingsFromDevfile.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.GetFlags">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=7433:7507#L162">GetFlags</a>
+					<a class="permalink" href="#MockClientMockRecorder.GetFlags">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) GetFlags(flags interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+GetFlags indicates an expected call of GetFlags.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.GetServiceInstances">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=8063:8152#L177">GetServiceInstances</a>
+					<a class="permalink" href="#MockClientMockRecorder.GetServiceInstances">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) GetServiceInstances(namespace interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+GetServiceInstances indicates an expected call of GetServiceInstances.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.ListAllBindings">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=8766:8861#L193">ListAllBindings</a>
+					<a class="permalink" href="#MockClientMockRecorder.ListAllBindings">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) ListAllBindings(devfileObj, context interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+ListAllBindings indicates an expected call of ListAllBindings.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.RemoveBinding">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=9409:9499#L208">RemoveBinding</a>
+					<a class="permalink" href="#MockClientMockRecorder.RemoveBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) RemoveBinding(bindingName, obj interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+RemoveBinding indicates an expected call of RemoveBinding.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.SelectNamespace">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=9999:10080#L223">SelectNamespace</a>
+					<a class="permalink" href="#MockClientMockRecorder.SelectNamespace">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) SelectNamespace(flags interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+SelectNamespace indicates an expected call of SelectNamespace.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.SelectServiceInstance">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=10664:10763#L238">SelectServiceInstance</a>
+					<a class="permalink" href="#MockClientMockRecorder.SelectServiceInstance">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) SelectServiceInstance(flags, serviceMap interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+SelectServiceInstance indicates an expected call of SelectServiceInstance.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.SelectWorkloadInstance">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=11391:11479#L254">SelectWorkloadInstance</a>
+					<a class="permalink" href="#MockClientMockRecorder.SelectWorkloadInstance">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) SelectWorkloadInstance(flags interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+SelectWorkloadInstance indicates an expected call of SelectWorkloadInstance.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.ValidateAddBinding">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=11988:12085#L268">ValidateAddBinding</a>
+					<a class="permalink" href="#MockClientMockRecorder.ValidateAddBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) ValidateAddBinding(flags, withDevfile interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+ValidateAddBinding indicates an expected call of ValidateAddBinding.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MockClientMockRecorder.ValidateRemoveBinding">func (*MockClientMockRecorder) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/binding/mock.go.html?s=12583:12670#L282">ValidateRemoveBinding</a>
+					<a class="permalink" href="#MockClientMockRecorder.ValidateRemoveBinding">¶</a>
+					
+					
+				</h3>
+				<pre>func (mr *<a href="#MockClientMockRecorder">MockClientMockRecorder</a>) ValidateRemoveBinding(flags interface{}) *<a href="../../../../../github.com/golang/mock/gomock/">gomock</a>.<a href="../../../../../github.com/golang/mock/gomock/#Call">Call</a></pre>
+				<p>
+ValidateRemoveBinding indicates an expected call of ValidateRemoveBinding.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tbody><tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="asker/">asker</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="backend/">backend</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package backend is a generated GoMock package.
+					</td>
+				</tr>
+			
+		</tbody></table>
+	</div>
+
+
+
+<div id="footer"><a href="../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

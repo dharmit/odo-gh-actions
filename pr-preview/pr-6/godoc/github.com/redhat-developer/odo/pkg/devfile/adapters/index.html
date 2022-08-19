@@ -1,0 +1,409 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>adapters - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package adapters
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/devfile/adapters" target="_blank">github.com/redhat-developer/odo/pkg/devfile/adapters</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="#ComponentInfo">type ComponentInfo</a></dd>
+				
+				
+					
+					<dd>    <a href="#ComponentInfo.IsEmpty">func (ci ComponentInfo) IsEmpty() bool</a></dd>
+				
+			
+				
+				<dd><a href="#ErrPortForward">type ErrPortForward</a></dd>
+				
+					
+					<dd>    <a href="#NewErrPortForward">func NewErrPortForward(cause error) ErrPortForward</a></dd>
+				
+				
+					
+					<dd>    <a href="#ErrPortForward.Error">func (e ErrPortForward) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#PushParameters">type PushParameters</a></dd>
+				
+				
+			
+				
+				<dd><a href="#SyncParameters">type SyncParameters</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../../src/github.com/redhat-developer/odo/pkg/devfile/adapters/errors.go.html">errors.go</a>
+			
+				<a href="../../../../../../src/github.com/redhat-developer/odo/pkg/devfile/adapters/types.go.html">types.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="ComponentInfo">type <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/devfile/adapters/types.go.html?s=2773:2868#L28">ComponentInfo</a>
+				<a class="permalink" href="#ComponentInfo">¶</a>
+				
+				
+			</h2>
+			<p>
+ComponentInfo is a struct that holds information about a component i.e.; pod name, container name, and source mount (if applicable)
+</p>
+
+			<pre>type ComponentInfo struct {
+<span id="ComponentInfo.PodName"></span>    PodName       <a href="../../../../../../builtin/#string">string</a>
+<span id="ComponentInfo.ContainerName"></span>    ContainerName <a href="../../../../../../builtin/#string">string</a>
+<span id="ComponentInfo.SyncFolder"></span>    SyncFolder    <a href="../../../../../../builtin/#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ComponentInfo.IsEmpty">func (ComponentInfo) <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/devfile/adapters/types.go.html?s=2870:2908#L34">IsEmpty</a>
+					<a class="permalink" href="#ComponentInfo.IsEmpty">¶</a>
+					
+					
+				</h3>
+				<pre>func (ci <a href="#ComponentInfo">ComponentInfo</a>) IsEmpty() <a href="../../../../../../builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrPortForward">type <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/devfile/adapters/errors.go.html?s=32:75#L1">ErrPortForward</a>
+				<a class="permalink" href="#ErrPortForward">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type ErrPortForward struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewErrPortForward">func <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/devfile/adapters/errors.go.html?s=77:127#L1">NewErrPortForward</a>
+					<a class="permalink" href="#NewErrPortForward">¶</a>
+					
+					
+				</h3>
+				<pre>func NewErrPortForward(cause <a href="../../../../../../builtin/#error">error</a>) <a href="#ErrPortForward">ErrPortForward</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="ErrPortForward.Error">func (ErrPortForward) <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/devfile/adapters/errors.go.html?s=170:208#L3">Error</a>
+					<a class="permalink" href="#ErrPortForward.Error">¶</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="#ErrPortForward">ErrPortForward</a>) Error() <a href="../../../../../../builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="PushParameters">type <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/devfile/adapters/types.go.html?s=187:2362#L1">PushParameters</a>
+				<a class="permalink" href="#PushParameters">¶</a>
+				
+				
+			</h2>
+			<p>
+PushParameters is a struct containing the parameters to be used when pushing to a devfile component
+</p>
+
+			<pre>type PushParameters struct {
+<span id="PushParameters.Path"></span>    Path                     <a href="../../../../../../builtin/#string">string</a>                  <span class="comment">// Path refers to the parent folder containing the source code to push up to a component</span>
+<span id="PushParameters.WatchFiles"></span>    WatchFiles               []<a href="../../../../../../builtin/#string">string</a>                <span class="comment">// Optional: WatchFiles is the list of changed files detected by odo watch. If empty or nil, odo will check .odo/odo-file-index.json to determine changed files</span>
+<span id="PushParameters.WatchDeletedFiles"></span>    WatchDeletedFiles        []<a href="../../../../../../builtin/#string">string</a>                <span class="comment">// Optional: WatchDeletedFiles is the list of deleted files detected by odo watch. If empty or nil, odo will check .odo/odo-file-index.json to determine deleted files</span>
+<span id="PushParameters.IgnoredFiles"></span>    IgnoredFiles             []<a href="../../../../../../builtin/#string">string</a>                <span class="comment">// IgnoredFiles is the list of files to not push up to a component</span>
+<span id="PushParameters.ForceBuild"></span>    ForceBuild               <a href="../../../../../../builtin/#bool">bool</a>                    <span class="comment">// ForceBuild determines whether or not to push all of the files up to a component or just files that have changed, added or removed.</span>
+<span id="PushParameters.Show"></span>    Show                     <a href="../../../../../../builtin/#bool">bool</a>                    <span class="comment">// Show tells whether the devfile command output should be shown on stdout</span>
+<span id="PushParameters.DevfileBuildCmd"></span>    DevfileBuildCmd          <a href="../../../../../../builtin/#string">string</a>                  <span class="comment">// DevfileBuildCmd takes the build command through the command line and overwrites devfile build command</span>
+<span id="PushParameters.DevfileRunCmd"></span>    DevfileRunCmd            <a href="../../../../../../builtin/#string">string</a>                  <span class="comment">// DevfileRunCmd takes the run command through the command line and overwrites devfile run command</span>
+<span id="PushParameters.DevfileDebugCmd"></span>    DevfileDebugCmd          <a href="../../../../../../builtin/#string">string</a>                  <span class="comment">// DevfileDebugCmd takes the debug command through the command line and overwrites the devfile debug command</span>
+<span id="PushParameters.DevfileScanIndexForWatch"></span>    DevfileScanIndexForWatch <a href="../../../../../../builtin/#bool">bool</a>                    <span class="comment">// DevfileScanIndexForWatch is true if watch&#39;s push should regenerate the index file during SyncFiles, false otherwise. See &#39;pkg/sync/adapter.go&#39; for details</span>
+<span id="PushParameters.EnvSpecificInfo"></span>    EnvSpecificInfo          <a href="../../../../../../github.com/redhat-developer/odo/pkg/envinfo/">envinfo</a>.<a href="../../../../../../github.com/redhat-developer/odo/pkg/envinfo/#EnvSpecificInfo">EnvSpecificInfo</a> <span class="comment">// EnvSpecificInfo contains information of env.yaml file</span>
+<span id="PushParameters.Debug"></span>    Debug                    <a href="../../../../../../builtin/#bool">bool</a>                    <span class="comment">// Runs the component in debug mode</span>
+<span id="PushParameters.DebugPort"></span>    DebugPort                <a href="../../../../../../builtin/#int">int</a>                     <span class="comment">// Port used for remote debugging</span>
+<span id="PushParameters.RandomPorts"></span>    RandomPorts              <a href="../../../../../../builtin/#bool">bool</a>                    <span class="comment">// True to forward containers ports on local random ports</span>
+<span id="PushParameters.ErrOut"></span>    ErrOut                   <a href="../../../../../../io/">io</a>.<a href="../../../../../../io/#Writer">Writer</a>               <span class="comment">// Writer to output forwarded port information</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="SyncParameters">type <a href="../../../../../../src/github.com/redhat-developer/odo/pkg/devfile/adapters/types.go.html?s=2464:2636#L19">SyncParameters</a>
+				<a class="permalink" href="#SyncParameters">¶</a>
+				
+				
+			</h2>
+			<p>
+SyncParameters is a struct containing the parameters to be used when syncing a devfile component
+</p>
+
+			<pre>type SyncParameters struct {
+<span id="SyncParameters.PushParams"></span>    PushParams      <a href="#PushParameters">PushParameters</a>
+<span id="SyncParameters.CompInfo"></span>    CompInfo        <a href="#ComponentInfo">ComponentInfo</a>
+<span id="SyncParameters.PodChanged"></span>    PodChanged      <a href="../../../../../../builtin/#bool">bool</a>
+<span id="SyncParameters.ComponentExists"></span>    ComponentExists <a href="../../../../../../builtin/#bool">bool</a>
+<span id="SyncParameters.Files"></span>    Files           map[<a href="../../../../../../builtin/#string">string</a>]<a href="../../../../../../builtin/#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tbody><tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="kubernetes/">kubernetes</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="kubernetes/component/">component</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="kubernetes/storage/">storage</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="kubernetes/utils/">utils</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+		</tbody></table>
+	</div>
+
+
+
+<div id="footer"><a href="../../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>

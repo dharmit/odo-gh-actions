@@ -1,0 +1,367 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#375EAB"/>
+
+  <title>logs - Documentation</title>
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/style.css"/></head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../../../../../">Documentation</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../../../../../">Documentation</a></div>
+<!--<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>-->
+<div id="menu">
+<a href="../../../../../" style="margin-right: 10px;">Package Index</a>
+</div>
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package logs
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import &#34;<a href="https://github.com/redhat-developer/odo/tree/master/pkg/logs" target="_blank">github.com/redhat-developer/odo/pkg/logs</a>&#34;</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="#Client">type Client</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ContainerLogs">type ContainerLogs</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Events">type Events</a></dd>
+				
+				
+			
+				
+				<dd><a href="#InvalidModeError">type InvalidModeError</a></dd>
+				
+				
+					
+					<dd>    <a href="#InvalidModeError.Error">func (e InvalidModeError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#LogsClient">type LogsClient</a></dd>
+				
+					
+					<dd>    <a href="#NewLogsClient">func NewLogsClient(kubernetesClient kclient.ClientInterface) *LogsClient</a></dd>
+				
+				
+					
+					<dd>    <a href="#LogsClient.GetLogsForMode">func (o *LogsClient) GetLogsForMode(mode string, componentName string, namespace string, follow bool) (Events, error)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/logs/errors.go.html">errors.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/logs/interface.go.html">interface.go</a>
+			
+				<a href="../../../../../src/github.com/redhat-developer/odo/pkg/logs/logs.go.html">logs.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="Client">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/logs/interface.go.html?s=14:704#L1">Client</a>
+				<a class="permalink" href="#Client">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type Client interface {
+    <span class="comment">// GetLogsForMode gets logs of the containers for the specified mode (Dev, Deploy or both) of the provided</span>
+    <span class="comment">// component name and namespace. It returns Events which has multiple channels. Logs are put on the</span>
+    <span class="comment">// Events.Logs channel and errors on Events.Err. Events.Done channel is populated to indicate that all Pods&#39; logs</span>
+    <span class="comment">// have been fetched.</span>
+    <span class="comment">// The accepted values for mode are ComponentDevMode, ComponentDeployMode and ComponentAnyMode</span>
+    <span class="comment">// found in the pkg/labels package.</span>
+    <span class="comment">// Setting follow boolean to true helps follow/tail the logs of the pods.</span>
+    GetLogsForMode(
+        mode <a href="../../../../../builtin/#string">string</a>,
+        componentName <a href="../../../../../builtin/#string">string</a>,
+        namespace <a href="../../../../../builtin/#string">string</a>,
+        follow <a href="../../../../../builtin/#bool">bool</a>,
+    ) (<a href="#Events">Events</a>, <a href="../../../../../builtin/#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ContainerLogs">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/logs/logs.go.html?s=387:449#L12">ContainerLogs</a>
+				<a class="permalink" href="#ContainerLogs">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type ContainerLogs struct {
+<span id="ContainerLogs.Name"></span>    Name <a href="../../../../../builtin/#string">string</a>
+<span id="ContainerLogs.Logs"></span>    Logs <a href="../../../../../io/">io</a>.<a href="../../../../../io/#ReadCloser">ReadCloser</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Events">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/logs/logs.go.html?s=451:720#L17">Events</a>
+				<a class="permalink" href="#Events">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type Events struct {
+    <span class="comment">// channel to put the container logs on</span>
+<span id="Events.Logs"></span>    Logs chan <a href="#ContainerLogs">ContainerLogs</a>
+    <span class="comment">// channel to put an error on, if any</span>
+<span id="Events.Err"></span>    Err chan <a href="../../../../../builtin/#error">error</a>
+    <span class="comment">// channel to indicate that logs for all pods have been grabbed; not to be populated if --follow is used</span>
+<span id="Events.Done"></span>    Done chan struct{}
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="InvalidModeError">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/logs/errors.go.html?s=90:135#L1">InvalidModeError</a>
+				<a class="permalink" href="#InvalidModeError">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type InvalidModeError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="InvalidModeError.Error">func (InvalidModeError) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/logs/errors.go.html?s=137:177#L3">Error</a>
+					<a class="permalink" href="#InvalidModeError.Error">¶</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="#InvalidModeError">InvalidModeError</a>) Error() <a href="../../../../../builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="LogsClient">type <a href="../../../../../src/github.com/redhat-developer/odo/pkg/logs/logs.go.html?s=317:385#L8">LogsClient</a>
+				<a class="permalink" href="#LogsClient">¶</a>
+				
+				
+			</h2>
+			
+			<pre>type LogsClient struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewLogsClient">func <a href="../../../../../src/github.com/redhat-developer/odo/pkg/logs/logs.go.html?s=757:829#L28">NewLogsClient</a>
+					<a class="permalink" href="#NewLogsClient">¶</a>
+					
+					
+				</h3>
+				<pre>func NewLogsClient(kubernetesClient <a href="../../../../../github.com/redhat-developer/odo/pkg/kclient/">kclient</a>.<a href="../../../../../github.com/redhat-developer/odo/pkg/kclient/#ClientInterface">ClientInterface</a>) *<a href="#LogsClient">LogsClient</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="LogsClient.GetLogsForMode">func (*LogsClient) <a href="../../../../../src/github.com/redhat-developer/odo/pkg/logs/logs.go.html?s=932:1056#L36">GetLogsForMode</a>
+					<a class="permalink" href="#LogsClient.GetLogsForMode">¶</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#LogsClient">LogsClient</a>) GetLogsForMode(
+    mode <a href="../../../../../builtin/#string">string</a>,
+    componentName <a href="../../../../../builtin/#string">string</a>,
+    namespace <a href="../../../../../builtin/#string">string</a>,
+    follow <a href="../../../../../builtin/#bool">bool</a>,
+) (<a href="#Events">Events</a>, <a href="../../../../../builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer"><a href="../../../../../docs.zip">Download docs.zip</a> to browse offline - Generated by <a href="https://godoc.org/golang.org/x/tools/godoc" target="_blank">godoc</a> + <a href="https://gitlab.com/tslocum/godoc-static" target="_blank">godoc-static</a></div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+</body></html>
